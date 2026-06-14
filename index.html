@@ -11,8 +11,7 @@ html{scroll-behavior:smooth}
 :root{--red:#CC0000;--dark:#111;--card:#1c1c1c;--border:#2a2a2a}
 body{font-family:'Inter',sans-serif;background:var(--dark);color:#e0e0e0;overflow-x:hidden}
 
-/* NAV */
-nav{background:rgba(8,8,8,.96);border-bottom:3px solid var(--red);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:62px;position:sticky;top:0;z-index:300;backdrop-filter:blur(10px)}
+nav{background:rgba(8,8,8,.97);border-bottom:3px solid var(--red);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:62px;position:sticky;top:0;z-index:300;backdrop-filter:blur(10px)}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:.1em;color:#fff}
 .logo span{color:var(--red)}
 .nav-cats{display:flex;list-style:none}
@@ -24,132 +23,56 @@ nav{background:rgba(8,8,8,.96);border-bottom:3px solid var(--red);display:flex;a
 .nav-right a:hover{color:var(--red)}
 .cart-link{background:var(--red)!important;color:#fff!important;padding:7px 20px;border-radius:2px;font-weight:700!important}
 
-/* TICKER */
 .ticker{background:var(--red);overflow:hidden;padding:8px 0}
 .ticker-inner{display:flex;width:max-content;animation:tick 25s linear infinite}
 .ticker-inner span{white-space:nowrap;padding:0 2.5rem;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff}
 .ticker-inner span::after{content:'\2605';margin-left:2.5rem}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* HERO — real photo background */
-.hero{
-  position:relative;height:92vh;min-height:560px;
-  display:flex;align-items:flex-end;overflow:hidden;
-}
+/* HERO */
+.hero{position:relative;height:92vh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-sm{height:75vh;min-height:440px}
 .hero-bg{
   position:absolute;inset:0;
-  background-size:cover;
-  background-position:center top;
+  background-size:cover;background-position:center top;
   background-repeat:no-repeat;
 }
-/* Overlay: dark on left for text, lighter on right to show image */
 .hero-overlay{
   position:absolute;inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,.1) 0%,
-    rgba(0,0,0,.05) 35%,
-    rgba(0,0,0,.55) 68%,
-    rgba(10,10,10,.97) 100%
-  );
+  background:linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(0,0,0,.05) 35%,rgba(0,0,0,.6) 68%,rgba(10,10,10,.97) 100%);
 }
-.hero-text{
-  position:relative;z-index:2;
-  padding:0 5vw 4.5rem;max-width:580px;
-}
-.eyebrow{
-  display:inline-block;background:var(--red);color:#fff;
-  font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-  padding:5px 13px;margin-bottom:1rem;
-}
-.hero-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(3rem,7vw,6.5rem);line-height:.92;
-  color:#fff;margin-bottom:.9rem;
-  text-shadow:2px 2px 20px rgba(0,0,0,.95),0 0 40px rgba(0,0,0,.8);
-}
-.hero-sub{
-  color:#ddd;font-size:.92rem;line-height:1.75;
-  margin-bottom:1.6rem;max-width:400px;
-  text-shadow:1px 1px 8px rgba(0,0,0,.95);
-}
-.hero-btn{
-  display:inline-block;background:var(--red);color:#fff;
-  text-decoration:none;padding:13px 32px;
-  font-size:.83rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  border:none;cursor:pointer;transition:all .18s;
-}
+.hero-text{position:relative;z-index:2;padding:0 5vw 4.5rem;max-width:580px}
+.eyebrow{display:inline-block;background:var(--red);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:5px 13px;margin-bottom:1rem}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6.5rem);line-height:.92;color:#fff;margin-bottom:.9rem;text-shadow:2px 2px 24px rgba(0,0,0,.95)}
+.hero-sub{color:#ddd;font-size:.92rem;line-height:1.75;margin-bottom:1.6rem;max-width:400px;text-shadow:1px 1px 10px rgba(0,0,0,.95)}
+.hero-btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;padding:13px 32px;font-size:.83rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;transition:all .18s}
 .hero-btn:hover{background:#aa0000;transform:translateY(-2px)}
-
-/* SMALL HERO */
-.hero-sm{height:72vh;min-height:420px}
 
 /* CAT TILES */
 .cat-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:#000}
-.cat-tile{
-  position:relative;height:220px;overflow:hidden;cursor:pointer;
-}
-.cat-tile-bg{
-  position:absolute;inset:0;
-  background-size:cover;background-position:center;
-  transition:transform .4s;
-}
-.cat-tile:hover .cat-tile-bg{transform:scale(1.06)}
-/* dark overlay on tile */
-.cat-tile::after{
-  content:'';position:absolute;inset:0;
-  background:rgba(0,0,0,.45);
-  transition:background .3s;
-}
-.cat-tile:hover::after{background:rgba(0,0,0,.3)}
-.cat-label{
-  position:absolute;bottom:0;left:0;right:0;z-index:2;
-  padding:.9rem 1rem;
-  background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 100%);
-  font-family:'Bebas Neue',sans-serif;font-size:1.4rem;
-  letter-spacing:.1em;color:#fff;
-  display:flex;flex-direction:column;
-}
-.cat-label small{
-  font-family:'Inter',sans-serif;font-size:.6rem;
-  font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ccc;
-}
+.cat-tile{position:relative;height:220px;overflow:hidden;cursor:pointer}
+.cat-tile-bg{position:absolute;inset:0;background-size:cover;background-position:center top;transition:transform .45s}
+.cat-tile:hover .cat-tile-bg{transform:scale(1.07)}
+.cat-tile::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.42);transition:background .3s}
+.cat-tile:hover::after{background:rgba(0,0,0,.25)}
+.cat-label{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:.9rem 1rem;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,transparent 100%);font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.1em;color:#fff;display:flex;flex-direction:column}
+.cat-label small{font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ccc}
 
 /* SECTION */
 .section{padding:3rem 5vw}
 .section.alt{background:#0e0e0e}
-.sec-head{
-  display:flex;align-items:baseline;justify-content:space-between;
-  margin-bottom:1.6rem;padding-bottom:.9rem;
-  border-bottom:1px solid var(--border);
-}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.6rem;padding-bottom:.9rem;border-bottom:1px solid var(--border)}
 .sec-title{font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:.08em;color:#fff}
 .view-all{color:var(--red);text-decoration:none;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 
 /* PRODUCT GRID */
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:1rem}
-.pc{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:3px;overflow:hidden;cursor:pointer;
-  transition:border-color .2s,transform .2s,box-shadow .2s;
-}
+.pc{background:var(--card);border:1px solid var(--border);border-radius:3px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s}
 .pc:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 8px 24px rgba(204,0,0,.14)}
-.ci{aspect-ratio:1/1.15;overflow:hidden;position:relative}
-.ci-bg{
-  width:100%;height:100%;
-  background-size:cover;background-position:center top;
-  transition:transform .4s;
-}
-.pc:hover .ci-bg{transform:scale(1.06)}
-.ci-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 45%,rgba(10,10,10,.7) 100%);
-}
-.cbadge{
-  position:absolute;top:8px;left:8px;z-index:2;
-  font-size:.6rem;font-weight:800;padding:3px 9px;
-  letter-spacing:.1em;text-transform:uppercase;
-}
+.ci{aspect-ratio:3/4;overflow:hidden;position:relative}
+.ci img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .45s;display:block}
+.pc:hover .ci img{transform:scale(1.06)}
+.cbadge{position:absolute;top:8px;left:8px;z-index:2;font-size:.6rem;font-weight:800;padding:3px 9px;letter-spacing:.1em;text-transform:uppercase}
 .bn{background:var(--red);color:#fff}
 .bh{background:#e06000;color:#fff}
 .cb{padding:.7rem .85rem .9rem}
@@ -157,85 +80,38 @@ nav{background:rgba(8,8,8,.96);border-bottom:3px solid var(--red);display:flex;a
 .cn{font-size:.84rem;font-weight:500;color:#ddd;margin-bottom:.4rem;line-height:1.3}
 .cp{font-size:.95rem;font-weight:700;color:#fff}
 .cp s{font-size:.76rem;color:#3a3a3a;font-weight:400;margin-left:5px}
-.ca{
-  width:100%;margin-top:.6rem;background:#181818;
-  border:1px solid #2e2e2e;color:#888;
-  font-family:'Inter',sans-serif;font-size:.72rem;
-  font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  padding:7px;cursor:pointer;transition:all .18s;
-}
+.ca{width:100%;margin-top:.6rem;background:#181818;border:1px solid #2e2e2e;color:#888;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:7px;cursor:pointer;transition:all .18s}
 .ca:hover{background:var(--red);color:#fff;border-color:var(--red)}
 
-/* MID BANNER — real photo */
-.mbanner{
-  position:relative;height:400px;
-  overflow:hidden;display:flex;align-items:center;
-}
-.mbanner-bg{
-  position:absolute;inset:0;
-  background-size:cover;background-position:center 25%;
-}
-.mbanner-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(
-    to right,
-    rgba(0,0,0,.88) 0%,
-    rgba(0,0,0,.6) 40%,
-    rgba(0,0,0,.15) 100%
-  );
-}
-.mbanner-text{
-  position:relative;z-index:2;padding:0 5vw;max-width:500px;
-}
-.mbanner-text h2{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(2.4rem,5vw,4.2rem);line-height:.92;
-  color:#fff;margin:.7rem 0 .9rem;
-  text-shadow:2px 2px 16px rgba(0,0,0,.95);
-}
+/* MID BANNER */
+.mbanner{position:relative;height:420px;overflow:hidden;display:flex;align-items:center}
+.mbanner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.mbanner-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.9) 0%,rgba(0,0,0,.6) 40%,rgba(0,0,0,.1) 100%)}
+.mbanner-text{position:relative;z-index:2;padding:0 5vw;max-width:500px}
+.mbanner-text h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,5vw,4.2rem);line-height:.92;color:#fff;margin:.7rem 0 .9rem;text-shadow:2px 2px 16px rgba(0,0,0,.95)}
 .mbanner-text h2 span{color:var(--red)}
-.mbanner-text p{
-  color:#ccc;font-size:.88rem;line-height:1.7;
-  text-shadow:1px 1px 8px rgba(0,0,0,.95);
-}
+.mbanner-text p{color:#ccc;font-size:.88rem;line-height:1.7;text-shadow:1px 1px 8px rgba(0,0,0,.95)}
 
 /* STEPS */
 .steps{background:#0a0a0a;border-top:1px solid var(--border);padding:3rem 5vw}
-.steps h2{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.6rem;letter-spacing:.08em;color:#fff;
-  margin-bottom:2rem;text-align:center;
-}
+.steps h2{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.08em;color:#fff;margin-bottom:2rem;text-align:center}
 .sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.step{
-  background:var(--card);border:1px solid var(--border);
-  padding:1.6rem 1.4rem;border-radius:3px;position:relative;
-}
+.step{background:var(--card);border:1px solid var(--border);padding:1.6rem 1.4rem;border-radius:3px;position:relative}
 .step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)}
 .snum{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:rgba(204,0,0,.12);line-height:1;margin-bottom:.4rem}
 .stitle{font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:.5rem}
 .sdesc{font-size:.8rem;color:#555;line-height:1.65}
 
-/* INSTAGRAM */
+/* INSTA */
 .istrip{padding:2.5rem 5vw;border-top:1px solid var(--border)}
 .ihead{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem}
 .ihead h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;color:#fff}
 .ihandle{color:var(--red);font-size:.8rem;font-weight:700}
-.igrid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
-.icell{
-  aspect-ratio:1;overflow:hidden;
-  border:1px solid var(--border);cursor:pointer;
-  transition:border-color .2s;position:relative;
-}
+.igrid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.icell{aspect-ratio:1;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:border-color .2s;position:relative}
 .icell:hover{border-color:var(--red)}
-.icell-bg{
-  width:100%;height:100%;
-  background-size:cover;background-position:center;
-  transition:transform .35s;
-}
-.icell:hover .icell-bg{transform:scale(1.08)}
-.icell-overlay{position:absolute;inset:0;background:rgba(0,0,0,.3);transition:background .2s}
-.icell:hover .icell-overlay{background:rgba(0,0,0,.1)}
+.icell img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .35s;display:block}
+.icell:hover img{transform:scale(1.08)}
 
 /* FOOTER */
 footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5rem}
@@ -253,19 +129,8 @@ footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
 .fbot{border-top:1px solid #1a1a1a;padding-top:1.2rem;display:flex;justify-content:space-between;font-size:.7rem;color:#222}
 .fbot span{color:var(--red)}
 
-@media(max-width:900px){
-  .nav-cats{display:none}
-  .cat-tiles{grid-template-columns:1fr 1fr}
-  .ftop{grid-template-columns:1fr 1fr}
-  .sgrid{grid-template-columns:1fr}
-  .igrid{grid-template-columns:repeat(3,1fr)}
-  .mbanner{height:320px}
-}
-@media(max-width:500px){
-  .ftop{grid-template-columns:1fr}
-  .pgrid{grid-template-columns:1fr 1fr}
-  .cat-tiles{grid-template-columns:1fr 1fr}
-}
+@media(max-width:900px){.nav-cats{display:none}.cat-tiles{grid-template-columns:1fr 1fr}.ftop{grid-template-columns:1fr 1fr}.sgrid{grid-template-columns:1fr}.igrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:500px){.ftop{grid-template-columns:1fr}.pgrid{grid-template-columns:1fr 1fr}.cat-tiles{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -302,9 +167,9 @@ footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
   </div>
 </div>
 
-<!-- HERO 1 — YOUR image img5 (group in black, tough vibe) -->
+<!-- HERO 1 — p3: guy on car Las Vegas night (most dramatic) -->
 <div class="hero">
-  <div class="hero-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:center 20%"></div>
+  <div class="hero-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg');background-position:center 15%"></div>
   <div class="hero-overlay"></div>
   <div class="hero-text">
     <span class="eyebrow">&#128308; Premium Thrifted</span>
@@ -314,9 +179,9 @@ footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
   </div>
 </div>
 
-<!-- HERO 2 — YOUR image img4 (guy leaning on car, Las Vegas) -->
+<!-- HERO 2 — p2: guy leaning on red Cadillac in garage -->
 <div class="hero hero-sm">
-  <div class="hero-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:center 15%"></div>
+  <div class="hero-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p2.jpeg');background-position:center 10%"></div>
   <div class="hero-overlay"></div>
   <div class="hero-text">
     <span class="eyebrow">&#128308; Premium Thrifted</span>
@@ -326,22 +191,22 @@ footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
   </div>
 </div>
 
-<!-- CATEGORY TILES — YOUR images -->
+<!-- CATEGORY TILES -->
 <div class="cat-tiles">
   <div class="cat-tile" onclick="location.href='#jerseys'">
-    <div class="cat-tile-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png')"></div>
+    <div class="cat-tile-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p1.jpeg')"></div>
     <div class="cat-label">Jerseys<small>Shop Now</small></div>
   </div>
   <div class="cat-tile" onclick="location.href='#trackpants'">
-    <div class="cat-tile-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png')"></div>
+    <div class="cat-tile-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg');background-position:center 20%"></div>
     <div class="cat-label">Trackpants<small>Shop Now</small></div>
   </div>
   <div class="cat-tile" onclick="location.href='#denims'">
-    <div class="cat-tile-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png')"></div>
+    <div class="cat-tile-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg');background-position:center 10%"></div>
     <div class="cat-label">Denims<small>Shop Now</small></div>
   </div>
   <div class="cat-tile" onclick="location.href='#caps'">
-    <div class="cat-tile-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:center 10%"></div>
+    <div class="cat-tile-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg');background-position:center 10%"></div>
     <div class="cat-label">Caps<small>Shop Now</small></div>
   </div>
 </div>
@@ -355,8 +220,7 @@ footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
   <div class="pgrid">
 
     <div class="pc"><div class="ci">
-      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:center 10%"></div>
-      <div class="ci-overlay"></div>
+      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Vintage Jersey" loading="lazy">
       <span class="cbadge bn">New</span>
     </div><div class="cb">
       <div class="csz">Size M</div><div class="cn">Vintage Liverpool Jersey</div>
@@ -365,78 +229,71 @@ footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
     </div></div>
 
     <div class="pc"><div class="ci">
-      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:center 20%"></div>
-      <div class="ci-overlay"></div>
+      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Bomber Jacket" loading="lazy">
       <span class="cbadge bh">Hot</span>
     </div><div class="cb">
-      <div class="csz">Size L</div><div class="cn">Nike Track Jacket</div>
+      <div class="csz">Size L</div><div class="cn">Bomber Jacket</div>
       <div class="cp">&#8377;929 <s>&#8377;2,200</s></div>
       <button class="ca" onclick="addCart(this)">Add to Cart</button>
     </div></div>
 
     <div class="pc"><div class="ci">
-      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:center 15%"></div>
-      <div class="ci-overlay"></div>
+      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Black Outfit" loading="lazy">
       <span class="cbadge bn">New</span>
     </div><div class="cb">
-      <div class="csz">W32 L42</div><div class="cn">Baggy Low Rise Jeans</div>
+      <div class="csz">Size M</div><div class="cn">Black Cargo Outfit</div>
       <div class="cp">&#8377;999 <s>&#8377;1,800</s></div>
       <button class="ca" onclick="addCart(this)">Add to Cart</button>
     </div></div>
 
     <div class="pc"><div class="ci">
-      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:center 10%"></div>
-      <div class="ci-overlay"></div>
+      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Camel Coat" loading="lazy">
     </div><div class="cb">
-      <div class="csz">One Size</div><div class="cn">Vintage NY Snapback</div>
-      <div class="cp">&#8377;450 <s>&#8377;900</s></div>
+      <div class="csz">Size L</div><div class="cn">Camel Overcoat</div>
+      <div class="cp">&#8377;1,299 <s>&#8377;3,000</s></div>
       <button class="ca" onclick="addCart(this)">Add to Cart</button>
     </div></div>
 
     <div class="pc"><div class="ci">
-      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:center 5%"></div>
-      <div class="ci-overlay"></div>
+      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Grey Sweater" loading="lazy">
       <span class="cbadge bh">Hot</span>
     </div><div class="cb">
-      <div class="csz">Size L</div><div class="cn">Vintage Graphic Tee</div>
+      <div class="csz">Size M</div><div class="cn">Grey Knit Sweater</div>
       <div class="cp">&#8377;549 <s>&#8377;1,200</s></div>
       <button class="ca" onclick="addCart(this)">Add to Cart</button>
     </div></div>
 
     <div class="pc"><div class="ci">
-      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:right 10%"></div>
-      <div class="ci-overlay"></div>
+      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Orange Jacket" loading="lazy">
       <span class="cbadge bn">New</span>
     </div><div class="cb">
-      <div class="csz">W30-32</div><div class="cn">Adidas Vintage Track</div>
+      <div class="csz">Size S/M</div><div class="cn">Orange Varsity Jacket</div>
       <div class="cp">&#8377;849 <s>&#8377;1,900</s></div>
       <button class="ca" onclick="addCart(this)">Add to Cart</button>
     </div></div>
 
     <div class="pc"><div class="ci">
-      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:left 20%"></div>
-      <div class="ci-overlay"></div>
+      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Red Shirt" loading="lazy">
     </div><div class="cb">
-      <div class="csz">W26-28</div><div class="cn">Fila Track Pants</div>
-      <div class="cp">&#8377;849 <s>&#8377;2,000</s></div>
+      <div class="csz">Size M</div><div class="cn">Red Casual Shirt</div>
+      <div class="cp">&#8377;449 <s>&#8377;900</s></div>
       <button class="ca" onclick="addCart(this)">Add to Cart</button>
     </div></div>
 
     <div class="pc"><div class="ci">
-      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:right 15%"></div>
-      <div class="ci-overlay"></div>
+      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Hoodie" loading="lazy">
     </div><div class="cb">
-      <div class="csz">XS-M</div><div class="cn">Pack of Three Tees</div>
-      <div class="cp">&#8377;899 <s>&#8377;2,400</s></div>
+      <div class="csz">Size L</div><div class="cn">Vintage Graphic Hoodie</div>
+      <div class="cp">&#8377;699 <s>&#8377;1,600</s></div>
       <button class="ca" onclick="addCart(this)">Add to Cart</button>
     </div></div>
 
   </div>
 </section>
 
-<!-- MID BANNER 1 — img3 tough crew vibe -->
+<!-- MID BANNER 1 — p1: group on vintage car -->
 <div class="mbanner">
-  <div class="mbanner-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:right center"></div>
+  <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p1.jpeg" alt="Jerseys Banner" loading="lazy">
   <div class="mbanner-overlay"></div>
   <div class="mbanner-text">
     <span class="eyebrow">&#128308; Premium Thrifted</span>
@@ -447,23 +304,20 @@ footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
 
 <!-- JERSEYS -->
 <section class="section alt" id="jerseys">
-  <div class="sec-head">
-    <h2 class="sec-title">Jerseys</h2>
-    <a href="#" class="view-all">View All &rarr;</a>
-  </div>
+  <div class="sec-head"><h2 class="sec-title">Jerseys</h2><a href="#" class="view-all">View All &rarr;</a></div>
   <div class="pgrid">
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:center 5%"></div><div class="ci-overlay"></div><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">Size M</div><div class="cn">Liverpool FC</div><div class="cp">&#8377;1,499</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:left 10%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">Size L</div><div class="cn">NBA Vintage Jersey</div><div class="cp">&#8377;980</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:center 5%"></div><div class="ci-overlay"></div><span class="cbadge bh">Hot</span></div><div class="cb"><div class="csz">Size M</div><div class="cn">France 2008 Vintage</div><div class="cp">&#8377;849</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:center 5%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">Size XL</div><div class="cn">Ajax Retro Jersey</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:right 20%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">Size L</div><div class="cn">England 2006 Jersey</div><div class="cp">&#8377;899</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:left 15%"></div><div class="ci-overlay"></div><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">Size M</div><div class="cn">Y2K DADA Supreme</div><div class="cp">&#8377;899</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="" loading="lazy"><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">Size M</div><div class="cn">Liverpool FC</div><div class="cp">&#8377;1,499</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="" loading="lazy"></div><div class="cb"><div class="csz">Size L</div><div class="cn">NBA Vintage Jersey</div><div class="cp">&#8377;980</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="" loading="lazy"><span class="cbadge bh">Hot</span></div><div class="cb"><div class="csz">Size M</div><div class="cn">France 2008 Vintage</div><div class="cp">&#8377;849</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="" loading="lazy"></div><div class="cb"><div class="csz">Size XL</div><div class="cn">Ajax Retro Jersey</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="" loading="lazy"></div><div class="cb"><div class="csz">Size L</div><div class="cn">England 2006 Jersey</div><div class="cp">&#8377;899</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="" loading="lazy"><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">Size M</div><div class="cn">Y2K Supreme Jersey</div><div class="cp">&#8377;899</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
   </div>
 </section>
 
-<!-- MID BANNER 2 — img4 guy leaning on car -->
+<!-- MID BANNER 2 — p2: guy leaning red Cadillac -->
 <div class="mbanner">
-  <div class="mbanner-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:right 15%"></div>
+  <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p2.jpeg" alt="Trackpants Banner" loading="lazy" style="object-position:center 15%">
   <div class="mbanner-overlay"></div>
   <div class="mbanner-text">
     <span class="eyebrow">&#128308; Premium Thrifted</span>
@@ -476,12 +330,12 @@ footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
 <section class="section" id="trackpants">
   <div class="sec-head"><h2 class="sec-title">Trackpants</h2><a href="#" class="view-all">View All &rarr;</a></div>
   <div class="pgrid">
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:center 10%"></div><div class="ci-overlay"></div><span class="cbadge bh">Hot</span></div><div class="cb"><div class="csz">W30-32</div><div class="cn">Nike Vintage Track</div><div class="cp">&#8377;929</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:center 20%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">W28-30</div><div class="cn">Adidas Track Pant</div><div class="cp">&#8377;839</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:left 10%"></div><div class="ci-overlay"></div><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">W26-28</div><div class="cn">Fila Track</div><div class="cp">&#8377;849</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:center 15%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">W30-32</div><div class="cn">Reebok Classic Track</div><div class="cp">&#8377;750</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:left 5%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">W32</div><div class="cn">Mammut Track Pant</div><div class="cp">&#8377;899</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:right 20%"></div><div class="ci-overlay"></div><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">W26-28 L40</div><div class="cn">Lacoste Track</div><div class="cp">&#8377;399</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="" loading="lazy"><span class="cbadge bh">Hot</span></div><div class="cb"><div class="csz">W30-32</div><div class="cn">Nike Vintage Track</div><div class="cp">&#8377;929</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="" loading="lazy"></div><div class="cb"><div class="csz">W28-30</div><div class="cn">Adidas Track Pant</div><div class="cp">&#8377;839</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="" loading="lazy"><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">W26-28</div><div class="cn">Fila Track</div><div class="cp">&#8377;849</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="" loading="lazy"></div><div class="cb"><div class="csz">W30-32</div><div class="cn">Reebok Classic Track</div><div class="cp">&#8377;750</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="" loading="lazy"></div><div class="cb"><div class="csz">W32</div><div class="cn">Puma Track Pant</div><div class="cp">&#8377;899</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="" loading="lazy"><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">W26-28 L40</div><div class="cn">Lacoste Track</div><div class="cp">&#8377;399</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
   </div>
 </section>
 
@@ -489,16 +343,16 @@ footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
 <section class="section alt" id="denims">
   <div class="sec-head"><h2 class="sec-title">Denims</h2><a href="#" class="view-all">View All &rarr;</a></div>
   <div class="pgrid">
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:center 10%"></div><div class="ci-overlay"></div><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">W30 L42</div><div class="cn">Real Baggy Low Rise</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:center 20%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">W36 L43</div><div class="cn">Carhartt Work Jeans</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:center 10%"></div><div class="ci-overlay"></div><span class="cbadge bh">Hot</span></div><div class="cb"><div class="csz">W34 L38</div><div class="cn">Tommy Hilfiger Denim</div><div class="cp">&#8377;949</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:right 10%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">W36 L43</div><div class="cn">Dickies Cargo Denim</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="" loading="lazy"><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">W30 L42</div><div class="cn">Real Baggy Low Rise</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="" loading="lazy"></div><div class="cb"><div class="csz">W36 L43</div><div class="cn">Carhartt Work Jeans</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="" loading="lazy"><span class="cbadge bh">Hot</span></div><div class="cb"><div class="csz">W34 L38</div><div class="cn">Tommy Hilfiger Denim</div><div class="cp">&#8377;949</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="" loading="lazy"></div><div class="cb"><div class="csz">W36 L43</div><div class="cn">Dickies Cargo Denim</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
   </div>
 </section>
 
-<!-- MID BANNER 3 — img5 full group shot -->
+<!-- MID BANNER 3 — p3: Las Vegas night dramatic -->
 <div class="mbanner">
-  <div class="mbanner-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:center 15%"></div>
+  <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg" alt="Steal the Look" loading="lazy" style="object-position:center 20%">
   <div class="mbanner-overlay"></div>
   <div class="mbanner-text">
     <span class="eyebrow">&#128308; Intha Thrift</span>
@@ -507,14 +361,14 @@ footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
   </div>
 </div>
 
-<!-- CAPS -->
+<!-- CAPS & TEES -->
 <section class="section" id="caps">
-  <div class="sec-head"><h2 class="sec-title">Caps</h2><a href="#" class="view-all">View All &rarr;</a></div>
+  <div class="sec-head"><h2 class="sec-title">Caps &amp; Tees</h2><a href="#" class="view-all">View All &rarr;</a></div>
   <div class="pgrid">
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:center 5%"></div><div class="ci-overlay"></div><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">One Size</div><div class="cn">Intha Thrift Cap</div><div class="cp">&#8377;499</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:center 5%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">One Size</div><div class="cn">Vintage NY Snapback</div><div class="cp">&#8377;499</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:center 5%"></div><div class="ci-overlay"></div><span class="cbadge bh">Hot</span></div><div class="cb"><div class="csz">One Size</div><div class="cn">Nike Vintage Cap</div><div class="cp">&#8377;550</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:center 5%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">One Size</div><div class="cn">Puma Vintage Cap</div><div class="cp">&#8377;400</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="" loading="lazy"><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">One Size</div><div class="cn">Vintage Snapback Cap</div><div class="cp">&#8377;499</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="" loading="lazy"></div><div class="cb"><div class="csz">One Size</div><div class="cn">Nike Vintage Cap</div><div class="cp">&#8377;550</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="" loading="lazy"><span class="cbadge bh">Hot</span></div><div class="cb"><div class="csz">Size M</div><div class="cn">Graphic Tee</div><div class="cp">&#8377;399</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="" loading="lazy"></div><div class="cb"><div class="csz">Size L</div><div class="cn">Vintage Hoodie</div><div class="cp">&#8377;699</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
   </div>
 </section>
 
@@ -522,11 +376,12 @@ footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
 <div class="istrip">
   <div class="ihead"><h3>Connect With Us</h3><span class="ihandle">@intha.thrift</span></div>
   <div class="igrid">
-    <div class="icell"><div class="icell-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:center 10%"></div><div class="icell-overlay"></div></div>
-    <div class="icell"><div class="icell-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:center 15%"></div><div class="icell-overlay"></div></div>
-    <div class="icell"><div class="icell-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:center 10%"></div><div class="icell-overlay"></div></div>
-    <div class="icell"><div class="icell-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:center 10%"></div><div class="icell-overlay"></div></div>
-    <div class="icell"><div class="icell-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:center 5%"></div><div class="icell-overlay"></div></div>
+    <div class="icell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg" alt="" loading="lazy"></div>
+    <div class="icell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p2.jpeg" alt="" loading="lazy"></div>
+    <div class="icell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="" loading="lazy"></div>
+    <div class="icell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="" loading="lazy"></div>
+    <div class="icell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="" loading="lazy"></div>
+    <div class="icell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p1.jpeg" alt="" loading="lazy"></div>
   </div>
 </div>
 
@@ -569,10 +424,7 @@ function addCart(btn){
   document.getElementById('cartLink').textContent='Cart '+c;
   btn.textContent='&#10003; Added';
   btn.style.background='var(--red)';btn.style.color='#fff';btn.style.borderColor='var(--red)';
-  setTimeout(()=>{
-    btn.textContent='Add to Cart';
-    btn.style.background='';btn.style.color='';btn.style.borderColor='';
-  },1400);
+  setTimeout(()=>{btn.textContent='Add to Cart';btn.style.background='';btn.style.color='';btn.style.borderColor='';},1400);
 }
 </script>
 </body>
