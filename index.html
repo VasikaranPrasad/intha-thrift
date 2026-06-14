@@ -8,57 +8,148 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-:root{--red:#CC0000;--dark:#141414;--card:#1e1e1e;--border:#2a2a2a}
+:root{--red:#CC0000;--dark:#111;--card:#1c1c1c;--border:#2a2a2a}
 body{font-family:'Inter',sans-serif;background:var(--dark);color:#e0e0e0;overflow-x:hidden}
 
-nav{background:rgba(10,10,10,.96);border-bottom:3px solid var(--red);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:60px;position:sticky;top:0;z-index:300;backdrop-filter:blur(10px)}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.1em;color:#fff}
+/* NAV */
+nav{background:rgba(8,8,8,.96);border-bottom:3px solid var(--red);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:62px;position:sticky;top:0;z-index:300;backdrop-filter:blur(10px)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:.1em;color:#fff}
 .logo span{color:var(--red)}
 .nav-cats{display:flex;list-style:none}
-.nav-cats a{color:#888;text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.07em;text-transform:lowercase;padding:0 1rem;height:60px;display:flex;align-items:center;border-right:1px solid #222;transition:color .18s,background .18s}
-.nav-cats a:first-child{border-left:1px solid #222}
+.nav-cats a{color:#777;text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.07em;text-transform:lowercase;padding:0 1rem;height:62px;display:flex;align-items:center;border-right:1px solid #1e1e1e;transition:all .18s}
+.nav-cats a:first-child{border-left:1px solid #1e1e1e}
 .nav-cats a:hover{color:#fff;background:rgba(204,0,0,.15)}
 .nav-right{display:flex;align-items:center;gap:1rem}
-.nav-right a{color:#888;text-decoration:none;font-size:.8rem;transition:color .18s}
+.nav-right a{color:#777;text-decoration:none;font-size:.8rem;transition:color .18s}
 .nav-right a:hover{color:var(--red)}
-.cart-link{background:var(--red)!important;color:#fff!important;padding:7px 18px;border-radius:2px;font-weight:700!important}
+.cart-link{background:var(--red)!important;color:#fff!important;padding:7px 20px;border-radius:2px;font-weight:700!important}
 
+/* TICKER */
 .ticker{background:var(--red);overflow:hidden;padding:8px 0}
 .ticker-inner{display:flex;width:max-content;animation:tick 25s linear infinite}
 .ticker-inner span{white-space:nowrap;padding:0 2.5rem;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff}
 .ticker-inner span::after{content:'\2605';margin-left:2.5rem}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-.hero-slide{position:relative;height:92vh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden}
-.hero-svg-bg{position:absolute;inset:0;width:100%;height:100%}
-.hero-grad{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 38%,rgba(0,0,0,.6) 70%,rgba(14,14,14,.97) 100%)}
-.hero-text{position:relative;z-index:2;padding:0 5vw 4rem;max-width:580px}
-.eyebrow{display:inline-block;background:var(--red);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:5px 13px;margin-bottom:1rem}
-.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6.5rem);line-height:.92;color:#fff;margin-bottom:.9rem;text-shadow:2px 2px 24px rgba(0,0,0,.9)}
-.hero-sub{color:#ccc;font-size:.9rem;line-height:1.7;margin-bottom:1.6rem;max-width:400px;text-shadow:1px 1px 8px rgba(0,0,0,.9)}
-.hero-btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;padding:13px 30px;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;transition:all .18s}
+/* HERO — real photo background */
+.hero{
+  position:relative;height:92vh;min-height:560px;
+  display:flex;align-items:flex-end;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center top;
+  background-repeat:no-repeat;
+}
+/* Overlay: dark on left for text, lighter on right to show image */
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,.1) 0%,
+    rgba(0,0,0,.05) 35%,
+    rgba(0,0,0,.55) 68%,
+    rgba(10,10,10,.97) 100%
+  );
+}
+.hero-text{
+  position:relative;z-index:2;
+  padding:0 5vw 4.5rem;max-width:580px;
+}
+.eyebrow{
+  display:inline-block;background:var(--red);color:#fff;
+  font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:5px 13px;margin-bottom:1rem;
+}
+.hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,7vw,6.5rem);line-height:.92;
+  color:#fff;margin-bottom:.9rem;
+  text-shadow:2px 2px 20px rgba(0,0,0,.95),0 0 40px rgba(0,0,0,.8);
+}
+.hero-sub{
+  color:#ddd;font-size:.92rem;line-height:1.75;
+  margin-bottom:1.6rem;max-width:400px;
+  text-shadow:1px 1px 8px rgba(0,0,0,.95);
+}
+.hero-btn{
+  display:inline-block;background:var(--red);color:#fff;
+  text-decoration:none;padding:13px 32px;
+  font-size:.83rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:all .18s;
+}
 .hero-btn:hover{background:#aa0000;transform:translateY(-2px)}
 
-.cat-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:#000}
-.cat-tile{position:relative;height:210px;overflow:hidden;cursor:pointer}
-.cat-tile:hover svg{transform:scale(1.04)}
-.cat-tile svg{width:100%;height:100%;display:block;transition:transform .4s}
-.cat-label{position:absolute;bottom:0;left:0;right:0;padding:.9rem 1rem;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,transparent 100%);font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.1em;color:#fff;display:flex;flex-direction:column}
-.cat-label small{font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#bbb}
+/* SMALL HERO */
+.hero-sm{height:72vh;min-height:420px}
 
+/* CAT TILES */
+.cat-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:#000}
+.cat-tile{
+  position:relative;height:220px;overflow:hidden;cursor:pointer;
+}
+.cat-tile-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  transition:transform .4s;
+}
+.cat-tile:hover .cat-tile-bg{transform:scale(1.06)}
+/* dark overlay on tile */
+.cat-tile::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(0,0,0,.45);
+  transition:background .3s;
+}
+.cat-tile:hover::after{background:rgba(0,0,0,.3)}
+.cat-label{
+  position:absolute;bottom:0;left:0;right:0;z-index:2;
+  padding:.9rem 1rem;
+  background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 100%);
+  font-family:'Bebas Neue',sans-serif;font-size:1.4rem;
+  letter-spacing:.1em;color:#fff;
+  display:flex;flex-direction:column;
+}
+.cat-label small{
+  font-family:'Inter',sans-serif;font-size:.6rem;
+  font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ccc;
+}
+
+/* SECTION */
 .section{padding:3rem 5vw}
-.section.alt{background:#111}
-.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.6rem;padding-bottom:.9rem;border-bottom:1px solid var(--border)}
-.sec-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.08em;color:#fff}
+.section.alt{background:#0e0e0e}
+.sec-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  margin-bottom:1.6rem;padding-bottom:.9rem;
+  border-bottom:1px solid var(--border);
+}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:.08em;color:#fff}
 .view-all{color:var(--red);text-decoration:none;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 
-.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1rem}
-.pc{background:var(--card);border:1px solid var(--border);border-radius:3px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s}
+/* PRODUCT GRID */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:1rem}
+.pc{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:3px;overflow:hidden;cursor:pointer;
+  transition:border-color .2s,transform .2s,box-shadow .2s;
+}
 .pc:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 8px 24px rgba(204,0,0,.14)}
-.ci{aspect-ratio:1/1.1;overflow:hidden;position:relative}
-.ci svg{width:100%;height:100%;display:block;transition:transform .4s}
-.pc:hover .ci svg{transform:scale(1.05)}
-.cbadge{position:absolute;top:8px;left:8px;z-index:2;font-size:.6rem;font-weight:800;padding:3px 9px;letter-spacing:.1em;text-transform:uppercase}
+.ci{aspect-ratio:1/1.15;overflow:hidden;position:relative}
+.ci-bg{
+  width:100%;height:100%;
+  background-size:cover;background-position:center top;
+  transition:transform .4s;
+}
+.pc:hover .ci-bg{transform:scale(1.06)}
+.ci-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 45%,rgba(10,10,10,.7) 100%);
+}
+.cbadge{
+  position:absolute;top:8px;left:8px;z-index:2;
+  font-size:.6rem;font-weight:800;padding:3px 9px;
+  letter-spacing:.1em;text-transform:uppercase;
+}
 .bn{background:var(--red);color:#fff}
 .bh{background:#e06000;color:#fff}
 .cb{padding:.7rem .85rem .9rem}
@@ -66,53 +157,115 @@ nav{background:rgba(10,10,10,.96);border-bottom:3px solid var(--red);display:fle
 .cn{font-size:.84rem;font-weight:500;color:#ddd;margin-bottom:.4rem;line-height:1.3}
 .cp{font-size:.95rem;font-weight:700;color:#fff}
 .cp s{font-size:.76rem;color:#3a3a3a;font-weight:400;margin-left:5px}
-.ca{width:100%;margin-top:.6rem;background:#1a1a1a;border:1px solid #333;color:#888;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:7px;cursor:pointer;transition:all .18s}
+.ca{
+  width:100%;margin-top:.6rem;background:#181818;
+  border:1px solid #2e2e2e;color:#888;
+  font-family:'Inter',sans-serif;font-size:.72rem;
+  font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:7px;cursor:pointer;transition:all .18s;
+}
 .ca:hover{background:var(--red);color:#fff;border-color:var(--red)}
 
-.mbanner{position:relative;height:380px;overflow:hidden;display:flex;align-items:center}
-.mbanner svg{position:absolute;inset:0;width:100%;height:100%}
-.mbg{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.9) 0%,rgba(0,0,0,.55) 42%,rgba(0,0,0,.05) 100%)}
-.mtext{position:relative;z-index:2;padding:0 5vw;max-width:460px}
-.mtext h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);line-height:.92;color:#fff;margin:.7rem 0 .9rem;text-shadow:2px 2px 16px rgba(0,0,0,.9)}
-.mtext h2 span{color:var(--red)}
-.mtext p{color:#bbb;font-size:.87rem;line-height:1.7;text-shadow:1px 1px 8px rgba(0,0,0,.9)}
+/* MID BANNER — real photo */
+.mbanner{
+  position:relative;height:400px;
+  overflow:hidden;display:flex;align-items:center;
+}
+.mbanner-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center 25%;
+}
+.mbanner-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to right,
+    rgba(0,0,0,.88) 0%,
+    rgba(0,0,0,.6) 40%,
+    rgba(0,0,0,.15) 100%
+  );
+}
+.mbanner-text{
+  position:relative;z-index:2;padding:0 5vw;max-width:500px;
+}
+.mbanner-text h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.4rem,5vw,4.2rem);line-height:.92;
+  color:#fff;margin:.7rem 0 .9rem;
+  text-shadow:2px 2px 16px rgba(0,0,0,.95);
+}
+.mbanner-text h2 span{color:var(--red)}
+.mbanner-text p{
+  color:#ccc;font-size:.88rem;line-height:1.7;
+  text-shadow:1px 1px 8px rgba(0,0,0,.95);
+}
 
-.steps{background:#0d0d0d;border-top:1px solid var(--border);padding:3rem 5vw}
-.steps h2{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.08em;color:#fff;margin-bottom:2rem;text-align:center}
+/* STEPS */
+.steps{background:#0a0a0a;border-top:1px solid var(--border);padding:3rem 5vw}
+.steps h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.6rem;letter-spacing:.08em;color:#fff;
+  margin-bottom:2rem;text-align:center;
+}
 .sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.step{background:var(--card);border:1px solid var(--border);padding:1.6rem 1.4rem;border-radius:3px;position:relative}
+.step{
+  background:var(--card);border:1px solid var(--border);
+  padding:1.6rem 1.4rem;border-radius:3px;position:relative;
+}
 .step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)}
 .snum{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:rgba(204,0,0,.12);line-height:1;margin-bottom:.4rem}
 .stitle{font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:.5rem}
 .sdesc{font-size:.8rem;color:#555;line-height:1.65}
 
+/* INSTAGRAM */
 .istrip{padding:2.5rem 5vw;border-top:1px solid var(--border)}
 .ihead{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem}
 .ihead h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;color:#fff}
 .ihandle{color:var(--red);font-size:.8rem;font-weight:700}
-.igrid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
-.icell{aspect-ratio:1;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:border-color .2s}
+.igrid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.icell{
+  aspect-ratio:1;overflow:hidden;
+  border:1px solid var(--border);cursor:pointer;
+  transition:border-color .2s;position:relative;
+}
 .icell:hover{border-color:var(--red)}
-.icell svg{width:100%;height:100%;display:block;transition:transform .35s}
-.icell:hover svg{transform:scale(1.08)}
+.icell-bg{
+  width:100%;height:100%;
+  background-size:cover;background-position:center;
+  transition:transform .35s;
+}
+.icell:hover .icell-bg{transform:scale(1.08)}
+.icell-overlay{position:absolute;inset:0;background:rgba(0,0,0,.3);transition:background .2s}
+.icell:hover .icell-overlay{background:rgba(0,0,0,.1)}
 
-footer{background:#090909;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5rem}
+/* FOOTER */
+footer{background:#080808;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5rem}
 .ftop{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
 .flogo{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.12em;color:#fff;display:block;margin-bottom:.5rem}
 .flogo span{color:var(--red)}
-.fabout{font-size:.78rem;color:#3a3a3a;line-height:1.7;margin-bottom:.8rem}
+.fabout{font-size:.78rem;color:#333;line-height:1.7;margin-bottom:.8rem}
 .fcontact a{color:#444;text-decoration:none;font-size:.78rem;display:block;margin-bottom:.3rem;transition:color .18s}
 .fcontact a:hover{color:var(--red)}
 .fcol h4{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:.9rem}
 .fcol ul{list-style:none}
 .fcol li{margin-bottom:.4rem}
-.fcol a{color:#3a3a3a;text-decoration:none;font-size:.78rem;transition:color .18s}
+.fcol a{color:#333;text-decoration:none;font-size:.78rem;transition:color .18s}
 .fcol a:hover{color:#fff}
 .fbot{border-top:1px solid #1a1a1a;padding-top:1.2rem;display:flex;justify-content:space-between;font-size:.7rem;color:#222}
 .fbot span{color:var(--red)}
 
-@media(max-width:900px){.nav-cats{display:none}.cat-tiles{grid-template-columns:1fr 1fr}.ftop{grid-template-columns:1fr 1fr}.sgrid{grid-template-columns:1fr}.igrid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:500px){.ftop{grid-template-columns:1fr}.pgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){
+  .nav-cats{display:none}
+  .cat-tiles{grid-template-columns:1fr 1fr}
+  .ftop{grid-template-columns:1fr 1fr}
+  .sgrid{grid-template-columns:1fr}
+  .igrid{grid-template-columns:repeat(3,1fr)}
+  .mbanner{height:320px}
+}
+@media(max-width:500px){
+  .ftop{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .cat-tiles{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
@@ -120,8 +273,13 @@ footer{background:#090909;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
 <nav>
   <div class="logo">INTHA <span>THRIFT</span></div>
   <ul class="nav-cats">
-    <a href="#jerseys">jerseys</a><a href="#trackpants">trackpants</a><a href="#denims">denims</a>
-    <a href="#jackets">jackets</a><a href="#caps">caps</a><a href="#tees">tees</a><a href="#shoes">shoes</a>
+    <a href="#jerseys">jerseys</a>
+    <a href="#trackpants">trackpants</a>
+    <a href="#denims">denims</a>
+    <a href="#jackets">jackets</a>
+    <a href="#caps">caps</a>
+    <a href="#tees">tees</a>
+    <a href="#shoes">shoes</a>
   </ul>
   <div class="nav-right">
     <a href="#">Login</a>
@@ -131,769 +289,290 @@ footer{background:#090909;border-top:3px solid var(--red);padding:2.5rem 5vw 1.5
 
 <div class="ticker">
   <div class="ticker-inner">
-    <span>5% off all products</span><span>ORDER 2 GET 11% OFF &mdash; CODE: INTHA11</span><span>ORDER 3 GET 15% OFF &mdash; CODE: INTHA15</span><span>New drops every Friday</span><span>Free shipping above &#8377;999</span>
-    <span>5% off all products</span><span>ORDER 2 GET 11% OFF &mdash; CODE: INTHA11</span><span>ORDER 3 GET 15% OFF &mdash; CODE: INTHA15</span><span>New drops every Friday</span><span>Free shipping above &#8377;999</span>
+    <span>5% off all products</span>
+    <span>ORDER 2 GET 11% OFF &mdash; CODE: INTHA11</span>
+    <span>ORDER 3 GET 15% OFF &mdash; CODE: INTHA15</span>
+    <span>New drops every Friday</span>
+    <span>Free shipping above &#8377;999</span>
+    <span>5% off all products</span>
+    <span>ORDER 2 GET 11% OFF &mdash; CODE: INTHA11</span>
+    <span>ORDER 3 GET 15% OFF &mdash; CODE: INTHA15</span>
+    <span>New drops every Friday</span>
+    <span>Free shipping above &#8377;999</span>
   </div>
 </div>
 
-<div class="hero-slide">
-<svg class="hero-svg-bg" viewBox="0 0 1400 860" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <radialGradient id="sky1" cx="50%" cy="25%" r="75%"><stop offset="0%" stop-color="#1f0404"/><stop offset="100%" stop-color="#080808"/></radialGradient>
-  <radialGradient id="rg1" cx="65%" cy="45%" r="38%"><stop offset="0%" stop-color="#CC0000" stop-opacity=".3"/><stop offset="100%" stop-color="transparent"/></radialGradient>
-</defs>
-<rect width="1400" height="860" fill="url(#sky1)"/>
-<rect width="1400" height="860" fill="url(#rg1)"/>
-<!-- Stars -->
-<circle cx="180" cy="70" r="1.5" fill="#fff" opacity=".5"/><circle cx="320" cy="45" r="1" fill="#fff" opacity=".4"/>
-<circle cx="480" cy="90" r="1.5" fill="#fff" opacity=".6"/><circle cx="680" cy="55" r="1" fill="#fff" opacity=".3"/>
-<circle cx="880" cy="80" r="1.5" fill="#fff" opacity=".5"/><circle cx="1150" cy="65" r="1" fill="#fff" opacity=".4"/>
-<circle cx="1320" cy="95" r="1.5" fill="#fff" opacity=".6"/><circle cx="280" cy="130" r="1" fill="#fff" opacity=".3"/>
-<!-- Moon -->
-<circle cx="1150" cy="110" r="50" fill="#1f0808" stroke="#CC0000" stroke-width="1.5" opacity=".6"/>
-<circle cx="1164" cy="98" r="40" fill="#120404" opacity=".8"/>
-<!-- City buildings left -->
-<rect x="0" y="380" width="100" height="480" fill="#0e0e0e" stroke="#1a1a1a" stroke-width="1"/>
-<rect x="108" y="300" width="140" height="560" fill="#111" stroke="#1a1a1a" stroke-width="1"/>
-<rect x="256" y="340" width="85" height="520" fill="#0e0e0e" stroke="#1a1a1a" stroke-width="1"/>
-<rect x="348" y="400" width="75" height="460" fill="#111" stroke="#1a1a1a" stroke-width="1"/>
-<!-- City buildings right -->
-<rect x="940" y="320" width="130" height="540" fill="#0e0e0e" stroke="#1a1a1a" stroke-width="1"/>
-<rect x="1078" y="260" width="160" height="600" fill="#111" stroke="#1a1a1a" stroke-width="1"/>
-<rect x="1246" y="350" width="154" height="510" fill="#0e0e0e" stroke="#1a1a1a" stroke-width="1"/>
-<!-- Windows -->
-<rect x="18" y="398" width="13" height="9" fill="#ffcc00" opacity=".55" rx="1"/>
-<rect x="40" y="398" width="13" height="9" fill="#ff9900" opacity=".35" rx="1"/>
-<rect x="18" y="420" width="13" height="9" fill="#ffcc00" opacity=".65" rx="1"/>
-<rect x="40" y="420" width="13" height="9" fill="#CC0000" opacity=".45" rx="1"/>
-<rect x="125" y="318" width="13" height="9" fill="#ffcc00" opacity=".55" rx="1"/>
-<rect x="148" y="318" width="13" height="9" fill="#ff9900" opacity=".4" rx="1"/>
-<rect x="171" y="318" width="13" height="9" fill="#ffcc00" opacity=".7" rx="1"/>
-<rect x="125" y="342" width="13" height="9" fill="#CC0000" opacity=".4" rx="1"/>
-<rect x="148" y="342" width="13" height="9" fill="#ffcc00" opacity=".5" rx="1"/>
-<rect x="958" y="338" width="13" height="9" fill="#ffcc00" opacity=".55" rx="1"/>
-<rect x="980" y="338" width="13" height="9" fill="#ff9900" opacity=".4" rx="1"/>
-<rect x="1002" y="338" width="13" height="9" fill="#CC0000" opacity=".45" rx="1"/>
-<rect x="1095" y="278" width="13" height="9" fill="#ffcc00" opacity=".65" rx="1"/>
-<rect x="1118" y="278" width="13" height="9" fill="#ff9900" opacity=".35" rx="1"/>
-<rect x="1141" y="278" width="13" height="9" fill="#ffcc00" opacity=".7" rx="1"/>
-<rect x="1164" y="278" width="13" height="9" fill="#CC0000" opacity=".4" rx="1"/>
-<!-- Red light beam from top center -->
-<polygon points="700,0 555,860 845,860" fill="#CC0000" opacity=".055"/>
-<!-- MAIN ROBBER — red jumpsuit, Dali mask -->
-<!-- Body jumpsuit -->
-<rect x="595" y="408" width="210" height="310" fill="#AA0000" rx="6"/>
-<line x1="700" y1="408" x2="700" y2="718" stroke="#880000" stroke-width="3"/>
-<!-- Hood -->
-<ellipse cx="700" cy="375" rx="82" ry="86" fill="#AA0000"/>
-<ellipse cx="700" cy="368" rx="66" ry="70" fill="#880000"/>
-<!-- Face / mask -->
-<ellipse cx="700" cy="388" rx="50" ry="54" fill="#F5D5A0"/>
-<ellipse cx="700" cy="388" rx="50" ry="54" fill="none" stroke="#CC0000" stroke-width="2.5"/>
-<!-- Eyebrows -->
-<path d="M672 372 Q682 366 692 372" fill="none" stroke="#8B4513" stroke-width="2.5"/>
-<path d="M708 372 Q718 366 728 372" fill="none" stroke="#8B4513" stroke-width="2.5"/>
-<!-- Eyes (Dali mask style) -->
-<ellipse cx="683" cy="383" rx="9" ry="11" fill="#1a0a0a"/>
-<ellipse cx="717" cy="383" rx="9" ry="11" fill="#1a0a0a"/>
-<ellipse cx="683" cy="383" rx="4.5" ry="5.5" fill="#CC0000"/>
-<ellipse cx="717" cy="383" rx="4.5" ry="5.5" fill="#CC0000"/>
-<circle cx="685" cy="381" r="1.8" fill="#fff"/>
-<circle cx="719" cy="381" r="1.8" fill="#fff"/>
-<!-- Dali moustache -->
-<path d="M676 410 Q686 403 696 410 Q700 413 704 410 Q714 403 724 410" fill="none" stroke="#1a0a0a" stroke-width="2.5" stroke-linecap="round"/>
-<path d="M676 410 Q669 402 666 396" fill="none" stroke="#1a0a0a" stroke-width="2" stroke-linecap="round"/>
-<path d="M724 410 Q731 402 734 396" fill="none" stroke="#1a0a0a" stroke-width="2" stroke-linecap="round"/>
-<!-- Arms -->
-<rect x="533" y="418" width="65" height="215" fill="#AA0000" rx="7" transform="rotate(-10,565,418)"/>
-<rect x="802" y="418" width="65" height="215" fill="#AA0000" rx="7" transform="rotate(12,834,418)"/>
-<!-- Money bag in hand -->
-<ellipse cx="558" cy="642" rx="36" ry="40" fill="#8B6914"/>
-<line x1="558" y1="602" x2="558" y2="625" stroke="#6B4F10" stroke-width="4"/>
-<text x="543" y="651" font-size="20" fill="#FFD700">&#8377;</text>
-<!-- Legs -->
-<rect x="625" y="714" width="68" height="148" fill="#880000" rx="4"/>
-<rect x="707" y="714" width="68" height="148" fill="#880000" rx="4"/>
-<!-- Boots -->
-<rect x="614" y="846" width="84" height="22" fill="#111" rx="4"/>
-<rect x="702" y="846" width="84" height="22" fill="#111" rx="4"/>
-<!-- Shadow -->
-<ellipse cx="700" cy="860" rx="125" ry="15" fill="#000" opacity=".5"/>
-<!-- Flying money bills -->
-<rect x="820" y="520" width="42" height="21" fill="#1a4a1a" rx="2" transform="rotate(-22,841,530)"/>
-<text x="825" y="534" font-size="9" fill="#39FF14" transform="rotate(-22,841,530)">$100</text>
-<rect x="480" y="480" width="38" height="19" fill="#1a4a1a" rx="2" transform="rotate(16,499,489)"/>
-<text x="483" y="493" font-size="9" fill="#39FF14" transform="rotate(16,499,489)">$50</text>
-<rect x="855" y="460" width="36" height="18" fill="#1a4a1a" rx="2" transform="rotate(-32,873,469)"/>
-<text x="858" y="472" font-size="8" fill="#39FF14" transform="rotate(-32,873,469)">$20</text>
-<rect x="455" y="560" width="36" height="18" fill="#1a4a1a" rx="2" transform="rotate(24,473,569)"/>
-<text x="457" y="572" font-size="8" fill="#39FF14" transform="rotate(24,473,569)">$20</text>
-<!-- Ground -->
-<rect x="0" y="852" width="1400" height="10" fill="#080808"/>
-<line x1="0" y1="852" x2="1400" y2="852" stroke="#CC0000" stroke-width="1.5" opacity=".3"/>
-</svg>
-<div class="hero-grad"></div>
-<div class="hero-text">
-  <span class="eyebrow">&#128308; Premium Thrifted</span>
-  <h1 class="hero-title">Full House<br>of Premium<br>Jerseys</h1>
-  <p class="hero-sub">Pre-loved sportswear, vintage jerseys, and rare finds &mdash; all quality-checked and ready to ship.</p>
-  <a href="#jerseys" class="hero-btn">Explore the Vault &rarr;</a>
-</div></div>
+<!-- HERO 1 — YOUR image img5 (group in black, tough vibe) -->
+<div class="hero">
+  <div class="hero-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:center 20%"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <span class="eyebrow">&#128308; Premium Thrifted</span>
+    <h1 class="hero-title">Full House<br>of Premium<br>Jerseys</h1>
+    <p class="hero-sub">Pre-loved sportswear, vintage jerseys &amp; rare finds &mdash; quality-checked and ready to ship.</p>
+    <a href="#jerseys" class="hero-btn">Explore the Vault &rarr;</a>
+  </div>
+</div>
 
-<div class="hero-slide" style="height:75vh">
-<svg class="hero-svg-bg" viewBox="0 0 1400 780" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <radialGradient id="sky2" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#1f0303"/><stop offset="100%" stop-color="#080808"/></radialGradient>
-  <radialGradient id="vg" cx="64%" cy="48%" r="34%"><stop offset="0%" stop-color="#CC0000" stop-opacity=".28"/><stop offset="100%" stop-color="transparent"/></radialGradient>
-</defs>
-<rect width="1400" height="780" fill="url(#sky2)"/>
-<rect width="1400" height="780" fill="url(#vg)"/>
-<!-- Vault door -->
-<rect x="840" y="110" width="380" height="550" fill="#181818" rx="6" stroke="#2a2a2a" stroke-width="3"/>
-<circle cx="1030" cy="385" r="178" fill="#1e1e1e" stroke="#CC0000" stroke-width="4"/>
-<circle cx="1030" cy="385" r="148" fill="#161616" stroke="#333" stroke-width="2"/>
-<line x1="1030" y1="237" x2="1030" y2="533" stroke="#CC0000" stroke-width="6" opacity=".85"/>
-<line x1="882" y1="385" x2="1178" y2="385" stroke="#CC0000" stroke-width="6" opacity=".85"/>
-<line x1="926" y1="281" x2="1134" y2="489" stroke="#CC0000" stroke-width="6" opacity=".85"/>
-<line x1="1134" y1="281" x2="926" y2="489" stroke="#CC0000" stroke-width="6" opacity=".85"/>
-<circle cx="1030" cy="385" r="38" fill="#CC0000" opacity=".75"/>
-<circle cx="1030" cy="385" r="18" fill="#880000"/>
-<!-- Vault bolts -->
-<circle cx="860" cy="150" r="11" fill="#2a2a2a" stroke="#444" stroke-width="1.5"/>
-<circle cx="860" cy="625" r="11" fill="#2a2a2a" stroke="#444" stroke-width="1.5"/>
-<circle cx="1200" cy="150" r="11" fill="#2a2a2a" stroke="#444" stroke-width="1.5"/>
-<circle cx="1200" cy="625" r="11" fill="#2a2a2a" stroke="#444" stroke-width="1.5"/>
-<!-- Light beam from vault crack -->
-<polygon points="840,340 840,430 380,580 380,190" fill="#CC0000" opacity=".04"/>
-<!-- 3 robbers in red jumpsuits -->
-<!-- Robber 1 -->
-<ellipse cx="240" cy="308" rx="40" ry="43" fill="#AA0000"/><ellipse cx="240" cy="302" rx="33" ry="36" fill="#880000"/>
-<ellipse cx="240" cy="316" rx="27" ry="29" fill="#F5D5A0"/>
-<ellipse cx="229" cy="308" rx="4.5" ry="5.5" fill="#CC0000"/><ellipse cx="251" cy="308" rx="4.5" ry="5.5" fill="#CC0000"/>
-<path d="M227 326 Q234 321 241 326 Q248 321 255 326" fill="none" stroke="#1a0a0a" stroke-width="2" stroke-linecap="round"/>
-<path d="M227 326 Q222 320 219 315" fill="none" stroke="#1a0a0a" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M255 326 Q260 320 263 315" fill="none" stroke="#1a0a0a" stroke-width="1.5" stroke-linecap="round"/>
-<rect x="202" y="348" width="76" height="200" fill="#AA0000" rx="5"/>
-<line x1="240" y1="348" x2="240" y2="548" stroke="#880000" stroke-width="2"/>
-<rect x="162" y="362" width="42" height="158" fill="#AA0000" rx="5" transform="rotate(-12,183,362)"/>
-<rect x="278" y="362" width="42" height="158" fill="#AA0000" rx="5" transform="rotate(8,299,362)"/>
-<ellipse cx="140" cy="518" rx="28" ry="32" fill="#8B6914"/><text x="129" y="525" font-size="16" fill="#FFD700">&#8377;</text>
-<rect x="210" y="545" width="30" height="115" fill="#880000" rx="3"/>
-<rect x="248" y="545" width="30" height="115" fill="#880000" rx="3"/>
-<!-- Robber 2 -->
-<ellipse cx="500" cy="292" rx="43" ry="46" fill="#AA0000"/><ellipse cx="500" cy="286" rx="36" ry="39" fill="#880000"/>
-<ellipse cx="500" cy="302" rx="29" ry="31" fill="#F5D5A0"/>
-<ellipse cx="488" cy="293" rx="5" ry="6.5" fill="#CC0000"/><ellipse cx="512" cy="293" rx="5" ry="6.5" fill="#CC0000"/>
-<path d="M486 313 Q494 307 501 313 Q508 307 516 313" fill="none" stroke="#1a0a0a" stroke-width="2.2" stroke-linecap="round"/>
-<path d="M486 313 Q481 307 478 302" fill="none" stroke="#1a0a0a" stroke-width="1.8" stroke-linecap="round"/>
-<path d="M516 313 Q521 307 524 302" fill="none" stroke="#1a0a0a" stroke-width="1.8" stroke-linecap="round"/>
-<rect x="459" y="335" width="82" height="210" fill="#AA0000" rx="6"/>
-<line x1="500" y1="335" x2="500" y2="545" stroke="#880000" stroke-width="2"/>
-<rect x="413" y="350" width="48" height="166" fill="#AA0000" rx="5" transform="rotate(-15,437,350)"/>
-<rect x="541" y="350" width="48" height="166" fill="#AA0000" rx="5" transform="rotate(10,565,350)"/>
-<ellipse cx="398" cy="510" rx="30" ry="34" fill="#8B6914"/><text x="385" y="518" font-size="17" fill="#FFD700">&#8377;</text>
-<rect x="468" y="542" width="32" height="120" fill="#880000" rx="3"/>
-<rect x="508" y="542" width="32" height="120" fill="#880000" rx="3"/>
-<!-- Robber 3 -->
-<ellipse cx="720" cy="305" rx="40" ry="43" fill="#AA0000"/><ellipse cx="720" cy="299" rx="33" ry="36" fill="#880000"/>
-<ellipse cx="720" cy="313" rx="27" ry="29" fill="#F5D5A0"/>
-<ellipse cx="709" cy="305" rx="4.5" ry="5.5" fill="#CC0000"/><ellipse cx="731" cy="305" rx="4.5" ry="5.5" fill="#CC0000"/>
-<path d="M707 323 Q714 318 720 323 Q727 318 733 323" fill="none" stroke="#1a0a0a" stroke-width="2" stroke-linecap="round"/>
-<path d="M707 323 Q702 317 699 312" fill="none" stroke="#1a0a0a" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M733 323 Q738 317 741 312" fill="none" stroke="#1a0a0a" stroke-width="1.5" stroke-linecap="round"/>
-<rect x="682" y="345" width="76" height="200" fill="#AA0000" rx="5"/>
-<line x1="720" y1="345" x2="720" y2="545" stroke="#880000" stroke-width="2"/>
-<rect x="640" y="358" width="44" height="162" fill="#AA0000" rx="5" transform="rotate(-10,662,358)"/>
-<rect x="756" y="358" width="44" height="162" fill="#AA0000" rx="5" transform="rotate(14,778,358)"/>
-<rect x="690" y="542" width="30" height="118" fill="#880000" rx="3"/>
-<rect x="728" y="542" width="30" height="118" fill="#880000" rx="3"/>
-<!-- Ground -->
-<rect x="0" y="766" width="1400" height="14" fill="#080808"/>
-<line x1="0" y1="766" x2="1400" y2="766" stroke="#CC0000" stroke-width="1" opacity=".22"/>
-<!-- Spotlight glow above robbers -->
-<ellipse cx="240" cy="200" rx="75" ry="35" fill="#CC0000" opacity=".1"/>
-<ellipse cx="500" cy="185" rx="80" ry="38" fill="#CC0000" opacity=".09"/>
-<ellipse cx="720" cy="195" rx="72" ry="34" fill="#CC0000" opacity=".09"/>
-<!-- Bills -->
-<rect x="360" y="260" width="36" height="18" fill="#1a4a1a" rx="2" transform="rotate(-26,378,269)"/>
-<text x="363" y="272" font-size="8" fill="#39FF14" transform="rotate(-26,378,269)">$100</text>
-<rect x="600" y="240" width="34" height="17" fill="#1a4a1a" rx="2" transform="rotate(19,617,248)"/>
-<text x="603" y="252" font-size="8" fill="#39FF14" transform="rotate(19,617,248)">$50</text>
-</svg>
-<div class="hero-grad"></div>
-<div class="hero-text">
-  <span class="eyebrow">&#128308; Premium Thrifted</span>
-  <h1 class="hero-title">Heaven of<br>Trackpants</h1>
-  <p class="hero-sub">Nike, Adidas, Puma, Fila &mdash; the real vintage tracksuits you can't find anywhere else.</p>
-  <a href="#trackpants" class="hero-btn">Explore the Vault &rarr;</a>
-</div></div>
+<!-- HERO 2 — YOUR image img4 (guy leaning on car, Las Vegas) -->
+<div class="hero hero-sm">
+  <div class="hero-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:center 15%"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <span class="eyebrow">&#128308; Premium Thrifted</span>
+    <h1 class="hero-title">Heaven of<br>Trackpants</h1>
+    <p class="hero-sub">Nike, Adidas, Puma, Fila &mdash; real vintage tracksuits you can&apos;t find anywhere else.</p>
+    <a href="#trackpants" class="hero-btn">Explore the Vault &rarr;</a>
+  </div>
+</div>
 
+<!-- CATEGORY TILES — YOUR images -->
 <div class="cat-tiles">
-<div class="cat-tile" onclick="location.href='#jerseys'">
-<svg viewBox="0 0 350 210" xmlns="http://www.w3.org/2000/svg"><rect width="350" height="210" fill="#1a0404"/><rect width="350" height="210" fill="#CC0000" opacity=".14"/>
-<path d="M118 54 L80 96 L112 108 L112 176 L238 176 L238 108 L270 96 L232 54 L198 72 L175 65 L152 72Z" fill="#CC0000" opacity=".85" stroke="#880000" stroke-width="2"/>
-<path d="M154 71 Q175 87 196 71" fill="none" stroke="#880000" stroke-width="3.5"/>
-<text x="150" y="142" font-family="Arial Black" font-size="36" fill="#fff" font-weight="900">10</text>
-<ellipse cx="175" cy="200" rx="130" ry="12" fill="#000" opacity=".35"/>
-</svg><div class="cat-label">Jerseys<small>Shop Now</small></div></div>
-<div class="cat-tile" onclick="location.href='#trackpants'">
-<svg viewBox="0 0 350 210" xmlns="http://www.w3.org/2000/svg"><rect width="350" height="210" fill="#050a16"/><rect width="350" height="210" fill="#1a3a8a" opacity=".18"/>
-<path d="M110 28 L92 190 L148 190 L175 118 L202 190 L258 190 L240 28Z" fill="#1a3a8a" stroke="#2a4aaa" stroke-width="2"/>
-<line x1="120" y1="28" x2="108" y2="190" stroke="#fff" stroke-width="5" opacity=".5"/>
-<line x1="230" y1="28" x2="242" y2="190" stroke="#fff" stroke-width="5" opacity=".5"/>
-<rect x="105" y="17" width="140" height="22" fill="#0d2a6a" rx="3" stroke="#2a4aaa" stroke-width="1.5"/>
-<ellipse cx="175" cy="200" rx="130" ry="12" fill="#000" opacity=".35"/>
-</svg><div class="cat-label">Trackpants<small>Shop Now</small></div></div>
-<div class="cat-tile" onclick="location.href='#denims'">
-<svg viewBox="0 0 350 210" xmlns="http://www.w3.org/2000/svg"><rect width="350" height="210" fill="#05050c"/><rect width="350" height="210" fill="#00006a" opacity=".22"/>
-<path d="M110 22 L90 192 L148 192 L175 108 L202 192 L260 192 L240 22Z" fill="#1a2a6a" stroke="#2a3a8a" stroke-width="2"/>
-<line x1="122" y1="22" x2="110" y2="192" stroke="#2a3a8a" stroke-width="2" opacity=".6"/>
-<line x1="228" y1="22" x2="240" y2="192" stroke="#2a3a8a" stroke-width="2" opacity=".6"/>
-<rect x="105" y="11" width="140" height="22" fill="#0d1a5a" rx="2" stroke="#3a4a9a" stroke-width="1.5"/>
-<path d="M120" y1="48 Q138" y2="38 L156 48" fill="none" stroke="#4a5aaa" stroke-width="2"/>
-<ellipse cx="175" cy="200" rx="130" ry="12" fill="#000" opacity=".35"/>
-</svg><div class="cat-label">Denims<small>Shop Now</small></div></div>
-<div class="cat-tile" onclick="location.href='#caps'">
-<svg viewBox="0 0 350 210" xmlns="http://www.w3.org/2000/svg"><rect width="350" height="210" fill="#0c0404"/><rect width="350" height="210" fill="#CC0000" opacity=".1"/>
-<ellipse cx="175" cy="148" rx="118" ry="66" fill="#181818" stroke="#2a2a2a" stroke-width="2"/>
-<path d="M62 148 Q84 72 175 62 Q266 72 288 148" fill="#CC0000" stroke="#880000" stroke-width="2"/>
-<ellipse cx="175" cy="148" rx="124" ry="22" fill="#111" stroke="#2a2a2a" stroke-width="2"/>
-<circle cx="175" cy="64" r="12" fill="#880000" stroke="#CC0000" stroke-width="2"/>
-<text x="145" y="130" font-family="Arial Black" font-size="28" fill="#fff" font-weight="900" opacity=".9">IT</text>
-<ellipse cx="175" cy="200" rx="130" ry="12" fill="#000" opacity=".35"/>
-</svg><div class="cat-label">Caps<small>Shop Now</small></div></div>
+  <div class="cat-tile" onclick="location.href='#jerseys'">
+    <div class="cat-tile-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png')"></div>
+    <div class="cat-label">Jerseys<small>Shop Now</small></div>
+  </div>
+  <div class="cat-tile" onclick="location.href='#trackpants'">
+    <div class="cat-tile-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png')"></div>
+    <div class="cat-label">Trackpants<small>Shop Now</small></div>
+  </div>
+  <div class="cat-tile" onclick="location.href='#denims'">
+    <div class="cat-tile-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png')"></div>
+    <div class="cat-label">Denims<small>Shop Now</small></div>
+  </div>
+  <div class="cat-tile" onclick="location.href='#caps'">
+    <div class="cat-tile-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:center 10%"></div>
+    <div class="cat-label">Caps<small>Shop Now</small></div>
+  </div>
 </div>
 
+<!-- NEW ARRIVALS -->
 <section class="section" id="newarrivals">
-<div class="sec-head"><h2 class="sec-title">New Arrivals</h2><a href="#" class="view-all">View All &rarr;</a></div>
-<div class="pgrid">
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#160404"/>
-<path d="M78 88 L48 128 L88 143 L88 275 L212 275 L212 143 L252 128 L222 88 L186 108 L150 98 L114 108Z" fill="#CC0000" opacity=".9" stroke="#880000" stroke-width="2"/>
-<path d="M116 106 Q150 123 184 106" fill="none" stroke="#880000" stroke-width="3.5"/>
-<text x="125" y="198" font-family="Arial Black" font-size="35" fill="#fff" font-weight="900">10</text>
-<text x="93" y="234" font-family="Arial" font-size="11" fill="#ffcc00" opacity=".85">Liverpool FC</text>
-</svg><span class="cbadge bn">New</span></div>
-<div class="cb"><div class="csz">Size M</div><div class="cn">Liverpool FC</div><div class="cp">&#8377;1,499</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#050810"/>
-<path d="M70 52 L54 282 L118 282 L150 190 L182 282 L246 282 L230 52Z" fill="#1a3a8a" stroke="#0d2a6a" stroke-width="2"/>
-<line x1="79" y1="52" x2="68" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<line x1="221" y1="52" x2="232" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<rect x="64" y="41" width="172" height="24" fill="#0d2a6a" rx="3" opacity=".7"/>
-<text x="88" y="158" font-family="Arial Black" font-size="16" fill="#fff" opacity=".85">NIKE</text>
-</svg><span class="cbadge bh">Hot</span></div>
-<div class="cb"><div class="csz">W30–32</div><div class="cn">NIKE Track</div><div class="cp">&#8377;929</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#05050a"/>
-<path d="M74 38 L54 288 L118 288 L150 172 L182 288 L246 288 L226 38Z" fill="#1a2a6a" stroke="#2a3a8a" stroke-width="2"/>
-<line x1="89" y1="38" x2="78" y2="288" stroke="#2a3a8a" stroke-width="2" opacity=".6"/>
-<line x1="130" y1="38" x2="120" y2="288" stroke="#2a3a8a" stroke-width="1.2" opacity=".35"/>
-<line x1="170" y1="38" x2="180" y2="288" stroke="#2a3a8a" stroke-width="1.2" opacity=".35"/>
-<line x1="211" y1="38" x2="222" y2="288" stroke="#2a3a8a" stroke-width="2" opacity=".6"/>
-<rect x="69" y="27" width="162" height="22" fill="#2a3a8a" rx="2" opacity=".5"/>
-<text x="86" y="162" font-family="Arial" font-size="11" fill="#aac" opacity=".7">Baggy Low Rise</text>
-</svg><span class="cbadge bn">New</span></div>
-<div class="cb"><div class="csz">W32 L42</div><div class="cn">Baggy Low Rise</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#0a0505"/>
-<ellipse cx="150" cy="190" rx="112" ry="66" fill="#181818" stroke="#333" stroke-width="2"/>
-<path d="M48 190 Q68 102 150 94 Q232 102 252 190" fill="#CC0000" stroke="#880000" stroke-width="2"/>
-<ellipse cx="150" cy="190" rx="118" ry="22" fill="#111" stroke="#2a2a2a" stroke-width="1.5"/>
-<circle cx="150" cy="96" r="11" fill="#880000" stroke="#CC0000" stroke-width="2"/>
-<text x="122" y="172" font-family="Arial Black" font-size="26" fill="#fff" font-weight="900" opacity=".9">IT</text>
-</svg><span class="cbadge bn">New</span></div>
-<div class="cb"><div class="csz">One Size</div><div class="cn">IT Vintage Cap</div><div class="cp">&#8377;450</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#050810"/>
-<path d="M70 52 L54 282 L118 282 L150 190 L182 282 L246 282 L230 52Z" fill="#1a4a1a" stroke="#0d2a0d" stroke-width="2"/>
-<line x1="79" y1="52" x2="68" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<line x1="221" y1="52" x2="232" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<rect x="64" y="41" width="172" height="24" fill="#0d2a0d" rx="3" opacity=".7"/>
-<text x="88" y="158" font-family="Arial Black" font-size="16" fill="#fff" opacity=".85">ADIDAS</text>
-</svg></div>
-<div class="cb"><div class="csz">W28–30</div><div class="cn">ADIDAS Track</div><div class="cp">&#8377;849</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#160404"/>
-<path d="M78 88 L48 128 L88 143 L88 275 L212 275 L212 143 L252 128 L222 88 L186 108 L150 98 L114 108Z" fill="#6a1a6a" opacity=".9" stroke="#4a0a4a" stroke-width="2"/>
-<path d="M116 106 Q150 123 184 106" fill="none" stroke="#4a0a4a" stroke-width="3.5"/>
-<text x="125" y="198" font-family="Arial Black" font-size="35" fill="#fff" font-weight="900">7</text>
-<text x="93" y="234" font-family="Arial" font-size="11" fill="#ffcc00" opacity=".85">Y2K DADA</text>
-</svg><span class="cbadge bn">New</span></div>
-<div class="cb"><div class="csz">Size M</div><div class="cn">Y2K DADA</div><div class="cp">&#8377;899</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#05050a"/>
-<path d="M74 38 L54 288 L118 288 L150 172 L182 288 L246 288 L226 38Z" fill="#1a3a2a" stroke="#2a4a3a" stroke-width="2"/>
-<line x1="89" y1="38" x2="78" y2="288" stroke="#2a4a3a" stroke-width="2" opacity=".6"/>
-<line x1="130" y1="38" x2="120" y2="288" stroke="#2a4a3a" stroke-width="1.2" opacity=".35"/>
-<line x1="170" y1="38" x2="180" y2="288" stroke="#2a4a3a" stroke-width="1.2" opacity=".35"/>
-<line x1="211" y1="38" x2="222" y2="288" stroke="#2a4a3a" stroke-width="2" opacity=".6"/>
-<rect x="69" y="27" width="162" height="22" fill="#2a4a3a" rx="2" opacity=".5"/>
-<text x="86" y="162" font-family="Arial" font-size="11" fill="#aac" opacity=".7">Carhartt Jeans</text>
-</svg></div>
-<div class="cb"><div class="csz">W36 L43</div><div class="cn">Carhartt Jeans</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#050810"/>
-<path d="M70 52 L54 282 L118 282 L150 190 L182 282 L246 282 L230 52Z" fill="#4a1a1a" stroke="#2a0d0d" stroke-width="2"/>
-<line x1="79" y1="52" x2="68" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<line x1="221" y1="52" x2="232" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<rect x="64" y="41" width="172" height="24" fill="#2a0d0d" rx="3" opacity=".7"/>
-<text x="88" y="158" font-family="Arial Black" font-size="16" fill="#fff" opacity=".85">FILA</text>
-</svg></div>
-<div class="cb"><div class="csz">W26–28</div><div class="cn">FILA Track</div><div class="cp">&#8377;849</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-</div></section>
+  <div class="sec-head">
+    <h2 class="sec-title">New Arrivals</h2>
+    <a href="#" class="view-all">View All &rarr;</a>
+  </div>
+  <div class="pgrid">
 
+    <div class="pc"><div class="ci">
+      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:center 10%"></div>
+      <div class="ci-overlay"></div>
+      <span class="cbadge bn">New</span>
+    </div><div class="cb">
+      <div class="csz">Size M</div><div class="cn">Vintage Liverpool Jersey</div>
+      <div class="cp">&#8377;1,499 <s>&#8377;2,500</s></div>
+      <button class="ca" onclick="addCart(this)">Add to Cart</button>
+    </div></div>
+
+    <div class="pc"><div class="ci">
+      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:center 20%"></div>
+      <div class="ci-overlay"></div>
+      <span class="cbadge bh">Hot</span>
+    </div><div class="cb">
+      <div class="csz">Size L</div><div class="cn">Nike Track Jacket</div>
+      <div class="cp">&#8377;929 <s>&#8377;2,200</s></div>
+      <button class="ca" onclick="addCart(this)">Add to Cart</button>
+    </div></div>
+
+    <div class="pc"><div class="ci">
+      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:center 15%"></div>
+      <div class="ci-overlay"></div>
+      <span class="cbadge bn">New</span>
+    </div><div class="cb">
+      <div class="csz">W32 L42</div><div class="cn">Baggy Low Rise Jeans</div>
+      <div class="cp">&#8377;999 <s>&#8377;1,800</s></div>
+      <button class="ca" onclick="addCart(this)">Add to Cart</button>
+    </div></div>
+
+    <div class="pc"><div class="ci">
+      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:center 10%"></div>
+      <div class="ci-overlay"></div>
+    </div><div class="cb">
+      <div class="csz">One Size</div><div class="cn">Vintage NY Snapback</div>
+      <div class="cp">&#8377;450 <s>&#8377;900</s></div>
+      <button class="ca" onclick="addCart(this)">Add to Cart</button>
+    </div></div>
+
+    <div class="pc"><div class="ci">
+      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:center 5%"></div>
+      <div class="ci-overlay"></div>
+      <span class="cbadge bh">Hot</span>
+    </div><div class="cb">
+      <div class="csz">Size L</div><div class="cn">Vintage Graphic Tee</div>
+      <div class="cp">&#8377;549 <s>&#8377;1,200</s></div>
+      <button class="ca" onclick="addCart(this)">Add to Cart</button>
+    </div></div>
+
+    <div class="pc"><div class="ci">
+      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:right 10%"></div>
+      <div class="ci-overlay"></div>
+      <span class="cbadge bn">New</span>
+    </div><div class="cb">
+      <div class="csz">W30-32</div><div class="cn">Adidas Vintage Track</div>
+      <div class="cp">&#8377;849 <s>&#8377;1,900</s></div>
+      <button class="ca" onclick="addCart(this)">Add to Cart</button>
+    </div></div>
+
+    <div class="pc"><div class="ci">
+      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:left 20%"></div>
+      <div class="ci-overlay"></div>
+    </div><div class="cb">
+      <div class="csz">W26-28</div><div class="cn">Fila Track Pants</div>
+      <div class="cp">&#8377;849 <s>&#8377;2,000</s></div>
+      <button class="ca" onclick="addCart(this)">Add to Cart</button>
+    </div></div>
+
+    <div class="pc"><div class="ci">
+      <div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:right 15%"></div>
+      <div class="ci-overlay"></div>
+    </div><div class="cb">
+      <div class="csz">XS-M</div><div class="cn">Pack of Three Tees</div>
+      <div class="cp">&#8377;899 <s>&#8377;2,400</s></div>
+      <button class="ca" onclick="addCart(this)">Add to Cart</button>
+    </div></div>
+
+  </div>
+</section>
+
+<!-- MID BANNER 1 — img3 tough crew vibe -->
 <div class="mbanner">
-<svg viewBox="0 0 1400 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-<rect width="1400" height="380" fill="#0d0005"/>
-<rect width="1400" height="380" fill="#CC0000" opacity=".1"/>
-<rect x="0" y="0" width="180" height="380" fill="#0a0a0a"/>
-<rect x="1220" y="0" width="180" height="380" fill="#0a0a0a"/>
-<!-- Brick wall left -->
-<rect x="10" y="15" width="58" height="17" fill="#141414" rx="1" stroke="#1e1e1e" stroke-width="1"/>
-<rect x="76" y="15" width="58" height="17" fill="#111" rx="1" stroke="#1e1e1e" stroke-width="1"/>
-<rect x="10" y="40" width="42" height="17" fill="#111" rx="1" stroke="#1e1e1e" stroke-width="1"/>
-<rect x="60" y="40" width="58" height="17" fill="#141414" rx="1" stroke="#1e1e1e" stroke-width="1"/>
-<rect x="10" y="65" width="58" height="17" fill="#141414" rx="1" stroke="#1e1e1e" stroke-width="1"/>
-<rect x="76" y="65" width="58" height="17" fill="#111" rx="1" stroke="#1e1e1e" stroke-width="1"/>
-<rect x="10" y="90" width="42" height="17" fill="#111" rx="1" stroke="#1e1e1e" stroke-width="1"/>
-<rect x="60" y="90" width="58" height="17" fill="#141414" rx="1" stroke="#1e1e1e" stroke-width="1"/>
-<rect x="10" y="115" width="58" height="17" fill="#141414" rx="1" stroke="#1e1e1e" stroke-width="1"/>
-<rect x="76" y="115" width="58" height="17" fill="#111" rx="1" stroke="#1e1e1e" stroke-width="1"/>
-<!-- Red neon strip -->
-<rect x="174" y="0" width="3.5" height="380" fill="#CC0000" opacity=".45"/>
-<!-- Clothes rail -->
-<line x1="570" y1="40" x2="830" y2="40" stroke="#555" stroke-width="3"/>
-<!-- Jersey on hanger -->
-<line x1="620" y1="40" x2="620" y2="60" stroke="#888" stroke-width="2"/>
-<path d="M586 60 L600 60 L610 50 L620 47 L630 50 L640 60 L654 60 L634 125 L606 125Z" fill="#CC0000" opacity=".9" stroke="#880000" stroke-width="1.5"/>
-<path d="M608 49 Q620 62 632 49" fill="none" stroke="#880000" stroke-width="3"/>
-<text x="600" y="100" font-family="Arial Black" font-size="14" fill="#fff" opacity=".8">10</text>
-<!-- Trackpant on hanger -->
-<line x1="700" y1="40" x2="700" y2="60" stroke="#888" stroke-width="2"/>
-<path d="M678 60 L722 60 L712 165 L700 125 L688 165Z" fill="#1a3a8a" opacity=".9" stroke="#2a4aaa" stroke-width="1.5"/>
-<line x1="681" y1="60" x2="675" y2="165" stroke="#fff" stroke-width="3" opacity=".4"/>
-<line x1="719" y1="60" x2="725" y2="165" stroke="#fff" stroke-width="3" opacity=".4"/>
-<!-- Tee on hanger -->
-<line x1="785" y1="40" x2="785" y2="60" stroke="#888" stroke-width="2"/>
-<path d="M753 60 L768 60 L773 50 L785 47 L797 50 L802 60 L817 60 L808 150 L762 150Z" fill="#1a4a1a" opacity=".9" stroke="#2a6a2a" stroke-width="1.5"/>
-<!-- Price tags -->
-<rect x="604" y="118" width="30" height="14" fill="#fff" rx="2" opacity=".9"/>
-<text x="606" y="128" font-size="8" fill="#CC0000" font-weight="bold">&#8377;1499</text>
-<rect x="683" y="158" width="30" height="14" fill="#fff" rx="2" opacity=".9"/>
-<text x="685" y="168" font-size="8" fill="#CC0000" font-weight="bold">&#8377;849</text>
-<rect x="768" y="143" width="30" height="14" fill="#fff" rx="2" opacity=".9"/>
-<text x="770" y="153" font-size="8" fill="#CC0000" font-weight="bold">&#8377;549</text>
-<!-- Robber inspecting clothes -->
-<ellipse cx="1000" cy="145" rx="36" ry="38" fill="#AA0000"/>
-<ellipse cx="1000" cy="139" rx="30" ry="32" fill="#880000"/>
-<ellipse cx="1000" cy="151" rx="23" ry="25" fill="#F5D5A0"/>
-<ellipse cx="990" cy="143" rx="4" ry="5" fill="#CC0000"/>
-<ellipse cx="1010" cy="143" rx="4" ry="5" fill="#CC0000"/>
-<path d="M988 160 Q995 155 1002 160 Q1009 155 1012 160" fill="none" stroke="#1a0a0a" stroke-width="2" stroke-linecap="round"/>
-<path d="M988 160 Q984 154 981 150" fill="none" stroke="#1a0a0a" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M1012 160 Q1016 154 1019 150" fill="none" stroke="#1a0a0a" stroke-width="1.5" stroke-linecap="round"/>
-<rect x="965" y="182" width="70" height="180" fill="#AA0000" rx="5"/>
-<line x1="1000" y1="182" x2="1000" y2="362" stroke="#880000" stroke-width="2"/>
-<rect x="924" y="194" width="43" height="145" fill="#AA0000" rx="5" transform="rotate(-14,945,194)"/>
-<rect x="1036" y="194" width="43" height="145" fill="#AA0000" rx="5" transform="rotate(10,1057,194)"/>
-<ellipse cx="908" cy="336" rx="28" ry="30" fill="#8B6914"/>
-<text x="897" y="343" font-size="16" fill="#FFD700">&#8377;</text>
-<!-- Ground -->
-<rect x="0" y="366" width="1400" height="14" fill="#080808"/>
-<line x1="0" y1="366" x2="1400" y2="366" stroke="#CC0000" stroke-width="1" opacity=".22"/>
-</svg>
-<div class="mbg"></div>
-<div class="mtext">
-  <span class="eyebrow">&#128308; Premium Thrifted</span>
-  <h2>Heaven of <span>Jerseys</span></h2>
-  <p>Rare vintage football &amp; basketball jerseys. Each one hand-picked and quality-checked. Your next favourite fit is waiting.</p>
-</div></div>
-
-<section class="section alt" id="jerseys">
-<div class="sec-head"><h2 class="sec-title">Jerseys</h2><a href="#" class="view-all">View All &rarr;</a></div>
-<div class="pgrid">
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#160404"/>
-<path d="M78 88 L48 128 L88 143 L88 275 L212 275 L212 143 L252 128 L222 88 L186 108 L150 98 L114 108Z" fill="#CC0000" opacity=".9" stroke="#880000" stroke-width="2"/>
-<path d="M116 106 Q150 123 184 106" fill="none" stroke="#880000" stroke-width="3.5"/>
-<text x="125" y="198" font-family="Arial Black" font-size="35" fill="#fff" font-weight="900">10</text>
-<text x="93" y="234" font-family="Arial" font-size="11" fill="#ffcc00" opacity=".85">Liverpool FC</text>
-</svg><span class="cbadge bn">New</span></div>
-<div class="cb"><div class="csz">Size M</div><div class="cn">Liverpool FC</div><div class="cp">&#8377;1,499</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#160404"/>
-<path d="M78 88 L48 128 L88 143 L88 275 L212 275 L212 143 L252 128 L222 88 L186 108 L150 98 L114 108Z" fill="#1a1aCC" opacity=".9" stroke="#0000aa" stroke-width="2"/>
-<path d="M116 106 Q150 123 184 106" fill="none" stroke="#0000aa" stroke-width="3.5"/>
-<text x="125" y="198" font-family="Arial Black" font-size="35" fill="#fff" font-weight="900">23</text>
-<text x="93" y="234" font-family="Arial" font-size="11" fill="#ffcc00" opacity=".85">NBA Bulls</text>
-</svg></div>
-<div class="cb"><div class="csz">Size M</div><div class="cn">NBA Bulls</div><div class="cp">&#8377;980</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#160404"/>
-<path d="M78 88 L48 128 L88 143 L88 275 L212 275 L212 143 L252 128 L222 88 L186 108 L150 98 L114 108Z" fill="#003399" opacity=".9" stroke="#0022aa" stroke-width="2"/>
-<path d="M116 106 Q150 123 184 106" fill="none" stroke="#0022aa" stroke-width="3.5"/>
-<text x="125" y="198" font-family="Arial Black" font-size="35" fill="#fff" font-weight="900">9</text>
-<text x="93" y="234" font-family="Arial" font-size="11" fill="#ffcc00" opacity=".85">France 2008</text>
-</svg><span class="cbadge bh">Hot</span></div>
-<div class="cb"><div class="csz">Size M</div><div class="cn">France 2008</div><div class="cp">&#8377;849</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#160404"/>
-<path d="M78 88 L48 128 L88 143 L88 275 L212 275 L212 143 L252 128 L222 88 L186 108 L150 98 L114 108Z" fill="#AA0000" opacity=".9" stroke="#880000" stroke-width="2"/>
-<path d="M116 106 Q150 123 184 106" fill="none" stroke="#880000" stroke-width="3.5"/>
-<text x="125" y="198" font-family="Arial Black" font-size="35" fill="#fff" font-weight="900">4</text>
-<text x="93" y="234" font-family="Arial" font-size="11" fill="#ffcc00" opacity=".85">Ajax Retro</text>
-</svg></div>
-<div class="cb"><div class="csz">Size M</div><div class="cn">Ajax Retro</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#160404"/>
-<path d="M78 88 L48 128 L88 143 L88 275 L212 275 L212 143 L252 128 L222 88 L186 108 L150 98 L114 108Z" fill="#1a4a1a" opacity=".9" stroke="#2a6a2a" stroke-width="2"/>
-<path d="M116 106 Q150 123 184 106" fill="none" stroke="#2a6a2a" stroke-width="3.5"/>
-<text x="125" y="198" font-family="Arial Black" font-size="35" fill="#fff" font-weight="900">10</text>
-<text x="93" y="234" font-family="Arial" font-size="11" fill="#ffcc00" opacity=".85">England 06</text>
-</svg></div>
-<div class="cb"><div class="csz">Size M</div><div class="cn">England 06</div><div class="cp">&#8377;899</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#160404"/>
-<path d="M78 88 L48 128 L88 143 L88 275 L212 275 L212 143 L252 128 L222 88 L186 108 L150 98 L114 108Z" fill="#6a1a6a" opacity=".9" stroke="#4a0a4a" stroke-width="2"/>
-<path d="M116 106 Q150 123 184 106" fill="none" stroke="#4a0a4a" stroke-width="3.5"/>
-<text x="125" y="198" font-family="Arial Black" font-size="35" fill="#fff" font-weight="900">7</text>
-<text x="93" y="234" font-family="Arial" font-size="11" fill="#ffcc00" opacity=".85">Y2K DADA</text>
-</svg><span class="cbadge bn">New</span></div>
-<div class="cb"><div class="csz">Size M</div><div class="cn">Y2K DADA</div><div class="cp">&#8377;899</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-</div></section>
-
-<div class="mbanner">
-<svg viewBox="0 0 1400 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-<rect width="1400" height="380" fill="#030308"/>
-<!-- Buildings -->
-<rect x="0" y="140" width="75" height="240" fill="#0c0c14" stroke="#1a1a2a" stroke-width="1"/>
-<rect x="82" y="95" width="115" height="285" fill="#090912" stroke="#1a1a2a" stroke-width="1"/>
-<rect x="204" y="125" width="68" height="255" fill="#0c0c14" stroke="#1a1a2a" stroke-width="1"/>
-<rect x="280" y="160" width="60" height="220" fill="#090912" stroke="#1a1a2a" stroke-width="1"/>
-<rect x="990" y="115" width="95" height="265" fill="#090912" stroke="#1a1a2a" stroke-width="1"/>
-<rect x="1092" y="75" width="135" height="305" fill="#0c0c14" stroke="#1a1a2a" stroke-width="1"/>
-<rect x="1234" y="135" width="166" height="245" fill="#090912" stroke="#1a1a2a" stroke-width="1"/>
-<!-- Windows -->
-<rect x="14" y="155" width="11" height="8" fill="#ffcc00" opacity=".5" rx="1"/>
-<rect x="34" y="155" width="11" height="8" fill="#CC0000" opacity=".4" rx="1"/>
-<rect x="14" y="173" width="11" height="8" fill="#ffcc00" opacity=".6" rx="1"/>
-<rect x="96" y="110" width="11" height="8" fill="#ffcc00" opacity=".55" rx="1"/>
-<rect x="116" y="110" width="11" height="8" fill="#ff9900" opacity=".35" rx="1"/>
-<rect x="136" y="110" width="11" height="8" fill="#ffcc00" opacity=".65" rx="1"/>
-<rect x="96" y="130" width="11" height="8" fill="#CC0000" opacity=".4" rx="1"/>
-<rect x="1005" y="130" width="11" height="8" fill="#ffcc00" opacity=".55" rx="1"/>
-<rect x="1025" y="130" width="11" height="8" fill="#ff9900" opacity=".4" rx="1"/>
-<rect x="1105" y="90" width="11" height="8" fill="#ffcc00" opacity=".65" rx="1"/>
-<rect x="1125" y="90" width="11" height="8" fill="#CC0000" opacity=".4" rx="1"/>
-<rect x="1145" y="90" width="11" height="8" fill="#ffcc00" opacity=".7" rx="1"/>
-<rect x="1165" y="90" width="11" height="8" fill="#ff9900" opacity=".35" rx="1"/>
-<!-- Red ground glow -->
-<ellipse cx="700" cy="376" rx="480" ry="28" fill="#CC0000" opacity=".08"/>
-<rect x="0" y="366" width="1400" height="14" fill="#080808"/>
-<line x1="0" y1="366" x2="1400" y2="366" stroke="#CC0000" stroke-width="1" opacity=".18"/>
-<!-- Crew of robbers walking with bags -->
-<rect x="410" y="215" width="32" height="118" fill="#AA0000" rx="4"/>
-<ellipse cx="426" cy="203" rx="21" ry="23" fill="#AA0000"/>
-<ellipse cx="426" cy="198" rx="17" ry="18" fill="#880000"/>
-<ellipse cx="426" cy="206" rx="13" ry="14" fill="#F5D5A0"/>
-<ellipse cx="420" cy="202" rx="3" ry="4" fill="#CC0000"/>
-<ellipse cx="432" cy="202" rx="3" ry="4" fill="#CC0000"/>
-<rect x="428" y="215" width="28" height="113" fill="#AA0000" rx="4" transform="rotate(-5,442,215)"/>
-<rect x="394" y="215" width="28" height="113" fill="#AA0000" rx="4" transform="rotate(5,408,215)"/>
-<ellipse cx="388" cy="325" rx="20" ry="23" fill="#8B6914"/>
-<text x="379" y="331" font-size="13" fill="#FFD700">&#8377;</text>
-<rect x="520" y="208" width="34" height="123" fill="#AA0000" rx="4"/>
-<ellipse cx="537" cy="195" rx="23" ry="25" fill="#AA0000"/>
-<ellipse cx="537" cy="190" rx="18" ry="19" fill="#880000"/>
-<ellipse cx="537" cy="199" rx="14" ry="15" fill="#F5D5A0"/>
-<ellipse cx="530" cy="195" rx="3.5" ry="4.5" fill="#CC0000"/>
-<ellipse cx="544" cy="195" rx="3.5" ry="4.5" fill="#CC0000"/>
-<rect x="538" y="208" width="30" height="118" fill="#AA0000" rx="4" transform="rotate(-3,553,208)"/>
-<rect x="504" y="208" width="30" height="118" fill="#AA0000" rx="4" transform="rotate(4,519,208)"/>
-<ellipse cx="580" cy="328" rx="20" ry="23" fill="#8B6914"/>
-<text x="571" y="334" font-size="13" fill="#FFD700">&#8377;</text>
-<rect x="640" y="203" width="36" height="128" fill="#AA0000" rx="4"/>
-<ellipse cx="658" cy="190" rx="25" ry="26" fill="#AA0000"/>
-<ellipse cx="658" cy="185" rx="20" ry="21" fill="#880000"/>
-<ellipse cx="658" cy="194" rx="15" ry="16" fill="#F5D5A0"/>
-<ellipse cx="651" cy="189" rx="4" ry="5" fill="#CC0000"/>
-<ellipse cx="665" cy="189" rx="4" ry="5" fill="#CC0000"/>
-<rect x="641" y="203" width="32" height="123" fill="#AA0000" rx="4" transform="rotate(-4,657,203)"/>
-<rect x="610" y="203" width="32" height="123" fill="#AA0000" rx="4" transform="rotate(5,626,203)"/>
-</svg>
-<div class="mbg"></div>
-<div class="mtext">
-  <span class="eyebrow">&#128308; Premium Thrifted</span>
-  <h2>Heaven of <span>Trackpants</span></h2>
-  <p>Nike, Adidas, Puma, Fila &mdash; real vintage tracksuits dropped every Friday. Grab yours before it's gone.</p>
-</div></div>
-
-<section class="section" id="trackpants">
-<div class="sec-head"><h2 class="sec-title">Trackpants</h2><a href="#" class="view-all">View All &rarr;</a></div>
-<div class="pgrid">
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#050810"/>
-<path d="M70 52 L54 282 L118 282 L150 190 L182 282 L246 282 L230 52Z" fill="#1a3a8a" stroke="#0d2a6a" stroke-width="2"/>
-<line x1="79" y1="52" x2="68" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<line x1="221" y1="52" x2="232" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<rect x="64" y="41" width="172" height="24" fill="#0d2a6a" rx="3" opacity=".7"/>
-<text x="88" y="158" font-family="Arial Black" font-size="16" fill="#fff" opacity=".85">NIKE</text>
-</svg><span class="cbadge bh">Hot</span></div>
-<div class="cb"><div class="csz">W30–32</div><div class="cn">NIKE Track</div><div class="cp">&#8377;929</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#050810"/>
-<path d="M70 52 L54 282 L118 282 L150 190 L182 282 L246 282 L230 52Z" fill="#1a4a1a" stroke="#0d2a0d" stroke-width="2"/>
-<line x1="79" y1="52" x2="68" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<line x1="221" y1="52" x2="232" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<rect x="64" y="41" width="172" height="24" fill="#0d2a0d" rx="3" opacity=".7"/>
-<text x="88" y="158" font-family="Arial Black" font-size="16" fill="#fff" opacity=".85">ADIDAS</text>
-</svg></div>
-<div class="cb"><div class="csz">W28–30</div><div class="cn">ADIDAS Track</div><div class="cp">&#8377;839</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#050810"/>
-<path d="M70 52 L54 282 L118 282 L150 190 L182 282 L246 282 L230 52Z" fill="#4a1a1a" stroke="#2a0d0d" stroke-width="2"/>
-<line x1="79" y1="52" x2="68" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<line x1="221" y1="52" x2="232" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<rect x="64" y="41" width="172" height="24" fill="#2a0d0d" rx="3" opacity=".7"/>
-<text x="88" y="158" font-family="Arial Black" font-size="16" fill="#fff" opacity=".85">FILA</text>
-</svg><span class="cbadge bn">New</span></div>
-<div class="cb"><div class="csz">W26–28</div><div class="cn">FILA Track</div><div class="cp">&#8377;849</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#050810"/>
-<path d="M70 52 L54 282 L118 282 L150 190 L182 282 L246 282 L230 52Z" fill="#2a0a4a" stroke="#1a0a2a" stroke-width="2"/>
-<line x1="79" y1="52" x2="68" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<line x1="221" y1="52" x2="232" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<rect x="64" y="41" width="172" height="24" fill="#1a0a2a" rx="3" opacity=".7"/>
-<text x="88" y="158" font-family="Arial Black" font-size="16" fill="#fff" opacity=".85">REEBOK</text>
-</svg></div>
-<div class="cb"><div class="csz">W30–32</div><div class="cn">REEBOK Track</div><div class="cp">&#8377;750</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#050810"/>
-<path d="M70 52 L54 282 L118 282 L150 190 L182 282 L246 282 L230 52Z" fill="#2a1a0a" stroke="#1a0a05" stroke-width="2"/>
-<line x1="79" y1="52" x2="68" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<line x1="221" y1="52" x2="232" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<rect x="64" y="41" width="172" height="24" fill="#1a0a05" rx="3" opacity=".7"/>
-<text x="88" y="158" font-family="Arial Black" font-size="16" fill="#fff" opacity=".85">PUMA</text>
-</svg></div>
-<div class="cb"><div class="csz">W32</div><div class="cn">PUMA Track</div><div class="cp">&#8377;799</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#050810"/>
-<path d="M70 52 L54 282 L118 282 L150 190 L182 282 L246 282 L230 52Z" fill="#0a2a0a" stroke="#0d1a0d" stroke-width="2"/>
-<line x1="79" y1="52" x2="68" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<line x1="221" y1="52" x2="232" y2="282" stroke="#fff" stroke-width="5" opacity=".5"/>
-<rect x="64" y="41" width="172" height="24" fill="#0d1a0d" rx="3" opacity=".7"/>
-<text x="88" y="158" font-family="Arial Black" font-size="16" fill="#fff" opacity=".85">LACOSTE</text>
-</svg><span class="cbadge bn">New</span></div>
-<div class="cb"><div class="csz">W26–28 L40</div><div class="cn">LACOSTE Track</div><div class="cp">&#8377;399</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-</div></section>
-
-<section class="section alt" id="denims">
-<div class="sec-head"><h2 class="sec-title">Denims</h2><a href="#" class="view-all">View All &rarr;</a></div>
-<div class="pgrid">
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#05050a"/>
-<path d="M74 38 L54 288 L118 288 L150 172 L182 288 L246 288 L226 38Z" fill="#1a2a6a" stroke="#2a3a8a" stroke-width="2"/>
-<line x1="89" y1="38" x2="78" y2="288" stroke="#2a3a8a" stroke-width="2" opacity=".6"/>
-<line x1="130" y1="38" x2="120" y2="288" stroke="#2a3a8a" stroke-width="1.2" opacity=".35"/>
-<line x1="170" y1="38" x2="180" y2="288" stroke="#2a3a8a" stroke-width="1.2" opacity=".35"/>
-<line x1="211" y1="38" x2="222" y2="288" stroke="#2a3a8a" stroke-width="2" opacity=".6"/>
-<rect x="69" y="27" width="162" height="22" fill="#2a3a8a" rx="2" opacity=".5"/>
-<text x="86" y="162" font-family="Arial" font-size="11" fill="#aac" opacity=".7">Real Baggy Low Rise</text>
-</svg><span class="cbadge bn">New</span></div>
-<div class="cb"><div class="csz">W30 L42</div><div class="cn">Real Baggy Low Rise</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#05050a"/>
-<path d="M74 38 L54 288 L118 288 L150 172 L182 288 L246 288 L226 38Z" fill="#1a3a2a" stroke="#2a4a3a" stroke-width="2"/>
-<line x1="89" y1="38" x2="78" y2="288" stroke="#2a4a3a" stroke-width="2" opacity=".6"/>
-<line x1="130" y1="38" x2="120" y2="288" stroke="#2a4a3a" stroke-width="1.2" opacity=".35"/>
-<line x1="170" y1="38" x2="180" y2="288" stroke="#2a4a3a" stroke-width="1.2" opacity=".35"/>
-<line x1="211" y1="38" x2="222" y2="288" stroke="#2a4a3a" stroke-width="2" opacity=".6"/>
-<rect x="69" y="27" width="162" height="22" fill="#2a4a3a" rx="2" opacity=".5"/>
-<text x="86" y="162" font-family="Arial" font-size="11" fill="#aac" opacity=".7">Carhartt Jeans</text>
-</svg></div>
-<div class="cb"><div class="csz">W36 L43</div><div class="cn">Carhartt Jeans</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#05050a"/>
-<path d="M74 38 L54 288 L118 288 L150 172 L182 288 L246 288 L226 38Z" fill="#0d0d3a" stroke="#1a1a5a" stroke-width="2"/>
-<line x1="89" y1="38" x2="78" y2="288" stroke="#1a1a5a" stroke-width="2" opacity=".6"/>
-<line x1="130" y1="38" x2="120" y2="288" stroke="#1a1a5a" stroke-width="1.2" opacity=".35"/>
-<line x1="170" y1="38" x2="180" y2="288" stroke="#1a1a5a" stroke-width="1.2" opacity=".35"/>
-<line x1="211" y1="38" x2="222" y2="288" stroke="#1a1a5a" stroke-width="2" opacity=".6"/>
-<rect x="69" y="27" width="162" height="22" fill="#1a1a5a" rx="2" opacity=".5"/>
-<text x="86" y="162" font-family="Arial" font-size="11" fill="#aac" opacity=".7">Tommy Hilfiger</text>
-</svg><span class="cbadge bh">Hot</span></div>
-<div class="cb"><div class="csz">W34 L38</div><div class="cn">Tommy Hilfiger</div><div class="cp">&#8377;949</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#05050a"/>
-<path d="M74 38 L54 288 L118 288 L150 172 L182 288 L246 288 L226 38Z" fill="#0d2a2a" stroke="#1a3a3a" stroke-width="2"/>
-<line x1="89" y1="38" x2="78" y2="288" stroke="#1a3a3a" stroke-width="2" opacity=".6"/>
-<line x1="130" y1="38" x2="120" y2="288" stroke="#1a3a3a" stroke-width="1.2" opacity=".35"/>
-<line x1="170" y1="38" x2="180" y2="288" stroke="#1a3a3a" stroke-width="1.2" opacity=".35"/>
-<line x1="211" y1="38" x2="222" y2="288" stroke="#1a3a3a" stroke-width="2" opacity=".6"/>
-<rect x="69" y="27" width="162" height="22" fill="#1a3a3a" rx="2" opacity=".5"/>
-<text x="86" y="162" font-family="Arial" font-size="11" fill="#aac" opacity=".7">Dickies Cargo</text>
-</svg></div>
-<div class="cb"><div class="csz">W36 L43</div><div class="cn">Dickies Cargo</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-</div></section>
-
-<div class="mbanner">
-<svg viewBox="0 0 1400 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-<rect width="1400" height="380" fill="#100003"/>
-<rect width="1400" height="380" fill="#CC0000" opacity=".09"/>
-<polygon points="900,0 740,380 1060,380" fill="#CC0000" opacity=".07"/>
-<!-- Solo robber center-right -->
-<ellipse cx="890" cy="138" rx="50" ry="53" fill="#AA0000"/>
-<ellipse cx="890" cy="131" rx="42" ry="45" fill="#880000"/>
-<ellipse cx="890" cy="145" rx="34" ry="36" fill="#F5D5A0"/>
-<ellipse cx="878" cy="136" rx="6" ry="7.5" fill="#CC0000"/>
-<ellipse cx="902" cy="136" rx="6" ry="7.5" fill="#CC0000"/>
-<circle cx="880" cy="134" r="2.2" fill="#fff"/>
-<circle cx="904" cy="134" r="2.2" fill="#fff"/>
-<path d="M874 157 Q882 151 890 157 Q898 151 906 157" fill="none" stroke="#1a0a0a" stroke-width="2.5" stroke-linecap="round"/>
-<path d="M874 157 Q868 150 865 145" fill="none" stroke="#1a0a0a" stroke-width="2" stroke-linecap="round"/>
-<path d="M906 157 Q912 150 915 145" fill="none" stroke="#1a0a0a" stroke-width="2" stroke-linecap="round"/>
-<rect x="843" y="188" width="94" height="180" fill="#AA0000" rx="7"/>
-<line x1="890" y1="188" x2="890" y2="368" stroke="#880000" stroke-width="2.5"/>
-<rect x="793" y="202" width="52" height="148" fill="#AA0000" rx="5" transform="rotate(-13,819,202)"/>
-<rect x="935" y="202" width="52" height="148" fill="#AA0000" rx="5" transform="rotate(10,961,202)"/>
-<rect x="853" y="364" width="36" height="14" fill="#111" rx="3"/>
-<rect x="893" y="364" width="36" height="14" fill="#111" rx="3"/>
-<!-- Big loot bag -->
-<ellipse cx="762" cy="342" rx="40" ry="45" fill="#8B6914"/>
-<line x1="762" y1="297" x2="762" y2="318" stroke="#6B4F10" stroke-width="5"/>
-<text x="746" y="352" font-size="24" fill="#FFD700">&#8377;</text>
-<!-- Shadow -->
-<ellipse cx="890" cy="374" rx="86" ry="8" fill="#000" opacity=".5"/>
-<!-- Ground -->
-<rect x="0" y="366" width="1400" height="14" fill="#080808"/>
-<line x1="0" y1="366" x2="1400" y2="366" stroke="#CC0000" stroke-width="1.5" opacity=".28"/>
-<!-- Flying money -->
-<rect x="960" y="170" width="40" height="20" fill="#1a4a1a" rx="2" transform="rotate(-24,980,180)"/>
-<text x="965" y="183" font-size="9" fill="#39FF14" transform="rotate(-24,980,180)">$100</text>
-<rect x="808" y="150" width="38" height="19" fill="#1a4a1a" rx="2" transform="rotate(21,827,159)"/>
-<text x="812" y="162" font-size="9" fill="#39FF14" transform="rotate(21,827,159)">$50</text>
-<rect x="940" y="268" width="36" height="18" fill="#1a4a1a" rx="2" transform="rotate(-16,958,277)"/>
-<text x="943" y="280" font-size="8" fill="#39FF14" transform="rotate(-16,958,277)">$20</text>
-</svg>
-<div class="mbg"></div>
-<div class="mtext">
-  <span class="eyebrow">&#128308; Intha Thrift</span>
-  <h2>Steal the <span>Look.</span></h2>
-  <p>Pre-loved fashion for people who know style doesn't have an expiry date. New drops every Friday.</p>
-</div></div>
-
-<section class="section" id="caps">
-<div class="sec-head"><h2 class="sec-title">Caps</h2><a href="#" class="view-all">View All &rarr;</a></div>
-<div class="pgrid">
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#0a0505"/>
-<ellipse cx="150" cy="190" rx="112" ry="66" fill="#181818" stroke="#333" stroke-width="2"/>
-<path d="M48 190 Q68 102 150 94 Q232 102 252 190" fill="#CC0000" stroke="#880000" stroke-width="2"/>
-<ellipse cx="150" cy="190" rx="118" ry="22" fill="#111" stroke="#2a2a2a" stroke-width="1.5"/>
-<circle cx="150" cy="96" r="11" fill="#880000" stroke="#CC0000" stroke-width="2"/>
-<text x="122" y="172" font-family="Arial Black" font-size="26" fill="#fff" font-weight="900" opacity=".9">IT</text>
-</svg><span class="cbadge bn">New</span></div>
-<div class="cb"><div class="csz">One Size</div><div class="cn">IT Vintage Cap</div><div class="cp">&#8377;499</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#0a0505"/>
-<ellipse cx="150" cy="190" rx="112" ry="66" fill="#181818" stroke="#333" stroke-width="2"/>
-<path d="M48 190 Q68 102 150 94 Q232 102 252 190" fill="#1a1a4a" stroke="#2a2a6a" stroke-width="2"/>
-<ellipse cx="150" cy="190" rx="118" ry="22" fill="#111" stroke="#2a2a2a" stroke-width="1.5"/>
-<circle cx="150" cy="96" r="11" fill="#2a2a6a" stroke="#1a1a4a" stroke-width="2"/>
-<text x="122" y="172" font-family="Arial Black" font-size="26" fill="#fff" font-weight="900" opacity=".9">NY</text>
-</svg></div>
-<div class="cb"><div class="csz">One Size</div><div class="cn">NY Vintage Cap</div><div class="cp">&#8377;499</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#0a0505"/>
-<ellipse cx="150" cy="190" rx="112" ry="66" fill="#181818" stroke="#333" stroke-width="2"/>
-<path d="M48 190 Q68 102 150 94 Q232 102 252 190" fill="#0d2a0d" stroke="#1a4a1a" stroke-width="2"/>
-<ellipse cx="150" cy="190" rx="118" ry="22" fill="#111" stroke="#2a2a2a" stroke-width="1.5"/>
-<circle cx="150" cy="96" r="11" fill="#1a4a1a" stroke="#0d2a0d" stroke-width="2"/>
-<text x="122" y="172" font-family="Arial Black" font-size="26" fill="#fff" font-weight="900" opacity=".9">NIKE</text>
-</svg><span class="cbadge bh">Hot</span></div>
-<div class="cb"><div class="csz">One Size</div><div class="cn">NIKE Vintage Cap</div><div class="cp">&#8377;550</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-<div class="pc">
-<div class="ci"><svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="330" fill="#0a0505"/>
-<ellipse cx="150" cy="190" rx="112" ry="66" fill="#181818" stroke="#333" stroke-width="2"/>
-<path d="M48 190 Q68 102 150 94 Q232 102 252 190" fill="#2a1a0a" stroke="#4a2a0a" stroke-width="2"/>
-<ellipse cx="150" cy="190" rx="118" ry="22" fill="#111" stroke="#2a2a2a" stroke-width="1.5"/>
-<circle cx="150" cy="96" r="11" fill="#4a2a0a" stroke="#2a1a0a" stroke-width="2"/>
-<text x="122" y="172" font-family="Arial Black" font-size="26" fill="#fff" font-weight="900" opacity=".9">MLB</text>
-</svg></div>
-<div class="cb"><div class="csz">One Size</div><div class="cn">MLB Vintage Cap</div><div class="cp">&#8377;450</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
-</div></section>
-
-<div class="istrip">
-<div class="ihead"><h3>Connect With Us</h3><span class="ihandle">@intha.thrift</span></div>
-<div class="igrid">
-<div class="icell"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="#160404"/><path d="M55 62 L32 90 L58 100 L58 175 L142 175 L142 100 L168 90 L145 62 L122 75 L100 68 L78 75Z" fill="#CC0000" opacity=".88" stroke="#880000" stroke-width="1.5"/><text x="85" y="132" font-family="Arial Black" font-size="22" fill="#fff" font-weight="900">10</text></svg></div>
-<div class="icell"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="#050810"/><path d="M55 28 L42 178 L78 178 L100 118 L122 178 L158 178 L145 28Z" fill="#1a3a8a" stroke="#2a4aaa" stroke-width="1.5"/><line x1="61" y1="28" x2="54" y2="178" stroke="#fff" stroke-width="3.5" opacity=".45"/><line x1="139" y1="28" x2="146" y2="178" stroke="#fff" stroke-width="3.5" opacity=".45"/></svg></div>
-<div class="icell"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="#05050a"/><path d="M48 18 L34 188 L76 188 L100 108 L124 188 L166 188 L152 18Z" fill="#1a2a6a" stroke="#2a3a8a" stroke-width="1.5"/><line x1="56" y1="18" x2="48" y2="188" stroke="#2a3a8a" stroke-width="1.8" opacity=".6"/><line x1="144" y1="18" x2="152" y2="188" stroke="#2a3a8a" stroke-width="1.8" opacity=".6"/></svg></div>
-<div class="icell"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="#0a0505"/><ellipse cx="100" cy="128" rx="82" ry="48" fill="#181818" stroke="#2a2a2a" stroke-width="1.5"/><path d="M22 128 Q38 68 100 62 Q162 68 178 128" fill="#CC0000" stroke="#880000" stroke-width="1.5"/><ellipse cx="100" cy="128" rx="86" ry="17" fill="#111" stroke="#2a2a2a" stroke-width="1.5"/><circle cx="100" cy="64" r="9" fill="#880000" stroke="#CC0000" stroke-width="2"/><text x="72" y="115" font-family="Arial Black" font-size="22" fill="#fff" font-weight="900">IT</text></svg></div>
-<div class="icell"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="#0d0004"/><rect width="200" height="200" fill="#CC0000" opacity=".1"/><polygon points="100,0 68,200 132,200" fill="#CC0000" opacity=".07"/><ellipse cx="100" cy="80" r="38" fill="#AA0000"/><ellipse cx="100" cy="75" rx="31" ry="33" fill="#880000"/><ellipse cx="100" cy="83" rx="24" ry="26" fill="#F5D5A0"/><ellipse cx="91" cy="78" rx="3.5" ry="4.5" fill="#CC0000"/><ellipse cx="109" cy="78" rx="3.5" ry="4.5" fill="#CC0000"/><path d="M89 95 Q96 90 101 95 Q106 90 113 95" fill="none" stroke="#1a0a0a" stroke-width="2" stroke-linecap="round"/><path d="M89 95 Q85 90 82 86" fill="none" stroke="#1a0a0a" stroke-width="1.5" stroke-linecap="round"/><path d="M113 95 Q117 90 120 86" fill="none" stroke="#1a0a0a" stroke-width="1.5" stroke-linecap="round"/><rect x="62" y="116" width="76" height="84" fill="#AA0000" rx="5"/><line x1="100" y1="116" x2="100" y2="200" stroke="#880000" stroke-width="2"/></svg></div>
-<div class="icell"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="#0d0202"/><rect x="30" y="20" width="140" height="160" fill="#141414" rx="4" stroke="#1e1e1e" stroke-width="2"/><circle cx="100" cy="100" r="60" fill="#1a1a1a" stroke="#CC0000" stroke-width="3"/><circle cx="100" cy="100" r="44" fill="#111" stroke="#333" stroke-width="1.5"/><line x1="100" y1="56" x2="100" y2="144" stroke="#CC0000" stroke-width="4" opacity=".85"/><line x1="56" y1="100" x2="144" y2="100" stroke="#CC0000" stroke-width="4" opacity=".85"/><line x1="72" y1="72" x2="128" y2="128" stroke="#CC0000" stroke-width="4" opacity=".85"/><line x1="128" y1="72" x2="72" y2="128" stroke="#CC0000" stroke-width="4" opacity=".85"/><circle cx="100" cy="100" r="14" fill="#CC0000" opacity=".8"/></svg></div>
-</div></div>
-
-<div class="steps">
-<h2>Order Process</h2>
-<div class="sgrid">
-<div class="step"><div class="snum">01</div><div class="stitle">Choose &amp; Add to Cart</div><div class="sdesc">Pick your item and add to cart. Apply coupon codes &mdash; ORDER 2 GET 11% OFF (INTHA11), ORDER 3 GET 15% OFF (INTHA15).</div></div>
-<div class="step"><div class="snum">02</div><div class="stitle">Place &amp; Pay</div><div class="sdesc">Place your order and complete payment via Instagram or WhatsApp. UPI &amp; bank transfer accepted. Order confirmed on payment only.</div></div>
-<div class="step"><div class="snum">03</div><div class="stitle">Shipped in 24hrs</div><div class="sdesc">Once payment confirmed, your order is dispatched within 24 hours. Track your parcel and receive your pre-loved finds at your door.</div></div>
-</div></div>
-
-<footer>
-<div class="ftop">
-<div>
-<span class="flogo">INTHA <span>THRIFT</span></span>
-<p class="fabout">Pre-loved, premium thrifted clothing &mdash; jerseys, trackpants, denims, caps, tees and more. Quality checked. Fast shipped. Real price.</p>
-<div class="fcontact">
-<a href="#">&#128222; +91 99999 99999</a>
-<a href="#">&#9993;&#65039; intha.thrift@gmail.com</a>
-<a href="#">&#128248; @intha.thrift</a>
-</div></div>
-<div class="fcol"><h4>Shop</h4><ul><li><a href="#jerseys">Jerseys</a></li><li><a href="#trackpants">Trackpants</a></li><li><a href="#denims">Denims</a></li><li><a href="#caps">Caps</a></li><li><a href="#">Tees</a></li><li><a href="#">Shoes</a></li></ul></div>
-<div class="fcol"><h4>Info</h4><ul><li><a href="#">About Us</a></li><li><a href="#">How to Order</a></li><li><a href="#">Sell With Us</a></li><li><a href="#">Sizing Guide</a></li><li><a href="#">FAQ</a></li></ul></div>
-<div class="fcol"><h4>Policies</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Shipping Policy</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">Cancellation</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+  <div class="mbanner-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:right center"></div>
+  <div class="mbanner-overlay"></div>
+  <div class="mbanner-text">
+    <span class="eyebrow">&#128308; Premium Thrifted</span>
+    <h2>Heaven of <span>Jerseys</span></h2>
+    <p>Rare vintage football &amp; basketball jerseys. Each one hand-picked and quality-checked. Your next favourite fit is waiting.</p>
+  </div>
 </div>
-<div class="fbot"><span>&#169; 2025 <span>Intha Thrift</span>. All rights reserved.</span><span>Made with &#9851;&#65039; in Tamil Nadu</span></div>
+
+<!-- JERSEYS -->
+<section class="section alt" id="jerseys">
+  <div class="sec-head">
+    <h2 class="sec-title">Jerseys</h2>
+    <a href="#" class="view-all">View All &rarr;</a>
+  </div>
+  <div class="pgrid">
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:center 5%"></div><div class="ci-overlay"></div><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">Size M</div><div class="cn">Liverpool FC</div><div class="cp">&#8377;1,499</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:left 10%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">Size L</div><div class="cn">NBA Vintage Jersey</div><div class="cp">&#8377;980</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:center 5%"></div><div class="ci-overlay"></div><span class="cbadge bh">Hot</span></div><div class="cb"><div class="csz">Size M</div><div class="cn">France 2008 Vintage</div><div class="cp">&#8377;849</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:center 5%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">Size XL</div><div class="cn">Ajax Retro Jersey</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:right 20%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">Size L</div><div class="cn">England 2006 Jersey</div><div class="cp">&#8377;899</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:left 15%"></div><div class="ci-overlay"></div><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">Size M</div><div class="cn">Y2K DADA Supreme</div><div class="cp">&#8377;899</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+  </div>
+</section>
+
+<!-- MID BANNER 2 — img4 guy leaning on car -->
+<div class="mbanner">
+  <div class="mbanner-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:right 15%"></div>
+  <div class="mbanner-overlay"></div>
+  <div class="mbanner-text">
+    <span class="eyebrow">&#128308; Premium Thrifted</span>
+    <h2>Heaven of <span>Trackpants</span></h2>
+    <p>Nike, Adidas, Puma, Fila &mdash; real vintage tracksuits dropped every Friday. Grab yours before it&apos;s gone.</p>
+  </div>
+</div>
+
+<!-- TRACKPANTS -->
+<section class="section" id="trackpants">
+  <div class="sec-head"><h2 class="sec-title">Trackpants</h2><a href="#" class="view-all">View All &rarr;</a></div>
+  <div class="pgrid">
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:center 10%"></div><div class="ci-overlay"></div><span class="cbadge bh">Hot</span></div><div class="cb"><div class="csz">W30-32</div><div class="cn">Nike Vintage Track</div><div class="cp">&#8377;929</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:center 20%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">W28-30</div><div class="cn">Adidas Track Pant</div><div class="cp">&#8377;839</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:left 10%"></div><div class="ci-overlay"></div><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">W26-28</div><div class="cn">Fila Track</div><div class="cp">&#8377;849</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:center 15%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">W30-32</div><div class="cn">Reebok Classic Track</div><div class="cp">&#8377;750</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:left 5%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">W32</div><div class="cn">Mammut Track Pant</div><div class="cp">&#8377;899</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:right 20%"></div><div class="ci-overlay"></div><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">W26-28 L40</div><div class="cn">Lacoste Track</div><div class="cp">&#8377;399</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+  </div>
+</section>
+
+<!-- DENIMS -->
+<section class="section alt" id="denims">
+  <div class="sec-head"><h2 class="sec-title">Denims</h2><a href="#" class="view-all">View All &rarr;</a></div>
+  <div class="pgrid">
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:center 10%"></div><div class="ci-overlay"></div><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">W30 L42</div><div class="cn">Real Baggy Low Rise</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:center 20%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">W36 L43</div><div class="cn">Carhartt Work Jeans</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:center 10%"></div><div class="ci-overlay"></div><span class="cbadge bh">Hot</span></div><div class="cb"><div class="csz">W34 L38</div><div class="cn">Tommy Hilfiger Denim</div><div class="cp">&#8377;949</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:right 10%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">W36 L43</div><div class="cn">Dickies Cargo Denim</div><div class="cp">&#8377;999</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+  </div>
+</section>
+
+<!-- MID BANNER 3 — img5 full group shot -->
+<div class="mbanner">
+  <div class="mbanner-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:center 15%"></div>
+  <div class="mbanner-overlay"></div>
+  <div class="mbanner-text">
+    <span class="eyebrow">&#128308; Intha Thrift</span>
+    <h2>Steal the <span>Look.</span></h2>
+    <p>Pre-loved fashion for people who know style doesn&apos;t have an expiry date. New drops every Friday.</p>
+  </div>
+</div>
+
+<!-- CAPS -->
+<section class="section" id="caps">
+  <div class="sec-head"><h2 class="sec-title">Caps</h2><a href="#" class="view-all">View All &rarr;</a></div>
+  <div class="pgrid">
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:center 5%"></div><div class="ci-overlay"></div><span class="cbadge bn">New</span></div><div class="cb"><div class="csz">One Size</div><div class="cn">Intha Thrift Cap</div><div class="cp">&#8377;499</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:center 5%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">One Size</div><div class="cn">Vintage NY Snapback</div><div class="cp">&#8377;499</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:center 5%"></div><div class="ci-overlay"></div><span class="cbadge bh">Hot</span></div><div class="cb"><div class="csz">One Size</div><div class="cn">Nike Vintage Cap</div><div class="cp">&#8377;550</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+    <div class="pc"><div class="ci"><div class="ci-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:center 5%"></div><div class="ci-overlay"></div></div><div class="cb"><div class="csz">One Size</div><div class="cn">Puma Vintage Cap</div><div class="cp">&#8377;400</div><button class="ca" onclick="addCart(this)">Add to Cart</button></div></div>
+  </div>
+</section>
+
+<!-- INSTAGRAM STRIP -->
+<div class="istrip">
+  <div class="ihead"><h3>Connect With Us</h3><span class="ihandle">@intha.thrift</span></div>
+  <div class="igrid">
+    <div class="icell"><div class="icell-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img1.png');background-position:center 10%"></div><div class="icell-overlay"></div></div>
+    <div class="icell"><div class="icell-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img2.png');background-position:center 15%"></div><div class="icell-overlay"></div></div>
+    <div class="icell"><div class="icell-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img3.png');background-position:center 10%"></div><div class="icell-overlay"></div></div>
+    <div class="icell"><div class="icell-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img4.png');background-position:center 10%"></div><div class="icell-overlay"></div></div>
+    <div class="icell"><div class="icell-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/img5.png');background-position:center 5%"></div><div class="icell-overlay"></div></div>
+  </div>
+</div>
+
+<!-- ORDER STEPS -->
+<div class="steps">
+  <h2>Order Process</h2>
+  <div class="sgrid">
+    <div class="step"><div class="snum">01</div><div class="stitle">Choose &amp; Add to Cart</div><div class="sdesc">Pick your item and add to cart. Apply coupon codes &mdash; ORDER 2 GET 11% OFF (INTHA11), ORDER 3 GET 15% OFF (INTHA15).</div></div>
+    <div class="step"><div class="snum">02</div><div class="stitle">Place &amp; Pay</div><div class="sdesc">Place your order and complete payment via Instagram or WhatsApp. UPI &amp; bank transfer accepted. Order confirmed on payment only.</div></div>
+    <div class="step"><div class="snum">03</div><div class="stitle">Shipped in 24hrs</div><div class="sdesc">Once payment confirmed, your order dispatched within 24 hours. Track your parcel and receive your pre-loved finds at your door.</div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ftop">
+    <div>
+      <span class="flogo">INTHA <span>THRIFT</span></span>
+      <p class="fabout">Pre-loved, premium thrifted clothing &mdash; jerseys, trackpants, denims, caps, tees and more. Quality checked. Fast shipped. Real price.</p>
+      <div class="fcontact">
+        <a href="#">&#128222; +91 99999 99999</a>
+        <a href="#">&#9993;&#65039; intha.thrift@gmail.com</a>
+        <a href="#">&#128248; @intha.thrift</a>
+      </div>
+    </div>
+    <div class="fcol"><h4>Shop</h4><ul><li><a href="#jerseys">Jerseys</a></li><li><a href="#trackpants">Trackpants</a></li><li><a href="#denims">Denims</a></li><li><a href="#caps">Caps</a></li><li><a href="#">Tees</a></li><li><a href="#">Shoes</a></li></ul></div>
+    <div class="fcol"><h4>Info</h4><ul><li><a href="#">About Us</a></li><li><a href="#">How to Order</a></li><li><a href="#">Sell With Us</a></li><li><a href="#">Sizing Guide</a></li><li><a href="#">FAQ</a></li></ul></div>
+    <div class="fcol"><h4>Policies</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Shipping Policy</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">Cancellation</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+  </div>
+  <div class="fbot">
+    <span>&#169; 2025 <span>Intha Thrift</span>. All rights reserved.</span>
+    <span>Made with &#9851;&#65039; in Tamil Nadu</span>
+  </div>
 </footer>
 
 <script>
 let c=0;
 function addCart(btn){
-  c++;document.getElementById('cartLink').textContent='Cart '+c;
-  btn.textContent='&#10003; Added';btn.style.background='var(--red)';btn.style.color='#fff';btn.style.borderColor='var(--red)';
-  setTimeout(()=>{btn.textContent='Add to Cart';btn.style.background='';btn.style.color='';btn.style.borderColor='';},1400);
+  c++;
+  document.getElementById('cartLink').textContent='Cart '+c;
+  btn.textContent='&#10003; Added';
+  btn.style.background='var(--red)';btn.style.color='#fff';btn.style.borderColor='var(--red)';
+  setTimeout(()=>{
+    btn.textContent='Add to Cart';
+    btn.style.background='';btn.style.color='';btn.style.borderColor='';
+  },1400);
 }
 </script>
 </body>
