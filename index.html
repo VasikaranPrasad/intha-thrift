@@ -2,1450 +2,1093 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intha Thrift — Premium Thrifted Clothing</title>
-<meta name="description" content="Premium pre-loved clothing. Jerseys, trackpants, denims, jackets, caps and more. Quality certified. Fast shipped.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@200;300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Intha Thrift</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ════════════════════════════════════════════════
-   RESET & ROOT
-════════════════════════════════════════════════ */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-size:16px}
-:root{
-  --red:#B91C1C;
-  --red2:#991B1B;
-  --red3:#7F1D1D;
-  --gold:#C8A951;
-  --gold2:#A8892E;
-  --gold-light:#E8CC7A;
-  --black:#000000;
-  --dark:#080808;
-  --dark2:#0F0F0F;
-  --dark3:#161616;
-  --dark4:#1E1E1E;
-  --dark5:#252525;
-  --border:#1E1E1E;
-  --border2:#2A2A2A;
-  --border3:#333333;
-  --t0:#FFFFFF;
-  --t1:#E8E8E8;
-  --t2:#B0B0B0;
-  --t3:#787878;
-  --t4:#484848;
-  --t5:#2E2E2E;
-  --r8:0;
-  --shadow-sm:0 2px 8px rgba(0,0,0,.4);
-  --shadow-md:0 8px 32px rgba(0,0,0,.5);
-  --shadow-lg:0 20px 60px rgba(0,0,0,.6);
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   font-family:'Inter',sans-serif;
-  background:var(--dark);
-  color:var(--t1);
+  background:#282828;
+  color:#fff;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
 }
-img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
 button{font-family:'Inter',sans-serif;cursor:pointer}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:var(--dark)}
-::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px}
-::selection{background:var(--red);color:#fff}
 
-/* ════════════════════════════════════════════════
-   CURSOR DOT
-════════════════════════════════════════════════ */
-.cursor{
-  position:fixed;width:8px;height:8px;
-  background:var(--red);border-radius:50%;
-  pointer-events:none;z-index:9999;
-  transform:translate(-50%,-50%);
-  transition:transform .1s;
-  mix-blend-mode:difference;
-}
-.cursor-ring{
-  position:fixed;width:32px;height:32px;
-  border:1px solid rgba(185,28,28,.5);border-radius:50%;
-  pointer-events:none;z-index:9998;
-  transform:translate(-50%,-50%);
-  transition:transform .15s,width .2s,height .2s,opacity .2s;
-}
-
-/* ════════════════════════════════════════════════
-   LOADING SCREEN
-════════════════════════════════════════════════ */
-.loader{
-  position:fixed;inset:0;z-index:9000;
-  background:var(--black);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  transition:opacity .6s ease,visibility .6s;
-}
-.loader.hide{opacity:0;visibility:hidden}
-.loader-logo{
-  font-family:'Playfair Display',serif;
-  font-size:2.5rem;font-weight:700;
-  letter-spacing:.2em;color:#fff;
-  margin-bottom:2rem;
-}
-.loader-logo span{color:var(--red)}
-.loader-bar{
-  width:200px;height:1px;
-  background:var(--dark5);
-  position:relative;overflow:hidden;
-}
-.loader-bar-fill{
-  position:absolute;inset:0;
-  background:linear-gradient(90deg,var(--red),var(--gold));
-  transform:translateX(-100%);
-  animation:loadFill 1.8s ease forwards;
-}
-@keyframes loadFill{to{transform:translateX(0)}}
-.loader-text{
-  font-size:.6rem;letter-spacing:.35em;
-  text-transform:uppercase;color:var(--t4);
-  margin-top:1rem;
-}
-
-/* ════════════════════════════════════════════════
-   ANNOUNCEMENT BAR
-════════════════════════════════════════════════ */
-.ann{
-  background:var(--red3);
-  border-bottom:1px solid rgba(255,255,255,.06);
-  overflow:hidden;padding:10px 0;
-  position:relative;
-}
-.ann-track{
-  display:flex;width:max-content;
-  animation:marquee 28s linear infinite;
-}
-.ann-track span{
-  white-space:nowrap;padding:0 3rem;
-  font-size:.62rem;font-weight:500;
-  letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(255,255,255,.75);
-}
-.ann-track .sep{
-  color:var(--gold);padding:0 .5rem;
-  letter-spacing:0;
-}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* ════════════════════════════════════════════════
-   NAV
-════════════════════════════════════════════════ */
+/* ── NAV ── */
 .nav{
-  position:sticky;top:0;z-index:500;
-  height:72px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 5vw;
-  background:rgba(8,8,8,.92);
-  backdrop-filter:blur(24px) saturate(160%);
-  -webkit-backdrop-filter:blur(24px) saturate(160%);
-  border-bottom:1px solid var(--border);
-  transition:box-shadow .3s;
+  background:#1a1a1a;
+  border-bottom:3px solid #CC0000;
+  display:flex;align-items:center;
+  justify-content:space-between;
+  padding:0 4vw;height:60px;
+  position:sticky;top:0;z-index:200;
 }
-.nav.scrolled{box-shadow:0 1px 0 var(--border2),var(--shadow-md)}
-.nav-logo{display:flex;flex-direction:column;gap:2px}
-.nav-logo-name{
-  font-family:'Playfair Display',serif;
-  font-size:1.45rem;font-weight:700;
-  letter-spacing:.08em;color:var(--t0);
-  line-height:1;
+.nav-logo{
+  font-size:1.35rem;font-weight:700;
+  letter-spacing:.06em;color:#fff;
+  text-transform:uppercase;
 }
-.nav-logo-name em{
-  color:var(--red);font-style:italic;
-  font-size:1.6rem;
+.nav-logo span{color:#CC0000}
+.nav-cats{
+  display:flex;list-style:none;gap:0;
 }
-.nav-logo-tag{
-  font-size:.5rem;letter-spacing:.38em;
-  text-transform:uppercase;color:var(--t4);
+.nav-cats a{
+  color:#aaa;font-size:.75rem;
+  font-weight:500;letter-spacing:.06em;
+  text-transform:lowercase;
+  padding:0 .9rem;height:60px;
+  display:flex;align-items:center;
+  border-right:1px solid #2a2a2a;
+  transition:color .15s,background .15s;
 }
-.nav-center{
-  display:flex;align-items:center;gap:0;
-  list-style:none;
-}
-.nav-center a{
-  display:flex;align-items:center;height:72px;
-  padding:0 1.1rem;
-  font-size:.68rem;font-weight:400;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--t3);
-  position:relative;transition:color .2s;
-}
-.nav-center a::after{
-  content:'';
-  position:absolute;bottom:-1px;left:1.1rem;right:1.1rem;
-  height:1px;background:var(--red);
-  transform:scaleX(0);transition:transform .25s;
-}
-.nav-center a:hover{color:var(--t0)}
-.nav-center a:hover::after{transform:scaleX(1)}
+.nav-cats a:first-child{border-left:1px solid #2a2a2a}
+.nav-cats a:hover{color:#fff;background:rgba(204,0,0,.12)}
 .nav-right{display:flex;align-items:center;gap:.8rem}
-.nav-icon{
-  display:flex;align-items:center;justify-content:center;
-  width:38px;height:38px;
-  border:1px solid var(--border2);
-  background:transparent;
-  color:var(--t2);
-  font-size:.85rem;
-  transition:all .2s;
+.nav-right a{color:#aaa;font-size:.78rem;transition:color .15s}
+.nav-right a:hover{color:#fff}
+.cart-btn{
+  background:#CC0000;color:#fff;
+  border:none;padding:7px 18px;
+  font-size:.75rem;font-weight:600;
+  letter-spacing:.04em;text-transform:uppercase;
+  cursor:pointer;transition:background .15s;
 }
-.nav-icon:hover{border-color:var(--t3);color:var(--t0)}
-.nav-bag{
-  display:flex;align-items:center;gap:.6rem;
-  border:1px solid var(--border2);
-  background:transparent;
-  color:var(--t1);padding:0 1rem;height:38px;
-  font-size:.65rem;font-weight:500;
-  letter-spacing:.14em;text-transform:uppercase;
-  transition:all .2s;
-}
-.nav-bag:hover{border-color:var(--red);background:rgba(185,28,28,.06)}
-.bag-count{
-  min-width:18px;height:18px;
-  background:var(--red);color:#fff;
-  border-radius:50%;font-size:.55rem;
-  font-weight:700;display:flex;
-  align-items:center;justify-content:center;
-  padding:0 3px;
-}
+.cart-btn:hover{background:#aa0000}
 
-/* ════════════════════════════════════════════════
-   HERO — FULL CINEMATIC
-════════════════════════════════════════════════ */
+/* ── TICKER ── */
+.ticker{
+  background:#CC0000;overflow:hidden;
+  padding:9px 0;border-bottom:2px solid #000;
+}
+.ticker-inner{
+  display:flex;width:max-content;
+  animation:tick 28s linear infinite;
+}
+.ticker-inner span{
+  white-space:nowrap;padding:0 2rem;
+  font-size:.7rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:#fff;
+}
+.ticker-inner span::after{content:' ★ ';margin-left:2rem}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── HERO SLIDES ── */
 .hero{
   position:relative;
-  height:100svh;min-height:640px;
+  height:90vh;min-height:520px;
   overflow:hidden;
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  display:flex;align-items:flex-end;
 }
-/* Left half — dark content panel */
-.hero-left{
+.hero-bg{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center 20%;
+  background-repeat:no-repeat;
+}
+/* Light gradient — show image clearly, just enough for text */
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(26,26,26,.05) 0%,
+    rgba(26,26,26,.05) 30%,
+    rgba(26,26,26,.55) 65%,
+    rgba(26,26,26,.95) 100%
+  );
+}
+.hero-body{
   position:relative;z-index:2;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:0 5vw 6rem;
-  background:linear-gradient(to right,rgba(8,8,8,1) 0%,rgba(8,8,8,.95) 60%,rgba(8,8,8,.6) 100%);
+  padding:0 5vw 4rem;
 }
-/* Right half — full image */
-.hero-right{
-  position:relative;overflow:hidden;
-}
-.hero-right img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:center 15%;
-  animation:hzoom 20s ease-in-out infinite alternate;
-}
-@keyframes hzoom{from{transform:scale(1)}to{transform:scale(1.08)}}
-.hero-right::before{
-  content:'';position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to right,rgba(8,8,8,.6) 0%,transparent 60%),
-    linear-gradient(to top,rgba(8,8,8,.4) 0%,transparent 40%);
-}
-/* Diagonal divider */
-.hero-right::after{
-  content:'';position:absolute;
-  top:0;left:-80px;bottom:0;
-  width:160px;z-index:2;
-  background:linear-gradient(to right,rgba(8,8,8,1),transparent);
-}
-.hero-eyebrow{
-  display:flex;align-items:center;gap:12px;
-  font-size:.58rem;font-weight:500;
-  letter-spacing:.32em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1.6rem;
-}
-.hero-eyebrow::before{
-  content:'';width:32px;height:1px;background:var(--gold);
+.hero-tag{
+  font-size:.65rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:#CC0000;margin-bottom:.6rem;
 }
 .hero-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3rem,5.5vw,6.5rem);
-  font-weight:400;line-height:.9;
-  color:var(--t0);
-  margin-bottom:1.6rem;
-  letter-spacing:-.02em;
+  font-size:clamp(2.2rem,5vw,4.5rem);
+  font-weight:700;line-height:1;
+  color:#fff;margin-bottom:1.4rem;
+  text-transform:lowercase;
+  text-shadow:2px 2px 20px rgba(0,0,0,.8);
 }
-.hero-title .italic{
-  font-style:italic;color:var(--red);
-  font-weight:600;display:block;
-}
-.hero-title .thin{
-  font-weight:300;display:block;
-  font-size:.85em;
-}
-.hero-desc{
-  color:var(--t3);font-size:.85rem;
-  font-weight:300;line-height:2;
-  max-width:360px;margin-bottom:2.5rem;
-  letter-spacing:.02em;
-}
-.hero-btns{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
-.btn-fill{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--red);color:#fff;
-  padding:0 2rem;height:48px;
-  font-size:.65rem;font-weight:600;
-  letter-spacing:.2em;text-transform:uppercase;
-  border:1px solid var(--red);
-  position:relative;overflow:hidden;
-  transition:all .3s;
-}
-.btn-fill::before{
-  content:'';position:absolute;
-  inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.08) 50%,transparent 60%);
-  transform:translateX(-200%);transition:transform .5s;
-}
-.btn-fill:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(185,28,28,.35)}
-.btn-fill:hover::before{transform:translateX(200%)}
-.btn-line{
-  display:inline-flex;align-items:center;gap:8px;
-  background:transparent;color:var(--t2);
-  padding:0 .5rem;height:48px;
-  font-size:.65rem;font-weight:400;
-  letter-spacing:.18em;text-transform:uppercase;
-  border:none;transition:all .2s;
-  position:relative;
-}
-.btn-line::after{
-  content:'';position:absolute;bottom:10px;
-  left:.5rem;right:.5rem;height:1px;
-  background:var(--t4);transition:all .2s;
-}
-.btn-line:hover{color:var(--t0)}
-.btn-line:hover::after{background:var(--t0)}
-/* Hero bottom strip */
-.hero-strip{
-  position:absolute;bottom:0;left:0;right:0;z-index:3;
-  display:grid;grid-template-columns:repeat(4,1fr);
-  border-top:1px solid rgba(255,255,255,.06);
-}
-.hero-strip-item{
-  padding:1.2rem 2rem;
-  border-right:1px solid rgba(255,255,255,.06);
-  backdrop-filter:blur(10px);
-  background:rgba(8,8,8,.7);
-  display:flex;align-items:center;gap:1rem;
-}
-.hero-strip-item:last-child{border-right:none}
-.strip-icon{
-  font-size:1rem;
-  color:var(--red);
-  flex-shrink:0;
-}
-.strip-title{
-  font-size:.68rem;font-weight:600;
-  letter-spacing:.1em;text-transform:uppercase;
-  color:var(--t1);margin-bottom:2px;
-}
-.strip-sub{
-  font-size:.6rem;color:var(--t4);letter-spacing:.05em;
-}
-
-/* ════════════════════════════════════════════════
-   ITALIC SCROLL BAND
-════════════════════════════════════════════════ */
-.scroll-band{
-  background:var(--dark2);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  overflow:hidden;padding:16px 0;
-}
-.scroll-band-track{
-  display:flex;width:max-content;
-  animation:marquee 22s linear infinite;
-}
-.scroll-band-track .word{
-  white-space:nowrap;padding:0 2rem;
-  font-family:'Playfair Display',serif;
-  font-size:1.1rem;font-style:italic;
-  font-weight:400;letter-spacing:.06em;
-  color:var(--t4);
-}
-.scroll-band-track .red-dot{
-  color:var(--red);font-style:normal;
-  font-family:'Inter',sans-serif;
-  font-size:.5rem;vertical-align:middle;
-  padding:0;
-}
-
-/* ════════════════════════════════════════════════
-   SECTION COMMONS
-════════════════════════════════════════════════ */
-.section{padding:6rem 5vw}
-.section-alt{background:var(--dark2)}
-.section-sm{padding:4rem 5vw}
-.sec-eyebrow{
-  display:flex;align-items:center;gap:10px;
-  font-size:.58rem;font-weight:500;
-  letter-spacing:.28em;text-transform:uppercase;
-  color:var(--red);margin-bottom:.8rem;
-}
-.sec-eyebrow::before{content:'';width:20px;height:1px;background:var(--red)}
-.sec-heading{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.8rem,3.5vw,3rem);
-  font-weight:400;line-height:1;
-  color:var(--t0);letter-spacing:-.01em;
-}
-.sec-heading em{font-style:italic;color:var(--t3)}
-.sec-head{
-  display:flex;align-items:flex-end;
-  justify-content:space-between;
-  margin-bottom:3rem;
-  padding-bottom:1.5rem;
-  border-bottom:1px solid var(--border);
-}
-.link-arrow{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:.62rem;font-weight:500;
-  letter-spacing:.16em;text-transform:uppercase;
-  color:var(--t4);
-  border-bottom:1px solid var(--border2);
-  padding-bottom:3px;
-  transition:all .2s;
-}
-.link-arrow:hover{color:var(--t0);border-color:var(--t3)}
-
-/* ════════════════════════════════════════════════
-   CATEGORY FEATURE
-════════════════════════════════════════════════ */
-.cat-feature{
-  display:grid;
-  grid-template-columns:1.5fr 1fr 1fr;
-  grid-template-rows:1fr 1fr;
-  gap:2px;
-  height:640px;
-}
-.cat-card{
-  position:relative;overflow:hidden;
-  cursor:pointer;background:var(--dark4);
-}
-.cat-card:first-child{grid-row:1/3}
-.cat-card img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:center 15%;
-  transition:transform .7s cubic-bezier(.16,1,.3,1),filter .4s;
-  filter:brightness(.8) saturate(.95);
-}
-.cat-card:hover img{
-  transform:scale(1.08);
-  filter:brightness(.95) saturate(1.05);
-}
-.cat-card-veil{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(8,8,8,.92) 0%,rgba(8,8,8,.3) 40%,rgba(8,8,8,.05) 100%);
-  transition:opacity .3s;
-}
-.cat-card-body{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:1.8rem 2rem;z-index:2;
-}
-.cat-card-tag{
-  font-size:.55rem;font-weight:500;
-  letter-spacing:.28em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:.5rem;
-  display:flex;align-items:center;gap:8px;
-  opacity:0;transform:translateY(6px);
-  transition:all .3s;
-}
-.cat-card-tag::before{content:'';width:12px;height:1px;background:var(--gold)}
-.cat-card:hover .cat-card-tag{opacity:1;transform:translateY(0)}
-.cat-card-name{
-  font-family:'Playfair Display',serif;
-  font-size:1.6rem;font-weight:600;
-  color:var(--t0);line-height:1;
-  margin-bottom:.8rem;
-}
-.cat-card:first-child .cat-card-name{font-size:2.8rem}
-.cat-card-cta{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:.6rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--t3);
-  transition:all .25s;
-}
-.cat-card:hover .cat-card-cta{color:var(--t0);gap:10px}
-
-/* ════════════════════════════════════════════════
-   PRODUCT GRID
-════════════════════════════════════════════════ */
-.prod-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  gap:1px;
-  background:var(--border);
-  border:1px solid var(--border);
-}
-.prod-card{
-  background:var(--dark);
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-  transition:background .2s;
-}
-.prod-card:hover{background:var(--dark3)}
-.prod-img{
-  aspect-ratio:3/4.2;
-  overflow:hidden;
-  position:relative;
-  background:var(--dark3);
-}
-.prod-img img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:center top;
-  transition:transform .65s cubic-bezier(.16,1,.3,1),filter .35s;
-  filter:brightness(.88) saturate(.95);
-}
-.prod-card:hover .prod-img img{
-  transform:scale(1.06);
-  filter:brightness(1) saturate(1.05);
-}
-/* Quick add overlay */
-.prod-overlay{
-  position:absolute;inset:0;
-  background:rgba(8,8,8,.5);
-  backdrop-filter:blur(2px);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;transform:translateY(8px);
-  transition:all .25s;z-index:2;
-}
-.prod-card:hover .prod-overlay{opacity:1;transform:translateY(0)}
-.prod-quick-add{
-  background:var(--t0);color:var(--dark);
-  padding:10px 24px;
-  font-size:.62rem;font-weight:700;
-  letter-spacing:.18em;text-transform:uppercase;
-  border:none;cursor:pointer;
-  transition:all .2s;
-}
-.prod-quick-add:hover{background:var(--gold);}
-/* Badge */
-.prod-badge{
-  position:absolute;top:12px;left:12px;
-  z-index:3;font-size:.55rem;font-weight:700;
+.hero-cta{
+  display:inline-block;
+  background:#CC0000;color:#fff;
+  padding:11px 28px;
+  font-size:.72rem;font-weight:700;
   letter-spacing:.14em;text-transform:uppercase;
-  padding:4px 10px;
+  border:none;cursor:pointer;
+  transition:background .15s;
 }
-.badge-new{background:var(--red);color:#fff}
-.badge-hot{background:var(--gold);color:#000}
-/* Wishlist */
-.prod-wish{
-  position:absolute;top:10px;right:12px;z-index:3;
-  width:32px;height:32px;
-  border:1px solid rgba(255,255,255,.15);
-  background:rgba(8,8,8,.5);backdrop-filter:blur(4px);
-  color:var(--t2);font-size:.85rem;
-  display:flex;align-items:center;justify-content:center;
-  border-radius:50%;cursor:pointer;
-  transition:all .2s;
-  opacity:0;transform:translateY(-4px);
-}
-.prod-card:hover .prod-wish{opacity:1;transform:translateY(0)}
-.prod-wish:hover{border-color:var(--red);color:var(--red);background:rgba(185,28,28,.1)}
-/* Info */
-.prod-info{
-  padding:1.2rem 1.4rem 1.5rem;
-  border-top:1px solid var(--border);
-}
-.prod-brand{
-  font-size:.55rem;font-weight:500;
-  letter-spacing:.22em;text-transform:uppercase;
-  color:var(--t4);margin-bottom:.35rem;
-}
-.prod-name{
-  font-family:'Playfair Display',serif;
-  font-size:1rem;font-weight:500;
-  color:var(--t0);margin-bottom:.3rem;
-  line-height:1.25;
-}
-.prod-meta{
-  font-size:.6rem;color:var(--t4);
-  letter-spacing:.06em;margin-bottom:.9rem;
-}
-.prod-bottom{
-  display:flex;align-items:center;
+.hero-cta:hover{background:#aa0000}
+
+/* ── SECTION ── */
+.sec{padding:3rem 4vw}
+.sec.dark{background:#1e1e1e}
+.sec-head{
+  display:flex;align-items:baseline;
   justify-content:space-between;
+  margin-bottom:1.4rem;
+  padding-bottom:.9rem;
+  border-bottom:1px solid #333;
 }
-.prod-price{
-  font-family:'Playfair Display',serif;
-  font-size:1.1rem;font-weight:600;color:var(--t0);
+.sec-title{
+  font-size:1.3rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:#fff;
 }
-.prod-was{
-  font-family:'Inter',sans-serif;
-  font-size:.7rem;color:var(--t4);
-  text-decoration:line-through;
-  margin-left:6px;font-weight:300;
+.view-all{
+  color:#CC0000;font-size:.7rem;
+  font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;
+  transition:color .15s;
 }
-.prod-save{
-  font-size:.55rem;color:var(--gold);
-  letter-spacing:.08em;margin-left:6px;
-}
-.prod-add{
-  width:32px;height:32px;
-  border:1px solid var(--border3);
-  background:transparent;color:var(--t3);
-  font-size:1rem;font-weight:300;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .2s;flex-shrink:0;
-}
-.prod-add:hover{
-  border-color:var(--red);background:var(--red);color:#fff;
-}
+.view-all:hover{color:#ff3333}
 
-/* ════════════════════════════════════════════════
-   CINEMATIC FULL BANNER
-════════════════════════════════════════════════ */
-.full-banner{
-  position:relative;
-  height:560px;overflow:hidden;
-  display:flex;align-items:center;
+/* ── PRODUCT GRID ── */
+.pgrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:.8rem;
 }
-.full-banner img{
+.pc{
+  background:#222;
+  border:1px solid #2e2e2e;
+  transition:border-color .2s,transform .2s;
+  overflow:hidden;
+}
+.pc:hover{border-color:#CC0000;transform:translateY(-3px)}
+.pc-img-wrap{
+  display:block;
+  aspect-ratio:1/1.15;
+  position:relative;overflow:hidden;
+  background:#1a1a1a;
+}
+.img-main,.img-hover{
   position:absolute;inset:0;
   width:100%;height:100%;
-  object-fit:cover;object-position:center 20%;
-  transition:transform .3s;
+  object-fit:cover;
+  object-position:center top;
+  transition:opacity .35s;
 }
-.full-banner-veil{
+.img-hover{opacity:0;transform:scale(1.04)}
+.pc-img-wrap:hover .img-main{opacity:0}
+.pc-img-wrap:hover .img-hover{opacity:1}
+.badge{
+  position:absolute;top:8px;left:8px;z-index:2;
+  background:#CC0000;color:#fff;
+  font-size:.58rem;font-weight:800;
+  padding:3px 8px;letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.pc-info{padding:.65rem .75rem .8rem}
+.pc-name{
+  display:block;font-size:.82rem;
+  font-weight:500;color:#ddd;
+  margin-bottom:.3rem;line-height:1.3;
+  transition:color .15s;
+}
+.pc-name:hover{color:#fff}
+.pc-price{
+  font-size:.88rem;font-weight:700;
+  color:#fff;margin-bottom:.55rem;
+}
+.add-btn{
+  width:100%;background:#1a1a1a;
+  border:1px solid #333;color:#999;
+  font-size:.65rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:7px;transition:all .15s;
+}
+.add-btn:hover{background:#CC0000;color:#fff;border-color:#CC0000}
+
+/* ── MID BANNER ── */
+.mid-banner{
+  position:relative;height:380px;
+  overflow:hidden;display:flex;align-items:center;
+}
+.mid-banner-bg{
   position:absolute;inset:0;
-  background:
-    linear-gradient(to right,rgba(8,8,8,.95) 0%,rgba(8,8,8,.72) 40%,rgba(8,8,8,.15) 100%),
-    linear-gradient(to top,rgba(8,8,8,.3) 0%,transparent 40%);
+  background-size:cover;
+  background-position:center 20%;
 }
-.full-banner-body{
+.mid-banner-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to right,
+    rgba(26,26,26,.92) 0%,
+    rgba(26,26,26,.6) 42%,
+    rgba(26,26,26,.08) 100%
+  );
+}
+.mid-banner-body{
   position:relative;z-index:2;
-  padding:0 5vw;max-width:580px;
+  padding:0 5vw;max-width:500px;
 }
-.full-banner-body p{
-  color:var(--t3);font-size:.85rem;
-  font-weight:300;line-height:2;
-  margin-bottom:2rem;max-width:380px;
-}
+.mid-banner-body .hero-title{font-size:clamp(1.8rem,4vw,3rem)}
 
-/* ════════════════════════════════════════════════
-   SPLIT SECTION
-════════════════════════════════════════════════ */
-.split{
-  display:grid;grid-template-columns:1fr 1fr;
-  min-height:520px;
+/* ── CONNECT / INSTAGRAM ── */
+.connect{padding:3rem 4vw}
+.connect-title{
+  font-size:1.3rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:1.5rem;
+  padding-bottom:.9rem;
+  border-bottom:1px solid #333;
 }
-.split.reverse{direction:rtl}
-.split.reverse > *{direction:ltr}
-.split-img{position:relative;overflow:hidden;min-height:400px}
-.split-img img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:center 15%;
-  transition:transform .7s ease;
-}
-.split:hover .split-img img{transform:scale(1.04)}
-.split-body{
-  background:var(--dark2);
-  display:flex;flex-direction:column;justify-content:center;
-  padding:5rem 5vw;
-  border:1px solid var(--border);
-  border-left:none;
-}
-.split.reverse .split-body{border-left:1px solid var(--border);border-right:none}
-.split-body p{
-  color:var(--t3);font-size:.85rem;
-  font-weight:300;line-height:2;
-  margin:1.2rem 0 2rem;max-width:380px;
-}
-.split-numbers{
-  display:flex;gap:2.5rem;margin-top:2.5rem;
-  padding-top:2.5rem;border-top:1px solid var(--border);
-}
-.split-num{}
-.split-num-val{
-  font-family:'Playfair Display',serif;
-  font-size:2rem;font-weight:600;
-  color:var(--gold);line-height:1;
-}
-.split-num-label{
-  font-size:.58rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--t4);
-  margin-top:4px;
-}
-
-/* ════════════════════════════════════════════════
-   PROCESS
-════════════════════════════════════════════════ */
-.process{
-  background:var(--dark2);
-  padding:6rem 5vw;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-}
-.process-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:0;margin-top:3rem;
-}
-.process-item{
-  padding:2.5rem;
-  border-right:1px solid var(--border);
-  position:relative;
-}
-.process-item:last-child{border-right:none}
-.process-item::before{
-  content:'';
-  position:absolute;top:0;left:2.5rem;right:2.5rem;
-  height:1px;
-  background:linear-gradient(90deg,var(--red),transparent);
-}
-.process-num{
-  font-family:'Playfair Display',serif;
-  font-size:5rem;font-weight:300;
-  color:rgba(185,28,28,.1);
-  line-height:1;margin-bottom:.8rem;
-  font-style:italic;
-}
-.process-title{
-  font-size:.7rem;font-weight:600;
-  letter-spacing:.18em;text-transform:uppercase;
-  color:var(--t0);margin-bottom:.8rem;
-}
-.process-desc{
-  font-size:.8rem;color:var(--t4);
-  line-height:1.9;font-weight:300;
-}
-
-/* ════════════════════════════════════════════════
-   INSTAGRAM
-════════════════════════════════════════════════ */
-.insta-grid{
+.ig-grid{
   display:grid;
   grid-template-columns:repeat(6,1fr);
-  gap:2px;margin-top:2.5rem;
+  gap:3px;margin-bottom:1.2rem;
 }
-.insta-cell{
+.ig-cell{
   aspect-ratio:1;overflow:hidden;
-  cursor:pointer;position:relative;
-  background:var(--dark4);
+  cursor:pointer;
+  border:1px solid #2a2a2a;
+  transition:border-color .2s;
 }
-.insta-cell img{
+.ig-cell:hover{border-color:#CC0000}
+.ig-cell img{
   width:100%;height:100%;
   object-fit:cover;object-position:center top;
-  transition:transform .6s cubic-bezier(.16,1,.3,1),filter .3s;
-  filter:brightness(.7) saturate(.8);
+  transition:transform .4s,filter .3s;
+  filter:brightness(.75);
 }
-.insta-cell::after{
-  content:'&#128248;';
-  position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;
-  background:rgba(185,28,28,0);
-  opacity:0;transition:all .25s;
+.ig-cell:hover img{transform:scale(1.08);filter:brightness(.95)}
+.follow-btn{
+  display:inline-block;
+  border:1px solid #444;color:#aaa;
+  padding:9px 24px;
+  font-size:.7rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  transition:all .18s;
 }
-.insta-cell:hover img{transform:scale(1.1);filter:brightness(.9) saturate(1.1)}
-.insta-cell:hover::after{background:rgba(185,28,28,.15);opacity:1}
+.follow-btn:hover{border-color:#CC0000;color:#fff}
 
-/* ════════════════════════════════════════════════
-   VALUE STRIP
-════════════════════════════════════════════════ */
-.values{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
+/* ── ORDER STEPS ── */
+.steps{
+  background:#1a1a1a;
+  border-top:1px solid #2a2a2a;
+  border-bottom:1px solid #2a2a2a;
+  padding:3rem 4vw;
 }
-.value-item{
-  padding:2.2rem 2rem;
-  border-right:1px solid var(--border);
+.steps-title{
+  font-size:1.3rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:2rem;text-align:center;
+}
+.steps-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+}
+.step{
+  background:#222;border:1px solid #2e2e2e;
+  padding:1.6rem 1.4rem;
   position:relative;
-  overflow:hidden;
 }
-.value-item::before{
-  content:'';
-  position:absolute;top:0;left:0;right:0;
-  height:2px;
-  background:linear-gradient(90deg,var(--red),transparent);
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .4s;
+.step::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:3px;
+  background:#CC0000;
 }
-.value-item:hover::before{transform:scaleX(1)}
-.value-item:last-child{border-right:none}
-.value-icon{
-  font-size:1.4rem;margin-bottom:1rem;
-  display:block;
+.step-num{
+  font-size:2.6rem;font-weight:700;
+  color:rgba(204,0,0,.15);line-height:1;
+  margin-bottom:.5rem;
 }
-.value-title{
-  font-size:.68rem;font-weight:600;
-  letter-spacing:.14em;text-transform:uppercase;
-  color:var(--t1);margin-bottom:.4rem;
+.step-title{
+  font-size:.72rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;margin-bottom:.5rem;
 }
-.value-desc{
-  font-size:.75rem;color:var(--t4);
-  line-height:1.7;font-weight:300;
+.step-desc{font-size:.78rem;color:#666;line-height:1.7}
+.step-note{
+  text-align:center;margin-top:1.5rem;
+  font-size:.72rem;color:#555;font-style:italic;
 }
 
-/* ════════════════════════════════════════════════
-   FOOTER
-════════════════════════════════════════════════ */
+/* ── FOOTER ── */
 footer{
-  background:var(--dark2);
-  border-top:1px solid var(--border);
+  background:#111;
+  border-top:3px solid #CC0000;
+  padding:2.5rem 4vw 1.5rem;
 }
 .footer-top{
   display:grid;
-  grid-template-columns:1.8fr 1fr 1fr 1fr;
-  gap:4rem;padding:5rem 5vw 4rem;
-  border-bottom:1px solid var(--border);
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:2rem;
+  margin-bottom:2rem;
+  padding-bottom:2rem;
+  border-bottom:1px solid #222;
 }
-.footer-brand-name{
-  font-family:'Playfair Display',serif;
-  font-size:1.6rem;font-weight:700;
-  color:var(--t0);margin-bottom:.4rem;
+.footer-logo{
+  font-size:1.4rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:.6rem;
 }
-.footer-brand-name em{color:var(--red);font-style:italic}
-.footer-brand-tag{
-  font-size:.52rem;letter-spacing:.32em;
-  text-transform:uppercase;color:var(--t4);
-  margin-bottom:1.5rem;
-}
+.footer-logo span{color:#CC0000}
 .footer-about{
-  font-size:.78rem;color:var(--t4);
-  line-height:1.9;font-weight:300;
-  margin-bottom:1.8rem;max-width:280px;
+  font-size:.76rem;color:#444;
+  line-height:1.75;margin-bottom:1rem;
 }
-.footer-social{display:flex;gap:.6rem;flex-wrap:wrap}
-.social-btn{
-  display:flex;align-items:center;gap:.4rem;
-  border:1px solid var(--border2);
-  padding:6px 12px;
-  font-size:.58rem;font-weight:500;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--t3);transition:all .2s;
+.footer-contact a{
+  display:block;color:#444;
+  font-size:.74rem;margin-bottom:.35rem;
+  transition:color .15s;
 }
-.social-btn:hover{border-color:var(--red);color:var(--t0)}
+.footer-contact a:hover{color:#fff}
 .footer-col h4{
-  font-size:.58rem;font-weight:600;
-  letter-spacing:.26em;text-transform:uppercase;
-  color:var(--t0);margin-bottom:1.5rem;
-  padding-bottom:.6rem;
-  border-bottom:1px solid var(--border);
+  font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;color:#CC0000;
+  margin-bottom:.9rem;
 }
 .footer-col ul{list-style:none}
-.footer-col li{margin-bottom:.7rem}
+.footer-col li{margin-bottom:.4rem}
 .footer-col a{
-  font-size:.75rem;color:var(--t4);
-  font-weight:300;letter-spacing:.04em;
-  transition:color .18s;
+  color:#444;font-size:.76rem;
+  transition:color .15s;
 }
-.footer-col a:hover{color:var(--t0)}
-.footer-contact a{
-  display:flex;align-items:center;gap:.5rem;
-  font-size:.72rem;color:var(--t4);
-  margin-bottom:.6rem;font-weight:300;
-  transition:color .18s;
-}
-.footer-contact a:hover{color:var(--t0)}
+.footer-col a:hover{color:#fff}
 .footer-bottom{
-  display:flex;align-items:center;
-  justify-content:space-between;
-  padding:1.4rem 5vw;
-  font-size:.6rem;font-weight:300;
-  letter-spacing:.1em;color:var(--t4);
+  display:flex;justify-content:space-between;
+  font-size:.65rem;color:#333;
 }
-.footer-bottom em{color:var(--red);font-style:normal}
+.footer-bottom em{color:#CC0000;font-style:normal}
 
-/* ════════════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════════════ */
-@media(max-width:1100px){
-  .hero{grid-template-columns:1fr}
-  .hero-right{display:none}
-  .hero-left{background:linear-gradient(to right,rgba(8,8,8,.98),rgba(8,8,8,.95))}
-  .cat-feature{grid-template-columns:1fr 1fr;height:auto}
-  .cat-card:first-child{grid-row:auto}
-  .cat-feature .cat-card{min-height:280px}
-}
+/* ── RESPONSIVE ── */
 @media(max-width:900px){
-  .nav-center{display:none}
-  .hero{height:92svh}
-  .hero-strip{grid-template-columns:1fr 1fr}
-  .split{grid-template-columns:1fr}
-  .split-img{min-height:340px}
-  .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
-  .values{grid-template-columns:1fr 1fr}
-  .value-item:nth-child(2){border-right:none}
-  .insta-grid{grid-template-columns:repeat(3,1fr)}
-  .process-grid{grid-template-columns:1fr}
-  .process-item{border-right:none;border-bottom:1px solid var(--border)}
-  .process-item:last-child{border-bottom:none}
-  .full-banner{height:420px}
+  .nav-cats{display:none}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .steps-grid{grid-template-columns:1fr}
+  .ig-grid{grid-template-columns:repeat(3,1fr)}
 }
-@media(max-width:600px){
-  .hero-strip{grid-template-columns:1fr 1fr}
-  .cat-feature{grid-template-columns:1fr}
+@media(max-width:500px){
   .footer-top{grid-template-columns:1fr}
-  .values{grid-template-columns:1fr}
-  .value-item{border-right:none;border-bottom:1px solid var(--border)}
-  .prod-grid{grid-template-columns:1fr 1fr}
-  .full-banner{height:360px}
-  .hero-btns{flex-direction:column;align-items:flex-start}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .hero{height:80vh}
 }
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
-<div class="cursor" id="cur"></div>
-<div class="cursor-ring" id="curRing"></div>
-
-<!-- LOADER -->
-<div class="loader" id="loader">
-  <div class="loader-logo">INTHA <span>THRIFT</span></div>
-  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
-  <div class="loader-text">Loading Collection</div>
-</div>
-
-<!-- ANNOUNCEMENT -->
-<div class="ann">
-  <div class="ann-track">
-    <span>Free Shipping Above &#8377;999</span><span class="sep">&nbsp;&#9670;&nbsp;</span>
-    <span>Order 2 Get 11% Off &mdash; INTHA11</span><span class="sep">&nbsp;&#9670;&nbsp;</span>
-    <span>Order 3 Get 15% Off &mdash; INTHA15</span><span class="sep">&nbsp;&#9670;&nbsp;</span>
-    <span>New Drops Every Friday</span><span class="sep">&nbsp;&#9670;&nbsp;</span>
-    <span>Quality Certified Pieces</span><span class="sep">&nbsp;&#9670;&nbsp;</span>
-    <span>24h Dispatch</span><span class="sep">&nbsp;&#9670;&nbsp;</span>
-    <span>Free Shipping Above &#8377;999</span><span class="sep">&nbsp;&#9670;&nbsp;</span>
-    <span>Order 2 Get 11% Off &mdash; INTHA11</span><span class="sep">&nbsp;&#9670;&nbsp;</span>
-    <span>Order 3 Get 15% Off &mdash; INTHA15</span><span class="sep">&nbsp;&#9670;&nbsp;</span>
-    <span>New Drops Every Friday</span><span class="sep">&nbsp;&#9670;&nbsp;</span>
-    <span>Quality Certified Pieces</span><span class="sep">&nbsp;&#9670;&nbsp;</span>
-    <span>24h Dispatch</span><span class="sep">&nbsp;&#9670;&nbsp;</span>
-  </div>
-</div>
-
 <!-- NAV -->
-<nav class="nav" id="nav">
-  <a href="#" class="nav-logo">
-    <span class="nav-logo-name">INTHA <em>THRIFT</em></span>
-    <span class="nav-logo-tag">Premium Thrifted Clothing</span>
-  </a>
-  <ul class="nav-center">
-    <a href="#jerseys">Jerseys</a>
-    <a href="#trackpants">Trackpants</a>
-    <a href="#denims">Denims</a>
-    <a href="#jackets">Jackets</a>
-    <a href="#caps">Caps</a>
-    <a href="#tees">Tees</a>
-    <a href="#shoes">Shoes</a>
+<nav class="nav">
+  <div class="nav-logo">INTHA <span>THRIFT</span></div>
+  <ul class="nav-cats">
+    <a href="#jerseys">jerseys</a>
+    <a href="#trackpants">trackpants</a>
+    <a href="#denims">denims</a>
+    <a href="#jackets">jackets</a>
+    <a href="#caps">caps</a>
+    <a href="#tees">tees</a>
+    <a href="#shoes">shoes</a>
   </ul>
   <div class="nav-right">
-    <button class="nav-icon" title="Search">&#128269;</button>
-    <button class="nav-icon" title="Wishlist">&#9825;</button>
-    <button class="nav-bag" id="bagBtn">
-      Bag &nbsp;<span class="bag-count" id="bagCount">0</span>
-    </button>
+    <a href="#">Login</a>
+    <button class="cart-btn" id="cartBtn">Cart 0</button>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>5% off on all products</span>
+    <span>ORDER 2 GET 11% OFF CODE=INTHA11</span>
+    <span>ORDER 3 GET 15% OFF CODE=INTHA15</span>
+    <span>New drops every Friday</span>
+    <span>Free shipping above &#8377;999</span>
+    <span>5% off on all products</span>
+    <span>ORDER 2 GET 11% OFF CODE=INTHA11</span>
+    <span>ORDER 3 GET 15% OFF CODE=INTHA15</span>
+    <span>New drops every Friday</span>
+    <span>Free shipping above &#8377;999</span>
+  </div>
+</div>
+
+<!-- HERO 1 — Las Vegas night car (most dramatic) -->
 <div class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">New Collection 2025</div>
-    <h1 class="hero-title">
-      <span class="thin">Full House of</span>
-      <span class="italic">Premium Jerseys</span>
-    </h1>
-    <p class="hero-desc">Pre-loved sportswear, vintage jerseys &amp; rare finds — each piece hand-picked, quality certified before it reaches you.</p>
-    <div class="hero-btns">
-      <a href="#jerseys" class="btn-fill">Explore the Vault &nbsp;&rarr;</a>
-      <a href="#newarrivals" class="btn-line">New Arrivals</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg" alt="Intha Thrift Hero" loading="eager">
-  </div>
-  <div class="hero-strip">
-    <div class="hero-strip-item">
-      <span class="strip-icon">&#9651;</span>
-      <div><div class="strip-title">Quality Certified</div><div class="strip-sub">Hand-inspected every piece</div></div>
-    </div>
-    <div class="hero-strip-item">
-      <span class="strip-icon">&#9651;</span>
-      <div><div class="strip-title">Free Shipping</div><div class="strip-sub">On orders above &#8377;999</div></div>
-    </div>
-    <div class="hero-strip-item">
-      <span class="strip-icon">&#9651;</span>
-      <div><div class="strip-title">24h Dispatch</div><div class="strip-sub">Fast &amp; secure delivery</div></div>
-    </div>
-    <div class="hero-strip-item">
-      <span class="strip-icon">&#9651;</span>
-      <div><div class="strip-title">500+ Pieces</div><div class="strip-sub">New drops every Friday</div></div>
-    </div>
+  <div class="hero-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-tag">premium thrifted</div>
+    <h1 class="hero-title">ful house of<br>premium jerseys</h1>
+    <a href="#jerseys" class="hero-cta">explore the vault</a>
   </div>
 </div>
 
-<!-- SCROLL BAND -->
-<div class="scroll-band">
-  <div class="scroll-band-track">
-    <span class="word">Jerseys</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Trackpants</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Denims</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Jackets</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Caps</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Tees</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Shoes</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Hoodies</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Jerseys</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Trackpants</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Denims</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Jackets</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Caps</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Tees</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Shoes</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-    <span class="word">Hoodies</span><span class="red-dot">&nbsp;&#9670;&nbsp;</span>
-  </div>
-</div>
-
-<!-- CATEGORY FEATURE -->
-<div class="section section-sm">
-  <div class="sec-head">
-    <div>
-      <div class="sec-eyebrow">Shop</div>
-      <h2 class="sec-heading">Browse <em>Categories</em></h2>
-    </div>
-    <a href="#" class="link-arrow">All Categories &rarr;</a>
-  </div>
-  <div class="cat-feature">
-    <div class="cat-card" onclick="location.href='#jerseys'">
-      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p1.jpeg" alt="Jerseys">
-      <div class="cat-card-veil"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-tag">Sportswear</div>
-        <div class="cat-card-name">Jerseys</div>
-        <div class="cat-card-cta">Shop Now &rarr;</div>
-      </div>
-    </div>
-    <div class="cat-card" onclick="location.href='#trackpants'">
-      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Trackpants">
-      <div class="cat-card-veil"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-tag">Bottoms</div>
-        <div class="cat-card-name">Trackpants</div>
-        <div class="cat-card-cta">Shop Now &rarr;</div>
-      </div>
-    </div>
-    <div class="cat-card" onclick="location.href='#denims'">
-      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Denims">
-      <div class="cat-card-veil"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-tag">Bottoms</div>
-        <div class="cat-card-name">Denims</div>
-        <div class="cat-card-cta">Shop Now &rarr;</div>
-      </div>
-    </div>
-    <div class="cat-card" onclick="location.href='#jackets'">
-      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Jackets">
-      <div class="cat-card-veil"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-tag">Outerwear</div>
-        <div class="cat-card-name">Jackets</div>
-        <div class="cat-card-cta">Shop Now &rarr;</div>
-      </div>
-    </div>
-    <div class="cat-card" onclick="location.href='#caps'">
-      <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Caps">
-      <div class="cat-card-veil"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-tag">Accessories</div>
-        <div class="cat-card-name">Caps &amp; Tees</div>
-        <div class="cat-card-cta">Shop Now &rarr;</div>
-      </div>
-    </div>
+<!-- HERO 2 — Guy on red Cadillac garage -->
+<div class="hero" style="height:75vh">
+  <div class="hero-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p2.jpeg');background-position:center 15%"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-tag">PREmium Thrifted</div>
+    <h1 class="hero-title">heaven of<br>trackpants</h1>
+    <a href="#trackpants" class="hero-cta">explore the vault</a>
   </div>
 </div>
 
 <!-- NEW ARRIVALS -->
-<div class="section section-alt" id="newarrivals">
+<div class="sec" id="newarrivals">
   <div class="sec-head">
-    <div>
-      <div class="sec-eyebrow">Just Dropped</div>
-      <h2 class="sec-heading">New <em>Arrivals</em></h2>
-    </div>
-    <a href="#" class="link-arrow">View All &rarr;</a>
+    <h2 class="sec-title">New Arrivals</h2>
+    <a href="#" class="view-all">view all &rarr;</a>
   </div>
-  <div class="prod-grid">
-
-    <div class="prod-card">
-      <div class="prod-img">
-        <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Liverpool Jersey" loading="lazy">
-        <span class="prod-badge badge-new">New</span>
-        <button class="prod-wish">&#9825;</button>
-        <div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div>
-      </div>
-      <div class="prod-info">
-        <div class="prod-brand">Vintage Football</div>
-        <div class="prod-name">Liverpool FC Jersey</div>
-        <div class="prod-meta">Size M &nbsp;&middot;&nbsp; Excellent Condition</div>
-        <div class="prod-bottom">
-          <div><span class="prod-price">&#8377;1,499</span><span class="prod-was">&#8377;2,500</span><span class="prod-save">Save 40%</span></div>
-          <button class="prod-add" onclick="addBag(this)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod-card">
-      <div class="prod-img">
-        <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Bomber Jacket" loading="lazy">
-        <span class="prod-badge badge-hot">&#9670; Hot</span>
-        <button class="prod-wish">&#9825;</button>
-        <div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div>
-      </div>
-      <div class="prod-info">
-        <div class="prod-brand">Streetwear</div>
-        <div class="prod-name">Patched Bomber Jacket</div>
-        <div class="prod-meta">Size L &nbsp;&middot;&nbsp; Good Condition</div>
-        <div class="prod-bottom">
-          <div><span class="prod-price">&#8377;929</span><span class="prod-was">&#8377;2,200</span><span class="prod-save">Save 58%</span></div>
-          <button class="prod-add" onclick="addBag(this)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod-card">
-      <div class="prod-img">
-        <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Cargo Set" loading="lazy">
-        <span class="prod-badge badge-new">New</span>
-        <button class="prod-wish">&#9825;</button>
-        <div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div>
-      </div>
-      <div class="prod-info">
-        <div class="prod-brand">Cargo</div>
-        <div class="prod-name">Black Cargo Outfit</div>
-        <div class="prod-meta">Size M &nbsp;&middot;&nbsp; Like New</div>
-        <div class="prod-bottom">
-          <div><span class="prod-price">&#8377;999</span><span class="prod-was">&#8377;1,800</span><span class="prod-save">Save 44%</span></div>
-          <button class="prod-add" onclick="addBag(this)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod-card">
-      <div class="prod-img">
-        <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Camel Coat" loading="lazy">
-        <button class="prod-wish">&#9825;</button>
-        <div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div>
-      </div>
-      <div class="prod-info">
-        <div class="prod-brand">Premium</div>
-        <div class="prod-name">Camel Overcoat</div>
-        <div class="prod-meta">Size L &nbsp;&middot;&nbsp; Excellent Condition</div>
-        <div class="prod-bottom">
-          <div><span class="prod-price">&#8377;1,299</span><span class="prod-was">&#8377;3,000</span><span class="prod-save">Save 57%</span></div>
-          <button class="prod-add" onclick="addBag(this)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod-card">
-      <div class="prod-img">
-        <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Grey Knit" loading="lazy">
-        <span class="prod-badge badge-hot">&#9670; Hot</span>
-        <button class="prod-wish">&#9825;</button>
-        <div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div>
-      </div>
-      <div class="prod-info">
-        <div class="prod-brand">Knitwear</div>
-        <div class="prod-name">Grey Crew Neck Knit</div>
-        <div class="prod-meta">Size M &nbsp;&middot;&nbsp; Good Condition</div>
-        <div class="prod-bottom">
-          <div><span class="prod-price">&#8377;549</span><span class="prod-was">&#8377;1,200</span><span class="prod-save">Save 54%</span></div>
-          <button class="prod-add" onclick="addBag(this)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod-card">
-      <div class="prod-img">
-        <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Orange Jacket" loading="lazy">
-        <span class="prod-badge badge-new">New</span>
-        <button class="prod-wish">&#9825;</button>
-        <div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div>
-      </div>
-      <div class="prod-info">
-        <div class="prod-brand">Varsity</div>
-        <div class="prod-name">Orange Varsity Jacket</div>
-        <div class="prod-meta">Size S/M &nbsp;&middot;&nbsp; Like New</div>
-        <div class="prod-bottom">
-          <div><span class="prod-price">&#8377;849</span><span class="prod-was">&#8377;1,900</span><span class="prod-save">Save 55%</span></div>
-          <button class="prod-add" onclick="addBag(this)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod-card">
-      <div class="prod-img">
-        <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Red Shirt" loading="lazy">
-        <button class="prod-wish">&#9825;</button>
-        <div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div>
-      </div>
-      <div class="prod-info">
-        <div class="prod-brand">Casual</div>
-        <div class="prod-name">Red Linen Casual Shirt</div>
-        <div class="prod-meta">Size M &nbsp;&middot;&nbsp; Good Condition</div>
-        <div class="prod-bottom">
-          <div><span class="prod-price">&#8377;449</span><span class="prod-was">&#8377;900</span><span class="prod-save">Save 50%</span></div>
-          <button class="prod-add" onclick="addBag(this)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod-card">
-      <div class="prod-img">
-        <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Hoodie" loading="lazy">
-        <button class="prod-wish">&#9825;</button>
-        <div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div>
-      </div>
-      <div class="prod-info">
-        <div class="prod-brand">Vintage</div>
-        <div class="prod-name">Graphic Print Hoodie</div>
-        <div class="prod-meta">Size L &nbsp;&middot;&nbsp; Excellent Condition</div>
-        <div class="prod-bottom">
-          <div><span class="prod-price">&#8377;699</span><span class="prod-was">&#8377;1,600</span><span class="prod-save">Save 56%</span></div>
-          <button class="prod-add" onclick="addBag(this)">+</button>
-        </div>
-      </div>
-    </div>
-
+  <div class="pgrid">
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">New</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Liverpool FC Vintage" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Liverpool FC Vintage" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Liverpool FC Vintage</a>
+    <div class="pc-price">Rs. 1,499.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">Hot</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Patched Bomber Jacket" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Patched Bomber Jacket" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Patched Bomber Jacket</a>
+    <div class="pc-price">Rs. 929.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">New</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Black Cargo Outfit" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Black Cargo Outfit" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Black Cargo Outfit</a>
+    <div class="pc-price">Rs. 999.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Camel Overcoat" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Camel Overcoat" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Camel Overcoat</a>
+    <div class="pc-price">Rs. 1,299.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">Hot</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Grey Crew Neck Knit" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Grey Crew Neck Knit" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Grey Crew Neck Knit</a>
+    <div class="pc-price">Rs. 549.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">New</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Orange Varsity Jacket" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Orange Varsity Jacket" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Orange Varsity Jacket</a>
+    <div class="pc-price">Rs. 849.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Red Linen Casual Shirt" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Red Linen Casual Shirt" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Red Linen Casual Shirt</a>
+    <div class="pc-price">Rs. 449.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Graphic Print Hoodie" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Graphic Print Hoodie" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Graphic Print Hoodie</a>
+    <div class="pc-price">Rs. 699.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">New</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real Baggy Low Rise" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real Baggy Low Rise" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Real Baggy Low Rise</a>
+    <div class="pc-price">Rs. 999.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Fashion Set" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Fashion Set" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Fashion Set</a>
+    <div class="pc-price">Rs. 850.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
   </div>
 </div>
 
-<!-- FULL BANNER 1 -->
-<div class="full-banner">
-  <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p1.jpeg" alt="Jerseys" loading="lazy">
-  <div class="full-banner-veil"></div>
-  <div class="full-banner-body">
-    <div class="hero-eyebrow">Curated Collection</div>
-    <h2 class="hero-title">Heaven of<br><span class="italic">Jerseys</span></h2>
-    <p>Rare vintage football &amp; basketball jerseys. Each piece hand-picked, quality-checked and certified. Your next favourite fit is waiting in the vault.</p>
-    <a href="#jerseys" class="btn-fill">Shop Jerseys &nbsp;&rarr;</a>
-  </div>
-</div>
-
-<!-- JERSEYS -->
-<div class="section" id="jerseys">
-  <div class="sec-head">
-    <div>
-      <div class="sec-eyebrow">Sportswear</div>
-      <h2 class="sec-heading">Jerseys</h2>
-    </div>
-    <a href="#" class="link-arrow">View All &rarr;</a>
-  </div>
-  <div class="prod-grid">
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="" loading="lazy"><span class="prod-badge badge-new">New</span><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Football</div><div class="prod-name">Liverpool FC Vintage</div><div class="prod-meta">Size M &middot; Excellent</div><div class="prod-bottom"><div><span class="prod-price">&#8377;1,499</span><span class="prod-save">Save 40%</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="" loading="lazy"><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Basketball</div><div class="prod-name">NBA Vintage Jersey</div><div class="prod-meta">Size L &middot; Good</div><div class="prod-bottom"><div><span class="prod-price">&#8377;980</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="" loading="lazy"><span class="prod-badge badge-hot">&#9670; Hot</span><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Football</div><div class="prod-name">France 2008 Vintage</div><div class="prod-meta">Size M &middot; Like New</div><div class="prod-bottom"><div><span class="prod-price">&#8377;849</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="" loading="lazy"><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Football</div><div class="prod-name">Ajax Retro Jersey</div><div class="prod-meta">Size XL &middot; Excellent</div><div class="prod-bottom"><div><span class="prod-price">&#8377;999</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-  </div>
-</div>
-
-<!-- SPLIT — TRACKPANTS -->
-<div class="split">
-  <div class="split-img">
-    <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p2.jpeg" alt="Trackpants" loading="lazy">
-  </div>
-  <div class="split-body">
-    <div class="hero-eyebrow">The Collection</div>
-    <h2 class="hero-title" style="font-size:clamp(2rem,4vw,3.5rem)">
-      <span class="thin">Heaven of</span>
-      <span class="italic">Trackpants</span>
-    </h2>
-    <p class="split-body p">Nike, Adidas, Puma, Fila &mdash; real vintage tracksuits dropped every Friday. Each piece inspected for quality before listing. Grab yours before it's gone.</p>
-    <a href="#trackpants" class="btn-fill" style="width:fit-content">Shop Trackpants &rarr;</a>
-    <div class="split-numbers">
-      <div class="split-num">
-        <div class="split-num-val">200+</div>
-        <div class="split-num-label">Track pieces</div>
-      </div>
-      <div class="split-num">
-        <div class="split-num-val">&#8377;399</div>
-        <div class="split-num-label">Starting from</div>
-      </div>
-      <div class="split-num">
-        <div class="split-num-val">5&#9733;</div>
-        <div class="split-num-label">Avg rating</div>
-      </div>
-    </div>
+<!-- MID BANNER — Group shot -->
+<div class="mid-banner">
+  <div class="mid-banner-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p1.jpeg')"></div>
+  <div class="mid-banner-overlay"></div>
+  <div class="mid-banner-body">
+    <div class="hero-tag">premium thrifted</div>
+    <h2 class="hero-title">heaven of<br>jerseys</h2>
+    <a href="#jerseys" class="hero-cta">explore the vault</a>
   </div>
 </div>
 
 <!-- TRACKPANTS -->
-<div class="section section-alt" id="trackpants">
+<div class="sec dark" id="trackpants">
   <div class="sec-head">
-    <div>
-      <div class="sec-eyebrow">Bottoms</div>
-      <h2 class="sec-heading">Trackpants</h2>
-    </div>
-    <a href="#" class="link-arrow">View All &rarr;</a>
+    <h2 class="sec-title">Trackpants</h2>
+    <a href="#" class="view-all">view all &rarr;</a>
   </div>
-  <div class="prod-grid">
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="" loading="lazy"><span class="prod-badge badge-hot">&#9670; Hot</span><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Nike</div><div class="prod-name">Nike Vintage Track</div><div class="prod-meta">W30–32 &middot; Good</div><div class="prod-bottom"><div><span class="prod-price">&#8377;929</span><span class="prod-save">Save 58%</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="" loading="lazy"><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Adidas</div><div class="prod-name">Adidas Track Pant</div><div class="prod-meta">W28–30 &middot; Excellent</div><div class="prod-bottom"><div><span class="prod-price">&#8377;839</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="" loading="lazy"><span class="prod-badge badge-new">New</span><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Fila</div><div class="prod-name">Fila Vintage Track</div><div class="prod-meta">W26–28 &middot; Like New</div><div class="prod-bottom"><div><span class="prod-price">&#8377;849</span><span class="prod-save">Save 55%</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="" loading="lazy"><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Reebok</div><div class="prod-name">Reebok Classic Track</div><div class="prod-meta">W30–32 &middot; Good</div><div class="prod-bottom"><div><span class="prod-price">&#8377;750</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
+  <div class="pgrid">
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">Hot</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Nike Vintage Track" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Nike Vintage Track" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Nike Vintage Track</a>
+    <div class="pc-price">Rs. 929.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Adidas Track Pant" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Adidas Track Pant" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Adidas Track Pant</a>
+    <div class="pc-price">Rs. 839.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">New</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Fila Vintage Track" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Fila Vintage Track" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Fila Vintage Track</a>
+    <div class="pc-price">Rs. 849.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Reebok Classic Track" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Reebok Classic Track" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Reebok Classic Track</a>
+    <div class="pc-price">Rs. 750.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Puma Track Pant" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Puma Track Pant" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Puma Track Pant</a>
+    <div class="pc-price">Rs. 899.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Lacoste Track" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Lacoste Track" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Lacoste Track</a>
+    <div class="pc-price">Rs. 399.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Mammut Track" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Mammut Track" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Mammut Track</a>
+    <div class="pc-price">Rs. 899.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">New</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Adidas Vintage" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Adidas Vintage" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Adidas Vintage</a>
+    <div class="pc-price">Rs. 849.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
   </div>
 </div>
 
-<!-- FULL BANNER 2 -->
-<div class="full-banner">
-  <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg" alt="Steal the Look" loading="lazy" style="object-position:center 25%">
-  <div class="full-banner-veil"></div>
-  <div class="full-banner-body">
-    <div class="hero-eyebrow">The Intha Way</div>
-    <h2 class="hero-title">Steal the <span class="italic">Look.</span></h2>
-    <p>Pre-loved fashion for people who know that style doesn't have an expiry date. New drops every Friday &mdash; limited pieces, real prices.</p>
-    <a href="#newarrivals" class="btn-fill">Shop All &nbsp;&rarr;</a>
+<!-- CONNECT / INSTAGRAM -->
+<div class="connect">
+  <h2 class="connect-title">Connect with us</h2>
+  <div class="ig-grid">
+    <div class="ig-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg" alt="" loading="lazy"></div>
+    <div class="ig-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p2.jpeg" alt="" loading="lazy"></div>
+    <div class="ig-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p1.jpeg" alt="" loading="lazy"></div>
+    <div class="ig-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="" loading="lazy"></div>
+    <div class="ig-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="" loading="lazy"></div>
+    <div class="ig-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="" loading="lazy"></div>
+  </div>
+  <a href="#" class="follow-btn">Follow us &rarr;</a>
+</div>
+
+<!-- JERSEYS -->
+<div class="sec dark" id="jerseys">
+  <div class="sec-head">
+    <h2 class="sec-title">Jerseys</h2>
+    <a href="#" class="view-all">view all &rarr;</a>
+  </div>
+  <div class="pgrid">
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">New</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Vintage Liverpool" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Vintage Liverpool" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Vintage Liverpool</a>
+    <div class="pc-price">Rs. 1,499.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="NBA Vintage Jersey" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="NBA Vintage Jersey" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">NBA Vintage Jersey</a>
+    <div class="pc-price">Rs. 980.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">Hot</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="France 2008 Vintage" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="France 2008 Vintage" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">France 2008 Vintage</a>
+    <div class="pc-price">Rs. 849.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Ajax Retro Jersey" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Ajax Retro Jersey" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Ajax Retro Jersey</a>
+    <div class="pc-price">Rs. 999.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="England 2006 Jersey" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="England 2006 Jersey" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">England 2006 Jersey</a>
+    <div class="pc-price">Rs. 899.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">New</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Y2K DADA Supreme" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Y2K DADA Supreme" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Y2K DADA Supreme</a>
+    <div class="pc-price">Rs. 899.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Paris Vintage Jersey" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Paris Vintage Jersey" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Paris Vintage Jersey</a>
+    <div class="pc-price">Rs. 929.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Newcastle 2001-03" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Newcastle 2001-03" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Newcastle 2001-03</a>
+    <div class="pc-price">Rs. 999.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+  </div>
+</div>
+
+<!-- MID BANNER 2 — Dramatic Las Vegas -->
+<div class="mid-banner">
+  <div class="mid-banner-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg');background-position:center 25%"></div>
+  <div class="mid-banner-overlay"></div>
+  <div class="mid-banner-body">
+    <div class="hero-tag">Intha Thrift</div>
+    <h2 class="hero-title">steal the<br>look.</h2>
+    <a href="#newarrivals" class="hero-cta">shop all</a>
   </div>
 </div>
 
 <!-- DENIMS -->
-<div class="section" id="denims">
+<div class="sec" id="denims">
   <div class="sec-head">
-    <div>
-      <div class="sec-eyebrow">Bottoms</div>
-      <h2 class="sec-heading">Denims</h2>
-    </div>
-    <a href="#" class="link-arrow">View All &rarr;</a>
+    <h2 class="sec-title">Denims</h2>
+    <a href="#" class="view-all">view all &rarr;</a>
   </div>
-  <div class="prod-grid">
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="" loading="lazy"><span class="prod-badge badge-new">New</span><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Vintage</div><div class="prod-name">Real Baggy Low Rise</div><div class="prod-meta">W30 L42 &middot; Excellent</div><div class="prod-bottom"><div><span class="prod-price">&#8377;999</span><span class="prod-save">Save 44%</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="" loading="lazy"><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Carhartt</div><div class="prod-name">Carhartt Work Jeans</div><div class="prod-meta">W36 L43 &middot; Good</div><div class="prod-bottom"><div><span class="prod-price">&#8377;999</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="" loading="lazy"><span class="prod-badge badge-hot">&#9670; Hot</span><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Tommy Hilfiger</div><div class="prod-name">Tommy Hilfiger Denim</div><div class="prod-meta">W34 L38 &middot; Like New</div><div class="prod-bottom"><div><span class="prod-price">&#8377;949</span><span class="prod-save">Save 52%</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="" loading="lazy"><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Dickies</div><div class="prod-name">Dickies Cargo Denim</div><div class="prod-meta">W36 L43 &middot; Good</div><div class="prod-bottom"><div><span class="prod-price">&#8377;999</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
+  <div class="pgrid">
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">New</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real Baggy Low Rise" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real Baggy Low Rise" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Real Baggy Low Rise</a>
+    <div class="pc-price">Rs. 999.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Carhartt Work Jeans" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Carhartt Work Jeans" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Carhartt Work Jeans</a>
+    <div class="pc-price">Rs. 999.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">Hot</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Tommy Hilfiger Denim" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Tommy Hilfiger Denim" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Tommy Hilfiger Denim</a>
+    <div class="pc-price">Rs. 949.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Dickies Cargo Denim" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Dickies Cargo Denim" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Dickies Cargo Denim</a>
+    <div class="pc-price">Rs. 999.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Abercrombie Fitch" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Abercrombie Fitch" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Abercrombie Fitch</a>
+    <div class="pc-price">Rs. 750.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="BDG Y2K Cargo" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="BDG Y2K Cargo" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">BDG Y2K Cargo</a>
+    <div class="pc-price">Rs. 899.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
   </div>
 </div>
 
-<!-- SPLIT REVERSE — JACKETS -->
-<div class="split reverse" id="jackets">
-  <div class="split-img">
-    <img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Jackets" loading="lazy">
-  </div>
-  <div class="split-body">
-    <div class="hero-eyebrow">Outerwear</div>
-    <h2 class="hero-title" style="font-size:clamp(2rem,4vw,3.5rem)">
-      <span class="thin">Curated</span>
-      <span class="italic">Jackets</span>
-    </h2>
-    <p>Premium outerwear — blazers, coats, denim jackets, bombers. Each piece sourced for quality and style. Wear what matters.</p>
-    <a href="#" class="btn-fill" style="width:fit-content">Shop Jackets &rarr;</a>
-    <div class="split-numbers">
-      <div class="split-num">
-        <div class="split-num-val">80+</div>
-        <div class="split-num-label">Jacket styles</div>
-      </div>
-      <div class="split-num">
-        <div class="split-num-val">&#8377;599</div>
-        <div class="split-num-label">Starting from</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CAPS & TEES -->
-<div class="section section-alt" id="caps">
+<!-- CAPS -->
+<div class="sec dark" id="caps">
   <div class="sec-head">
-    <div>
-      <div class="sec-eyebrow">Accessories &amp; Tops</div>
-      <h2 class="sec-heading">Caps <em>&amp;</em> Tees</h2>
-    </div>
-    <a href="#" class="link-arrow">View All &rarr;</a>
+    <h2 class="sec-title">Caps</h2>
+    <a href="#" class="view-all">view all &rarr;</a>
   </div>
-  <div class="prod-grid">
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="" loading="lazy"><span class="prod-badge badge-new">New</span><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Vintage Cap</div><div class="prod-name">Classic Snapback</div><div class="prod-meta">One Size &middot; Good</div><div class="prod-bottom"><div><span class="prod-price">&#8377;499</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="" loading="lazy"><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Nike</div><div class="prod-name">Nike Vintage Snapback</div><div class="prod-meta">One Size &middot; Excellent</div><div class="prod-bottom"><div><span class="prod-price">&#8377;550</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="" loading="lazy"><span class="prod-badge badge-hot">&#9670; Hot</span><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Vintage Tee</div><div class="prod-name">Graphic Print Tee</div><div class="prod-meta">Size M &middot; Good</div><div class="prod-bottom"><div><span class="prod-price">&#8377;399</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
-    <div class="prod-card"><div class="prod-img"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="" loading="lazy"><button class="prod-wish">&#9825;</button><div class="prod-overlay"><button class="prod-quick-add" onclick="addBag(this)">Quick Add</button></div></div><div class="prod-info"><div class="prod-brand">Vintage Hoodie</div><div class="prod-name">Graphic Print Hoodie</div><div class="prod-meta">Size L &middot; Excellent</div><div class="prod-bottom"><div><span class="prod-price">&#8377;699</span></div><button class="prod-add" onclick="addBag(this)">+</button></div></div></div>
+  <div class="pgrid">
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">New</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Classic Snapback Cap" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Classic Snapback Cap" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Classic Snapback Cap</a>
+    <div class="pc-price">Rs. 450.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Nike Vintage Cap" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Nike Vintage Cap" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Nike Vintage Cap</a>
+    <div class="pc-price">Rs. 550.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="NY Snapback" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="NY Snapback" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">NY Snapback</a>
+    <div class="pc-price">Rs. 499.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">Hot</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Manchester City Cap" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Manchester City Cap" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Manchester City Cap</a>
+    <div class="pc-price">Rs. 499.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="MLB Cap" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="MLB Cap" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">MLB Cap</a>
+    <div class="pc-price">Rs. 450.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Puma Cap" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Puma Cap" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Puma Cap</a>
+    <div class="pc-price">Rs. 400.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
   </div>
 </div>
 
-<!-- VALUES -->
-<div class="values">
-  <div class="value-item">
-    <span class="value-icon">&#9651;</span>
-    <div class="value-title">Quality Certified</div>
-    <div class="value-desc">Every piece hand-inspected and certified before listing. No compromises.</div>
-  </div>
-  <div class="value-item">
-    <span class="value-icon">&#128230;</span>
-    <div class="value-title">Free Shipping</div>
-    <div class="value-desc">Complimentary shipping on all orders above &#8377;999 nationwide.</div>
-  </div>
-  <div class="value-item">
-    <span class="value-icon">&#9202;</span>
-    <div class="value-title">24h Dispatch</div>
-    <div class="value-desc">Your order is dispatched within 24 hours of payment confirmation.</div>
-  </div>
-  <div class="value-item">
-    <span class="value-icon">&#9854;</span>
-    <div class="value-title">Easy Returns</div>
-    <div class="value-desc">7-day hassle-free return policy. Your satisfaction is guaranteed.</div>
-  </div>
-</div>
-
-<!-- INSTAGRAM -->
-<div class="section section-sm">
+<!-- TEES -->
+<div class="sec" id="tees">
   <div class="sec-head">
-    <div>
-      <div class="sec-eyebrow">Follow Us</div>
-      <h2 class="sec-heading">@intha<em>.thrift</em></h2>
-    </div>
-    <a href="#" class="link-arrow">Open Instagram &rarr;</a>
+    <h2 class="sec-title">Tees</h2>
+    <a href="#" class="view-all">view all &rarr;</a>
   </div>
-  <div class="insta-grid">
-    <div class="insta-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg" alt="" loading="lazy"></div>
-    <div class="insta-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p2.jpeg" alt="" loading="lazy"></div>
-    <div class="insta-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="" loading="lazy"></div>
-    <div class="insta-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="" loading="lazy"></div>
-    <div class="insta-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="" loading="lazy"></div>
-    <div class="insta-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p1.jpeg" alt="" loading="lazy"></div>
+  <div class="pgrid">
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">Hot</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Graphic Print Tee" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Graphic Print Tee" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Graphic Print Tee</a>
+    <div class="pc-price">Rs. 399.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">New</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Red Linen Shirt" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Red Linen Shirt" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Red Linen Shirt</a>
+    <div class="pc-price">Rs. 449.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Vintage Hoodie" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Vintage Hoodie" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Vintage Hoodie</a>
+    <div class="pc-price">Rs. 699.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Grey Crew Knit" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Grey Crew Knit" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Grey Crew Knit</a>
+    <div class="pc-price">Rs. 549.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    <div class="badge">New</div>
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Pack of Three Tees" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Pack of Three Tees" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Pack of Three Tees</a>
+    <div class="pc-price">Rs. 899.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img-wrap">
+    
+    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Vintage Fashion Tee" loading="lazy">
+    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Vintage Fashion Tee" loading="lazy">
+  </a>
+  <div class="pc-info">
+    <a href="#" class="pc-name">Vintage Fashion Tee</a>
+    <div class="pc-price">Rs. 550.00</div>
+    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  </div>
+</div>
   </div>
 </div>
 
-<!-- PROCESS -->
-<div class="process">
-  <div class="sec-head">
-    <div>
-      <div class="sec-eyebrow">Simple &amp; Easy</div>
-      <h2 class="sec-heading">How It <em>Works</em></h2>
+<!-- ORDER STEPS -->
+<div class="steps">
+  <h2 class="steps-title">Order Process</h2>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Choose &amp; Add to Cart</div>
+      <div class="step-desc">Choose your product and add to your cart. Apply coupon code to get discount and offers &mdash; ORDER 2 GET 11% OFF (INTHA11), ORDER 3 GET 15% OFF (INTHA15).</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Place &amp; Pay</div>
+      <div class="step-desc">Place the order by choosing payment method. Make payment on Instagram or WhatsApp. UPI and bank transfer accepted.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Dispatched in 24hrs</div>
+      <div class="step-desc">Once payment is confirmed your order will be confirmed and will be dispatched within 24 hours.</div>
     </div>
   </div>
-  <div class="process-grid">
-    <div class="process-item">
-      <div class="process-num">01</div>
-      <div class="process-title">Browse &amp; Choose</div>
-      <div class="process-desc">Find your piece and add to bag. Apply your coupon &mdash; ORDER 2 GET 11% OFF with code INTHA11, or ORDER 3 GET 15% OFF with code INTHA15.</div>
-    </div>
-    <div class="process-item">
-      <div class="process-num">02</div>
-      <div class="process-title">Place &amp; Pay</div>
-      <div class="process-desc">Place your order and complete payment via Instagram or WhatsApp. UPI &amp; bank transfer accepted. Your order is confirmed upon payment only.</div>
-    </div>
-    <div class="process-item">
-      <div class="process-num">03</div>
-      <div class="process-title">Receive in 24h</div>
-      <div class="process-desc">Your order is dispatched within 24 hours of payment confirmation. Track your parcel and receive your pre-loved finds at your doorstep.</div>
-    </div>
-  </div>
+  <p class="step-note">Please note: without payment confirmation order will be cancelled</p>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
-    <div class="footer-brand">
-      <div class="footer-brand-name">INTHA <em>THRIFT</em></div>
-      <div class="footer-brand-tag">Premium Thrifted Clothing</div>
-      <p class="footer-about">Premium pre-loved clothing &mdash; curated, certified, and shipped fast. Jerseys, trackpants, denims, caps and more. Tamil street culture. Nationwide delivery.</p>
-      <div class="footer-social">
-        <a href="#" class="social-btn">&#128248; Instagram</a>
-        <a href="#" class="social-btn">&#128241; WhatsApp</a>
+    <div>
+      <div class="footer-logo">INTHA <span>THRIFT</span></div>
+      <p class="footer-about">Premium pre-loved clothing &mdash; jerseys, trackpants, denims, caps, tees and more. Quality checked. Fast shipped.</p>
+      <div class="footer-contact">
+        <a href="tel:+919999999999">+91 99999 99999</a>
+        <a href="mailto:intha.thrift@gmail.com">intha.thrift@gmail.com</a>
+        <a href="#">Login / Register</a>
       </div>
     </div>
     <div class="footer-col">
@@ -1454,105 +1097,56 @@ footer{
         <li><a href="#jerseys">Jerseys</a></li>
         <li><a href="#trackpants">Trackpants</a></li>
         <li><a href="#denims">Denims</a></li>
-        <li><a href="#jackets">Jackets</a></li>
         <li><a href="#caps">Caps</a></li>
-        <li><a href="#tees">Tees</a></li>
+        <li><a href="#tees">Tshirts</a></li>
+        <li><a href="#">Jorts</a></li>
         <li><a href="#">Shoes</a></li>
+        <li><a href="#">Jackets</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Info</h4>
       <ul>
         <li><a href="#">About Us</a></li>
-        <li><a href="#">How to Order</a></li>
-        <li><a href="#">Sell With Us</a></li>
-        <li><a href="#">Sizing Guide</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Refund &amp; Cancellation</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Contact Information</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Contact</h4>
-      <div class="footer-contact">
-        <a href="#">&#128222; +91 99999 99999</a>
-        <a href="#">&#9993; intha.thrift@gmail.com</a>
-        <a href="#">&#128205; Tamil Nadu, India</a>
-      </div>
-      <h4 style="margin-top:1.5rem">Policies</h4>
+      <h4>Connect</h4>
       <ul>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Shipping Policy</a></li>
-        <li><a href="#">Refund Policy</a></li>
-        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">+91 99999 99999</a></li>
+        <li><a href="#">intha.thrift@gmail.com</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&#169; 2025 <em>Intha Thrift</em>. All rights reserved.</span>
-    <span>Crafted with precision in Tamil Nadu &#9651;</span>
+    <span>&#169; 2025 &mdash; Powered by <em>Intha Thrift</em></span>
+    <span>India (INR &#8377;)</span>
   </div>
 </footer>
 
 <script>
-/* Loader */
-window.addEventListener('load',()=>{
-  setTimeout(()=>document.getElementById('loader').classList.add('hide'),2000);
-});
-
-/* Nav scroll */
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
-});
-
-/* Custom cursor */
-const cur=document.getElementById('cur');
-const ring=document.getElementById('curRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)}
-animRing();
-document.querySelectorAll('a,button,.cat-card,.prod-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ring.style.width='48px';ring.style.height='48px';ring.style.opacity='.6';});
-  el.addEventListener('mouseleave',()=>{ring.style.width='32px';ring.style.height='32px';ring.style.opacity='1';});
-});
-
-/* Wishlist toggle */
-document.querySelectorAll('.prod-wish').forEach(b=>{
-  b.addEventListener('click',e=>{
-    e.stopPropagation();
-    b.textContent=b.textContent.trim()==='&#9825;'?'&#10084;':'&#9825;';
-    b.style.color=b.textContent.trim()==='&#10084;'?'var(--red)':'';
-    b.style.borderColor=b.textContent.trim()==='&#10084;'?'var(--red)':'';
-  });
-});
-
-/* Bag */
-let bagN=0;
-function addBag(btn){
-  bagN++;
-  document.getElementById('bagCount').textContent=bagN;
-  const orig=btn.textContent;
-  btn.textContent='&#10003;';
-  btn.style.background='#166534';
-  btn.style.color='#fff';
-  setTimeout(()=>{btn.textContent=orig;btn.style.background='';btn.style.color='';},1300);
+let count = 0;
+function addToCart(btn) {
+  count++;
+  document.getElementById('cartBtn').textContent = 'Cart ' + count;
+  btn.textContent = '✓ ADDED';
+  btn.style.background = '#166534';
+  btn.style.color = '#fff';
+  btn.style.borderColor = '#166534';
+  setTimeout(() => {
+    btn.textContent = 'ADD TO CART';
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.style.borderColor = '';
+  }, 1400);
 }
-
-/* Scroll reveal */
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.style.opacity='1';
-      e.target.style.transform='translateY(0)';
-    }
-  });
-},{threshold:.1});
-document.querySelectorAll('.prod-card,.cat-card,.process-item,.value-item').forEach(el=>{
-  el.style.opacity='0';
-  el.style.transform='translateY(24px)';
-  el.style.transition='opacity .6s ease,transform .6s ease';
-  obs.observe(el);
-});
 </script>
 </body>
 </html>
