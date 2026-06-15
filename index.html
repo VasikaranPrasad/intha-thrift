@@ -126,22 +126,23 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.6)}
 .step-t{font-size:.63rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#fff;margin-bottom:.4rem}
 .step-d{font-size:.7rem;color:#555;line-height:1.7}
 .steps-note{text-align:center;margin-top:1.4rem;font-size:.64rem;color:#444;font-style:italic}
-footer{background:#111;border-top:2.5px solid #CC0000;padding:2.5rem 3.5vw 1.2rem}
-.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid #1e1e1e}
-.f-logo{font-size:1.2rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+footer{background:#111;border-top:2.5px solid #CC0000;padding:1.8rem 3.5vw 1.2rem}
+.f-top{display:flex;gap:1.5rem;margin-bottom:.9rem;padding-bottom:.9rem;border-bottom:1px solid #1e1e1e;flex-wrap:wrap}
+.f-left a{color:#555;font-size:.7rem;margin-right:1.5rem;transition:color .15s}
+.f-left a:hover{color:#fff}
+.f-mid{display:flex;flex-wrap:wrap;gap:.3rem .5rem;margin-bottom:.5rem;padding-bottom:.5rem;border-bottom:1px solid #1e1e1e}
+.f-mid a{color:#555;font-size:.68rem;transition:color .15s}
+.f-mid a::after{content:' ·';color:#2a2a2a;margin-left:.5rem}
+.f-mid a:last-child::after{content:''}
+.f-mid a:hover{color:#fff}
+
+
 .f-logo em{color:#CC0000;font-style:normal}
-.f-about{font-size:.7rem;color:#383838;line-height:1.75;margin-bottom:.9rem}
-.f-ct a{display:flex;align-items:center;gap:.35rem;color:#383838;font-size:.67rem;margin-bottom:.32rem;transition:color .15s}
-.f-ct a:hover{color:#fff}
-.fc h4{font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:#CC0000;margin-bottom:.8rem;padding-bottom:.45rem;border-bottom:1px solid #1e1e1e}
-.fc ul{list-style:none}
-.fc li{margin-bottom:.38rem}
-.fc a{color:#383838;font-size:.68rem;transition:color .15s}
-.fc a:hover{color:#fff}
+
 .f-bot{display:flex;align-items:center;justify-content:space-between;font-size:.6rem;color:#2a2a2a}
 .f-bot em{color:#CC0000;font-style:normal}
-@media(max-width:900px){.pgrid{grid-template-columns:repeat(3,1fr)}.cat-row{grid-template-columns:repeat(2,1fr)}.cat-tile:nth-child(2){border-right:none}.f-top{grid-template-columns:1fr 1fr}.ig-grid{grid-template-columns:repeat(3,1fr)}.steps-grid{grid-template-columns:1fr}}
-@media(max-width:540px){.pgrid{grid-template-columns:repeat(2,1fr)}.cat-row{grid-template-columns:repeat(2,1fr)}.f-top{grid-template-columns:1fr}.hero-slide{height:80vh}.cat-tile{height:120px}}</style>
+@media(max-width:900px){.pgrid{grid-template-columns:repeat(3,1fr)}.cat-row{grid-template-columns:repeat(2,1fr)}.cat-tile:nth-child(2){border-right:none}.ig-grid{grid-template-columns:repeat(3,1fr)}.steps-grid{grid-template-columns:1fr}}
+@media(max-width:540px){.pgrid{grid-template-columns:repeat(2,1fr)}.cat-row{grid-template-columns:repeat(2,1fr)}.hero-slide{height:80vh}.cat-tile{height:120px}}</style>
 </head>
 <body>
 <div class="sb-ov" id="sbOv" onclick="closeSb()"></div>
@@ -231,35 +232,33 @@ footer{background:#111;border-top:2.5px solid #CC0000;padding:2.5rem 3.5vw 1.2re
   <p class="steps-note">Please note: without payment confirmation order will be cancelled</p>
 </div><footer>
   <div class="f-top">
-    <div>
-      <div class="f-logo">INTHA <em>THRIFT</em></div>
-      <p class="f-about">Premium pre-loved clothing &mdash; jerseys, trackpants, denims, caps, tees and more. Quality checked. Fast shipped.</p>
-      <div class="f-ct">
-        <a href="tel:+919345721089">&#128222; +91 93457 21089</a>
-        <a href="mailto:intha.thrift@gmail.com">&#9993; intha.thrift@gmail.com</a>
-        <a href="https://www.instagram.com/intha_thrifted?igsh=bW5jY2hkZWszd21w">&#128248; @intha_thrifted</a>
-      </div>
+    <div class="f-left">
+      <a href="tel:+919345721089">+91 93457 21089</a>
+      <a href="mailto:intha.thrift@gmail.com">intha.thrift@gmail.com</a>
+      <a href="#">Login / Register</a>
     </div>
-    <div class="fc"><h4>Shop</h4><ul>
-      <li><a href="#jerseys">Jerseys</a></li><li><a href="#trackpants">Trackpants</a></li>
-      <li><a href="#denims">Denims</a></li><li><a href="#caps">Caps</a></li>
-      <li><a href="#tees">Tshirts</a></li><li><a href="#">Jorts</a></li>
-      <li><a href="#">Shoes</a></li><li><a href="#">Jackets</a></li>
-    </ul></div>
-    <div class="fc"><h4>Info</h4><ul>
-      <li><a href="#">About Us</a></li><li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Shipping Policy</a></li><li><a href="#">Refund &amp; Cancellation</a></li>
-      <li><a href="#">Terms of Service</a></li><li><a href="#">Contact Information</a></li>
-    </ul></div>
-    <div class="fc"><h4>Connect</h4><ul>
-      <li><a href="https://www.instagram.com/intha_thrifted?igsh=bW5jY2hkZWszd21w">Instagram</a></li>
-      <li><a href="https://wa.me/919345721089">WhatsApp</a></li>
-      <li><a href="#">Login / Register</a></li>
-      <li><a href="tel:+919345721089">+91 93457 21089</a></li>
-    </ul></div>
+  </div>
+  <div class="f-mid">
+    <a href="#">About Us</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Shipping Policy</a>
+    <a href="#">Refund &amp; Cancellation Policy</a>
+    <a href="#">Contact Information</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Cancellation Policy</a>
+  </div>
+  <div class="f-mid">
+    <a href="#jerseys">Jerseys</a>
+    <a href="#trackpants">Trackpants</a>
+    <a href="#denims">Denims</a>
+    <a href="#caps">Caps</a>
+    <a href="#tees">Tshirts</a>
+    <a href="#">Jorts</a>
+    <a href="#">Shoes</a>
+    <a href="#">Jackets</a>
   </div>
   <div class="f-bot">
-    <span>&#169; 2025 &mdash; Powered by <em>Intha Thrift</em></span>
+    <span>&#169; 2026 &mdash; Powered by <em>Intha Thrift</em></span>
     <span>India (INR &#8377;)</span>
   </div>
 </footer><script>
