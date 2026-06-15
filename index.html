@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>Intha Thrift</title>
+<meta name="description" content="Premium pre-loved clothing — jerseys, trackpants, denims, caps, tees and more.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+/* ══ RESET ══ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
 body{
   font-family:'Inter',sans-serif;
   background:#282828;
@@ -17,231 +19,252 @@ body{
 }
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-button{font-family:'Inter',sans-serif;cursor:pointer}
+button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:#1a1a1a}
+::-webkit-scrollbar-thumb{background:#CC0000}
 
-/* ── NAV ── */
-.nav{
+/* ══ ANNOUNCEMENT ══ */
+.ann{
+  background:#CC0000;
+  text-align:center;padding:9px 2vw;
+  font-size:.65rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:#fff;
+  position:relative;overflow:hidden;
+}
+.ann::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);
+  animation:shim 3s ease infinite;
+}
+@keyframes shim{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+/* ══ NAV ══ */
+nav{
   background:#1a1a1a;
-  border-bottom:3px solid #CC0000;
+  border-bottom:2.5px solid #CC0000;
   display:flex;align-items:center;
   justify-content:space-between;
-  padding:0 4vw;height:60px;
-  position:sticky;top:0;z-index:200;
+  padding:0 4vw;
+  height:62px;
+  position:sticky;top:0;z-index:500;
+  transition:box-shadow .3s;
 }
-.nav-logo{
+nav.up{box-shadow:0 2px 20px rgba(0,0,0,.5)}
+.logo{
   font-size:1.35rem;font-weight:700;
-  letter-spacing:.06em;color:#fff;
-  text-transform:uppercase;
+  letter-spacing:.08em;color:#fff;
+  text-transform:uppercase;flex-shrink:0;
 }
-.nav-logo span{color:#CC0000}
-.nav-cats{
-  display:flex;list-style:none;gap:0;
+.logo em{color:#CC0000;font-style:normal}
+.nav-links{
+  display:flex;list-style:none;
+  border-left:1px solid #2e2e2e;
 }
-.nav-cats a{
-  color:#aaa;font-size:.75rem;
-  font-weight:500;letter-spacing:.06em;
-  text-transform:lowercase;
-  padding:0 .9rem;height:60px;
+.nav-links a{
   display:flex;align-items:center;
-  border-right:1px solid #2a2a2a;
+  height:62px;padding:0 1rem;
+  font-size:.73rem;font-weight:400;
+  letter-spacing:.07em;text-transform:lowercase;
+  color:#999;
+  border-right:1px solid #2e2e2e;
   transition:color .15s,background .15s;
+  white-space:nowrap;
 }
-.nav-cats a:first-child{border-left:1px solid #2a2a2a}
-.nav-cats a:hover{color:#fff;background:rgba(204,0,0,.12)}
-.nav-right{display:flex;align-items:center;gap:.8rem}
-.nav-right a{color:#aaa;font-size:.78rem;transition:color .15s}
-.nav-right a:hover{color:#fff}
-.cart-btn{
+.nav-links a:hover{color:#fff;background:rgba(204,0,0,.1)}
+.nav-r{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.nav-r a{
+  color:#999;font-size:.73rem;
+  font-weight:400;transition:color .15s;
+}
+.nav-r a:hover{color:#fff}
+.nav-cart{
   background:#CC0000;color:#fff;
-  border:none;padding:7px 18px;
-  font-size:.75rem;font-weight:600;
-  letter-spacing:.04em;text-transform:uppercase;
-  cursor:pointer;transition:background .15s;
+  padding:7px 16px;
+  font-size:.72rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  transition:background .15s;
 }
-.cart-btn:hover{background:#aa0000}
+.nav-cart:hover{background:#aa0000}
 
-/* ── TICKER ── */
+/* ══ TICKER ══ */
 .ticker{
   background:#CC0000;overflow:hidden;
-  padding:9px 0;border-bottom:2px solid #000;
+  padding:9px 0;
 }
-.ticker-inner{
+.ticker-t{
   display:flex;width:max-content;
-  animation:tick 28s linear infinite;
+  animation:tick 30s linear infinite;
 }
-.ticker-inner span{
-  white-space:nowrap;padding:0 2rem;
-  font-size:.7rem;font-weight:700;
-  letter-spacing:.15em;text-transform:uppercase;color:#fff;
+.ticker-t span{
+  white-space:nowrap;padding:0 2.2rem;
+  font-size:.67rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:#fff;
 }
-.ticker-inner span::after{content:' ★ ';margin-left:2rem}
+.ticker-t span.sep{padding:0;color:rgba(255,255,255,.6)}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ── HERO SLIDES ── */
+/* ══ HERO ══ */
 .hero{
   position:relative;
-  height:90vh;min-height:520px;
+  height:92vh;min-height:540px;
   overflow:hidden;
   display:flex;align-items:flex-end;
 }
-.hero-bg{
+.hero-sm{height:76vh;min-height:440px}
+.hero-img{
   position:absolute;inset:0;
   background-size:cover;
-  background-position:center 20%;
+  background-position:center 18%;
   background-repeat:no-repeat;
+  transition:transform 12s ease;
 }
-/* Light gradient — show image clearly, just enough for text */
-.hero-overlay{
+.hero:hover .hero-img{transform:scale(1.03)}
+/* Show image — light overlay only at bottom */
+.hero-veil{
   position:absolute;inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(26,26,26,.05) 0%,
-    rgba(26,26,26,.05) 30%,
-    rgba(26,26,26,.55) 65%,
-    rgba(26,26,26,.95) 100%
-  );
+  background:
+    linear-gradient(to bottom,
+      rgba(26,26,26,.04) 0%,
+      rgba(26,26,26,.04) 28%,
+      rgba(26,26,26,.48) 62%,
+      rgba(26,26,26,.97) 100%
+    );
 }
 .hero-body{
   position:relative;z-index:2;
-  padding:0 5vw 4rem;
+  padding:0 5vw 4.5rem;
+  max-width:640px;
 }
-.hero-tag{
-  font-size:.65rem;font-weight:700;
-  letter-spacing:.22em;text-transform:uppercase;
-  color:#CC0000;margin-bottom:.6rem;
+.h-tag{
+  font-size:.6rem;font-weight:700;
+  letter-spacing:.26em;text-transform:uppercase;
+  color:#CC0000;margin-bottom:.55rem;
+  display:flex;align-items:center;gap:8px;
 }
-.hero-title{
-  font-size:clamp(2.2rem,5vw,4.5rem);
-  font-weight:700;line-height:1;
-  color:#fff;margin-bottom:1.4rem;
+.h-tag::before{content:'';width:18px;height:1px;background:#CC0000}
+.h-title{
+  font-size:clamp(2rem,5.5vw,4.8rem);
+  font-weight:700;line-height:.95;
+  color:#fff;margin-bottom:1.5rem;
   text-transform:lowercase;
-  text-shadow:2px 2px 20px rgba(0,0,0,.8);
+  text-shadow:1px 1px 24px rgba(0,0,0,.75);
 }
-.hero-cta{
+.h-cta{
   display:inline-block;
   background:#CC0000;color:#fff;
   padding:11px 28px;
-  font-size:.72rem;font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase;
-  border:none;cursor:pointer;
-  transition:background .15s;
+  font-size:.7rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  transition:background .15s,transform .15s;
 }
-.hero-cta:hover{background:#aa0000}
+.h-cta:hover{background:#aa0000;transform:translateY(-2px)}
 
-/* ── SECTION ── */
-.sec{padding:3rem 4vw}
-.sec.dark{background:#1e1e1e}
-.sec-head{
+/* ══ SECTION ══ */
+.s{padding:3.2rem 4vw}
+.s-alt{background:#222}
+.s-head{
   display:flex;align-items:baseline;
   justify-content:space-between;
-  margin-bottom:1.4rem;
-  padding-bottom:.9rem;
+  margin-bottom:1.5rem;
+  padding-bottom:1rem;
   border-bottom:1px solid #333;
 }
-.sec-title{
-  font-size:1.3rem;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;
-  color:#fff;
+.s-title{
+  font-size:1.2rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
 }
-.view-all{
-  color:#CC0000;font-size:.7rem;
-  font-weight:700;letter-spacing:.1em;
+.s-all{
+  color:#CC0000;font-size:.68rem;
+  font-weight:700;letter-spacing:.12em;
   text-transform:uppercase;
   transition:color .15s;
 }
-.view-all:hover{color:#ff3333}
+.s-all:hover{color:#ff4444}
 
-/* ── PRODUCT GRID ── */
-.pgrid{
+/* ══ PRODUCT GRID ══ */
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-  gap:.8rem;
+  grid-template-columns:repeat(auto-fill,minmax(155px,1fr));
+  gap:.7rem;
 }
-.pc{
-  background:#222;
-  border:1px solid #2e2e2e;
-  transition:border-color .2s,transform .2s;
-  overflow:hidden;
-}
+.pc{background:#1e1e1e;border:1px solid #2d2d2d;overflow:hidden;transition:border-color .2s,transform .2s}
 .pc:hover{border-color:#CC0000;transform:translateY(-3px)}
-.pc-img-wrap{
+.pc-img{
   display:block;
-  aspect-ratio:1/1.15;
+  aspect-ratio:1/1.18;
   position:relative;overflow:hidden;
-  background:#1a1a1a;
+  background:#181818;
 }
-.img-main,.img-hover{
+.img1,.img2{
   position:absolute;inset:0;
   width:100%;height:100%;
-  object-fit:cover;
-  object-position:center top;
-  transition:opacity .35s;
+  object-fit:cover;object-position:center top;
+  transition:opacity .4s;
 }
-.img-hover{opacity:0;transform:scale(1.04)}
-.pc-img-wrap:hover .img-main{opacity:0}
-.pc-img-wrap:hover .img-hover{opacity:1}
+.img2{opacity:0;transform:scale(1.05)}
+.pc-img:hover .img1{opacity:0}
+.pc-img:hover .img2{opacity:1}
 .badge{
-  position:absolute;top:8px;left:8px;z-index:2;
+  position:absolute;top:8px;left:8px;z-index:3;
   background:#CC0000;color:#fff;
-  font-size:.58rem;font-weight:800;
-  padding:3px 8px;letter-spacing:.1em;
-  text-transform:uppercase;
+  font-size:.56rem;font-weight:800;
+  padding:3px 8px;letter-spacing:.1em;text-transform:uppercase;
 }
-.pc-info{padding:.65rem .75rem .8rem}
+.pc-body{padding:.65rem .75rem .85rem}
 .pc-name{
-  display:block;font-size:.82rem;
-  font-weight:500;color:#ddd;
-  margin-bottom:.3rem;line-height:1.3;
-  transition:color .15s;
+  display:block;font-size:.8rem;font-weight:500;
+  color:#d0d0d0;margin-bottom:.3rem;
+  line-height:1.3;transition:color .15s;
 }
 .pc-name:hover{color:#fff}
 .pc-price{
-  font-size:.88rem;font-weight:700;
-  color:#fff;margin-bottom:.55rem;
+  font-size:.76rem;color:#888;
+  margin-bottom:.55rem;font-weight:400;
 }
-.add-btn{
+.pc-price strong{color:#fff;font-weight:700;font-size:.88rem}
+.atc{
   width:100%;background:#1a1a1a;
-  border:1px solid #333;color:#999;
-  font-size:.65rem;font-weight:600;
+  border:1px solid #333;color:#888;
+  font-size:.62rem;font-weight:600;
   letter-spacing:.1em;text-transform:uppercase;
   padding:7px;transition:all .15s;
 }
-.add-btn:hover{background:#CC0000;color:#fff;border-color:#CC0000}
-
-/* ── MID BANNER ── */
-.mid-banner{
-  position:relative;height:380px;
-  overflow:hidden;display:flex;align-items:center;
+.atc:hover{background:#CC0000;color:#fff;border-color:#CC0000}
+.sold-out{
+  display:block;width:100%;
+  text-align:center;
+  font-size:.62rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:#555;padding:7px;
+  border:1px solid #2a2a2a;
 }
-.mid-banner-bg{
+
+/* ══ MID BANNER ══ */
+.mbanner{
+  position:relative;
+  height:400px;overflow:hidden;
+  display:flex;align-items:center;
+}
+.mb-img{
   position:absolute;inset:0;
   background-size:cover;
-  background-position:center 20%;
+  background-repeat:no-repeat;
 }
-.mid-banner-overlay{
+.mb-veil{
   position:absolute;inset:0;
   background:linear-gradient(
     to right,
     rgba(26,26,26,.92) 0%,
-    rgba(26,26,26,.6) 42%,
-    rgba(26,26,26,.08) 100%
+    rgba(26,26,26,.62) 40%,
+    rgba(26,26,26,.1) 100%
   );
 }
-.mid-banner-body{
-  position:relative;z-index:2;
-  padding:0 5vw;max-width:500px;
-}
-.mid-banner-body .hero-title{font-size:clamp(1.8rem,4vw,3rem)}
+.mb-body{position:relative;z-index:2;padding:0 5vw;max-width:520px}
 
-/* ── CONNECT / INSTAGRAM ── */
-.connect{padding:3rem 4vw}
-.connect-title{
-  font-size:1.3rem;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;
-  margin-bottom:1.5rem;
-  padding-bottom:.9rem;
-  border-bottom:1px solid #333;
-}
+/* ══ CONNECT / INSTAGRAM ══ */
+.connect{padding:3.2rem 4vw}
 .ig-grid{
   display:grid;
   grid-template-columns:repeat(6,1fr);
@@ -257,129 +280,157 @@ button{font-family:'Inter',sans-serif;cursor:pointer}
 .ig-cell img{
   width:100%;height:100%;
   object-fit:cover;object-position:center top;
+  filter:brightness(.72);
   transition:transform .4s,filter .3s;
-  filter:brightness(.75);
 }
 .ig-cell:hover img{transform:scale(1.08);filter:brightness(.95)}
-.follow-btn{
-  display:inline-block;
+.follow{
+  display:inline-flex;align-items:center;gap:6px;
   border:1px solid #444;color:#aaa;
-  padding:9px 24px;
-  font-size:.7rem;font-weight:600;
+  padding:9px 22px;
+  font-size:.68rem;font-weight:600;
   letter-spacing:.12em;text-transform:uppercase;
   transition:all .18s;
 }
-.follow-btn:hover{border-color:#CC0000;color:#fff}
+.follow:hover{border-color:#CC0000;color:#fff;background:rgba(204,0,0,.08)}
 
-/* ── ORDER STEPS ── */
+/* ══ ORDER STEPS ══ */
 .steps{
-  background:#1a1a1a;
-  border-top:1px solid #2a2a2a;
-  border-bottom:1px solid #2a2a2a;
-  padding:3rem 4vw;
+  background:#1e1e1e;
+  border-top:1px solid #2d2d2d;
+  border-bottom:1px solid #2d2d2d;
+  padding:3.5rem 4vw;
 }
-.steps-title{
-  font-size:1.3rem;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;
-  margin-bottom:2rem;text-align:center;
+.steps-hd{
+  font-size:1.2rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  text-align:center;margin-bottom:2.5rem;
+  padding-bottom:1rem;
+  border-bottom:1px solid #333;
 }
 .steps-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.2rem;
 }
 .step{
-  background:#222;border:1px solid #2e2e2e;
-  padding:1.6rem 1.4rem;
-  position:relative;
+  background:#242424;
+  border:1px solid #2d2d2d;
+  padding:1.8rem 1.5rem;
+  position:relative;overflow:hidden;
 }
 .step::before{
   content:'';position:absolute;
-  top:0;left:0;right:0;height:3px;
+  top:0;left:0;right:0;height:2.5px;
   background:#CC0000;
 }
-.step-num{
-  font-size:2.6rem;font-weight:700;
-  color:rgba(204,0,0,.15);line-height:1;
-  margin-bottom:.5rem;
+.step-n{
+  font-size:3rem;font-weight:700;
+  color:rgba(204,0,0,.1);
+  line-height:1;margin-bottom:.6rem;
+  font-style:italic;
 }
-.step-title{
-  font-size:.72rem;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:#fff;margin-bottom:.5rem;
+.step-t{
+  font-size:.7rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;margin-bottom:.6rem;
 }
-.step-desc{font-size:.78rem;color:#666;line-height:1.7}
-.step-note{
-  text-align:center;margin-top:1.5rem;
-  font-size:.72rem;color:#555;font-style:italic;
+.step-d{font-size:.78rem;color:#666;line-height:1.75}
+.steps-note{
+  text-align:center;margin-top:1.8rem;
+  font-size:.7rem;color:#555;
+  font-style:italic;letter-spacing:.04em;
 }
 
-/* ── FOOTER ── */
+/* ══ VALUE STRIP ══ */
+.values{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid #2d2d2d;
+  border-bottom:1px solid #2d2d2d;
+  background:#1a1a1a;
+}
+.val{
+  padding:1.8rem 2vw;
+  border-right:1px solid #2d2d2d;
+  display:flex;align-items:flex-start;gap:.75rem;
+}
+.val:last-child{border-right:none}
+.val-icon{font-size:1.1rem;margin-top:2px;flex-shrink:0}
+.val-t{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#e0e0e0;margin-bottom:.2rem}
+.val-d{font-size:.7rem;color:#555;line-height:1.6}
+
+/* ══ FOOTER ══ */
 footer{
   background:#111;
-  border-top:3px solid #CC0000;
-  padding:2.5rem 4vw 1.5rem;
+  border-top:2.5px solid #CC0000;
+  padding:3rem 4vw 1.5rem;
 }
-.footer-top{
+.ft{
   display:grid;
-  grid-template-columns:1.4fr 1fr 1fr 1fr;
-  gap:2rem;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:2.5rem;
   margin-bottom:2rem;
   padding-bottom:2rem;
-  border-bottom:1px solid #222;
+  border-bottom:1px solid #1e1e1e;
 }
-.footer-logo{
-  font-size:1.4rem;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;
-  margin-bottom:.6rem;
+.f-logo{
+  font-size:1.3rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:.5rem;
 }
-.footer-logo span{color:#CC0000}
-.footer-about{
-  font-size:.76rem;color:#444;
-  line-height:1.75;margin-bottom:1rem;
+.f-logo em{color:#CC0000;font-style:normal}
+.f-about{font-size:.75rem;color:#3e3e3e;line-height:1.8;margin-bottom:1rem}
+.f-contact a{
+  display:flex;align-items:center;gap:.4rem;
+  color:#3e3e3e;font-size:.73rem;
+  margin-bottom:.4rem;transition:color .15s;
 }
-.footer-contact a{
-  display:block;color:#444;
-  font-size:.74rem;margin-bottom:.35rem;
-  transition:color .15s;
-}
-.footer-contact a:hover{color:#fff}
-.footer-col h4{
-  font-size:.62rem;letter-spacing:.18em;
+.f-contact a:hover{color:#fff}
+.fc h4{
+  font-size:.6rem;letter-spacing:.2em;
   text-transform:uppercase;color:#CC0000;
-  margin-bottom:.9rem;
+  margin-bottom:1rem;padding-bottom:.5rem;
+  border-bottom:1px solid #1e1e1e;
 }
-.footer-col ul{list-style:none}
-.footer-col li{margin-bottom:.4rem}
-.footer-col a{
-  color:#444;font-size:.76rem;
-  transition:color .15s;
+.fc ul{list-style:none}
+.fc li{margin-bottom:.45rem}
+.fc a{color:#3e3e3e;font-size:.74rem;transition:color .15s}
+.fc a:hover{color:#fff}
+.fb{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  font-size:.64rem;color:#2e2e2e;
 }
-.footer-col a:hover{color:#fff}
-.footer-bottom{
-  display:flex;justify-content:space-between;
-  font-size:.65rem;color:#333;
-}
-.footer-bottom em{color:#CC0000;font-style:normal}
+.fb em{color:#CC0000;font-style:normal}
 
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .nav-cats{display:none}
-  .footer-top{grid-template-columns:1fr 1fr}
-  .steps-grid{grid-template-columns:1fr}
+/* ══ RESPONSIVE ══ */
+@media(max-width:1000px){
+  .nav-links{display:none}
+  .ft{grid-template-columns:1fr 1fr}
+  .values{grid-template-columns:1fr 1fr}
+  .val:nth-child(2){border-right:none}
   .ig-grid{grid-template-columns:repeat(3,1fr)}
+  .steps-grid{grid-template-columns:1fr}
 }
-@media(max-width:500px){
-  .footer-top{grid-template-columns:1fr}
-  .pgrid{grid-template-columns:1fr 1fr}
-  .hero{height:80vh}
+@media(max-width:580px){
+  .ft{grid-template-columns:1fr}
+  .values{grid-template-columns:1fr}
+  .val{border-right:none;border-bottom:1px solid #2d2d2d}
+  .grid{grid-template-columns:1fr 1fr}
+  .hero{height:82vh}
+  .hero-sm{height:68vh}
+  .mbanner{height:320px}
 }
 </style>
 </head>
 <body>
 
+<!-- ANNOUNCEMENT -->
+<div class="ann">Free shipping on all orders above &#8377;999 &nbsp;&#9670;&nbsp; New drops every Friday &nbsp;&#9670;&nbsp; Quality certified pieces</div>
+
 <!-- NAV -->
-<nav class="nav">
-  <div class="nav-logo">INTHA <span>THRIFT</span></div>
-  <ul class="nav-cats">
+<nav id="nav">
+  <div class="logo">INTHA <em>THRIFT</em></div>
+  <ul class="nav-links">
     <a href="#jerseys">jerseys</a>
     <a href="#trackpants">trackpants</a>
     <a href="#denims">denims</a>
@@ -388,300 +439,315 @@ footer{
     <a href="#tees">tees</a>
     <a href="#shoes">shoes</a>
   </ul>
-  <div class="nav-right">
+  <div class="nav-r">
     <a href="#">Login</a>
-    <button class="cart-btn" id="cartBtn">Cart 0</button>
+    <button class="nav-cart" id="cartBtn">Cart 0</button>
   </div>
 </nav>
 
 <!-- TICKER -->
 <div class="ticker">
-  <div class="ticker-inner">
-    <span>5% off on all products</span>
-    <span>ORDER 2 GET 11% OFF CODE=INTHA11</span>
-    <span>ORDER 3 GET 15% OFF CODE=INTHA15</span>
-    <span>New drops every Friday</span>
-    <span>Free shipping above &#8377;999</span>
-    <span>5% off on all products</span>
-    <span>ORDER 2 GET 11% OFF CODE=INTHA11</span>
-    <span>ORDER 3 GET 15% OFF CODE=INTHA15</span>
-    <span>New drops every Friday</span>
-    <span>Free shipping above &#8377;999</span>
+  <div class="ticker-t">
+    <span>5% off on all products</span><span class="sep">&nbsp;&#9733;&nbsp;</span>
+    <span>ORDER 2 GET 11% OFF &nbsp; CODE=INTHA11</span><span class="sep">&nbsp;&#9733;&nbsp;</span>
+    <span>ORDER 3 GET 15% OFF &nbsp; CODE=INTHA15</span><span class="sep">&nbsp;&#9733;&nbsp;</span>
+    <span>New drops every Friday</span><span class="sep">&nbsp;&#9733;&nbsp;</span>
+    <span>Free shipping above &#8377;999</span><span class="sep">&nbsp;&#9733;&nbsp;</span>
+    <span>5% off on all products</span><span class="sep">&nbsp;&#9733;&nbsp;</span>
+    <span>ORDER 2 GET 11% OFF &nbsp; CODE=INTHA11</span><span class="sep">&nbsp;&#9733;&nbsp;</span>
+    <span>ORDER 3 GET 15% OFF &nbsp; CODE=INTHA15</span><span class="sep">&nbsp;&#9733;&nbsp;</span>
+    <span>New drops every Friday</span><span class="sep">&nbsp;&#9733;&nbsp;</span>
+    <span>Free shipping above &#8377;999</span><span class="sep">&nbsp;&#9733;&nbsp;</span>
   </div>
 </div>
 
-<!-- HERO 1 — Las Vegas night car (most dramatic) -->
+<!-- HERO 1 -->
 <div class="hero">
-  <div class="hero-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg')"></div>
-  <div class="hero-overlay"></div>
+  <div class="hero-img" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg')"></div>
+  <div class="hero-veil"></div>
   <div class="hero-body">
-    <div class="hero-tag">premium thrifted</div>
-    <h1 class="hero-title">ful house of<br>premium jerseys</h1>
-    <a href="#jerseys" class="hero-cta">explore the vault</a>
+    <div class="h-tag">premium thrifted</div>
+    <h1 class="h-title">ful house of<br>premium jerseys</h1>
+    <a href="#jerseys" class="h-cta">explore the vault</a>
   </div>
 </div>
 
-<!-- HERO 2 — Guy on red Cadillac garage -->
-<div class="hero" style="height:75vh">
-  <div class="hero-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p2.jpeg');background-position:center 15%"></div>
-  <div class="hero-overlay"></div>
+<!-- HERO 2 -->
+<div class="hero hero-sm">
+  <div class="hero-img" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p2.jpeg');background-position:center 15%"></div>
+  <div class="hero-veil"></div>
   <div class="hero-body">
-    <div class="hero-tag">PREmium Thrifted</div>
-    <h1 class="hero-title">heaven of<br>trackpants</h1>
-    <a href="#trackpants" class="hero-cta">explore the vault</a>
+    <div class="h-tag">PREmium Thrifted</div>
+    <h1 class="h-title">heaven of<br>trackpants</h1>
+    <a href="#trackpants" class="h-cta">explore the vault</a>
   </div>
 </div>
 
 <!-- NEW ARRIVALS -->
-<div class="sec" id="newarrivals">
-  <div class="sec-head">
-    <h2 class="sec-title">New Arrivals</h2>
-    <a href="#" class="view-all">view all &rarr;</a>
+<div class="s" id="newarrivals">
+  <div class="s-head">
+    <h2 class="s-title">New Arrivals</h2>
+    <a href="#" class="s-all">view all &rarr;</a>
   </div>
-  <div class="pgrid">
+  <div class="grid">
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">New</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Liverpool FC Vintage" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Liverpool FC Vintage" loading="lazy">
+  <a href="#" class="pc-img">
+    <span class="badge">New</span>
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real baggy low rise" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real baggy low rise" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Liverpool FC Vintage</a>
-    <div class="pc-price">Rs. 1,499.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Real baggy low rise</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 999.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">Hot</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Patched Bomber Jacket" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Patched Bomber Jacket" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Patched Bomber Jacket</a>
-    <div class="pc-price">Rs. 929.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">New</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Black Cargo Outfit" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Black Cargo Outfit" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Black Cargo Outfit</a>
-    <div class="pc-price">Rs. 999.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Camel Overcoat" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Camel Overcoat" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real baggy low rise jeans" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real baggy low rise jeans" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Camel Overcoat</a>
-    <div class="pc-price">Rs. 1,299.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Real baggy low rise jeans</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 999.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">Hot</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Grey Crew Neck Knit" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Grey Crew Neck Knit" loading="lazy">
+  <a href="#" class="pc-img">
+    <span class="badge">New</span>
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Vintage Liverpool" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Vintage Liverpool" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Grey Crew Neck Knit</a>
-    <div class="pc-price">Rs. 549.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Vintage Liverpool</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 1,499.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">New</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Orange Varsity Jacket" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Orange Varsity Jacket" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Orange Varsity Jacket</a>
-    <div class="pc-price">Rs. 849.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Red Linen Casual Shirt" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Red Linen Casual Shirt" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Track" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Track" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Red Linen Casual Shirt</a>
-    <div class="pc-price">Rs. 449.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Track</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 799.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Graphic Print Hoodie" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Graphic Print Hoodie" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Mammut track" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Mammut track" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Graphic Print Hoodie</a>
-    <div class="pc-price">Rs. 699.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Mammut track</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 899.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">New</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real Baggy Low Rise" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real Baggy Low Rise" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Real Baggy Low Rise</a>
-    <div class="pc-price">Rs. 999.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Fashion Set" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Fashion Set" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Nike" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Nike" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Fashion Set</a>
-    <div class="pc-price">Rs. 850.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-  </div>
-</div>
-
-<!-- MID BANNER — Group shot -->
-<div class="mid-banner">
-  <div class="mid-banner-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p1.jpeg')"></div>
-  <div class="mid-banner-overlay"></div>
-  <div class="mid-banner-body">
-    <div class="hero-tag">premium thrifted</div>
-    <h2 class="hero-title">heaven of<br>jerseys</h2>
-    <a href="#jerseys" class="hero-cta">explore the vault</a>
-  </div>
-</div>
-
-<!-- TRACKPANTS -->
-<div class="sec dark" id="trackpants">
-  <div class="sec-head">
-    <h2 class="sec-title">Trackpants</h2>
-    <a href="#" class="view-all">view all &rarr;</a>
-  </div>
-  <div class="pgrid">
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">Hot</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Nike Vintage Track" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Nike Vintage Track" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Nike Vintage Track</a>
-    <div class="pc-price">Rs. 929.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Nike</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 799.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Adidas Track Pant" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Adidas Track Pant" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="The north face" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="The north face" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Adidas Track Pant</a>
-    <div class="pc-price">Rs. 839.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">The north face</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 1,299.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">New</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Fila Vintage Track" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Fila Vintage Track" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Fila Vintage Track</a>
-    <div class="pc-price">Rs. 849.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Reebok Classic Track" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Reebok Classic Track" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Pack of three" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Pack of three" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Reebok Classic Track</a>
-    <div class="pc-price">Rs. 750.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Pack of three</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 899.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Puma Track Pant" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Puma Track Pant" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Pack of three" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Pack of three" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Puma Track Pant</a>
-    <div class="pc-price">Rs. 899.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Pack of three</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 849.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Lacoste Track" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Lacoste Track" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Real baggy low rise jeans" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Real baggy low rise jeans" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Lacoste Track</a>
-    <div class="pc-price">Rs. 399.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Mammut Track" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Mammut Track" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Mammut Track</a>
-    <div class="pc-price">Rs. 899.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">New</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Adidas Vintage" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Adidas Vintage" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Adidas Vintage</a>
-    <div class="pc-price">Rs. 849.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Real baggy low rise jeans</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 999.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
   </div>
 </div>
 
-<!-- CONNECT / INSTAGRAM -->
+<!-- TRACKPANTS -->
+<div class="s s-alt" id="trackpants">
+  <div class="s-head">
+    <h2 class="s-title">Trackpants</h2>
+    <a href="#" class="s-all">view all &rarr;</a>
+  </div>
+  <div class="grid">
+    <div class="pc">
+  <a href="#" class="pc-img">
+    <span class="badge">New</span>
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Nike" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Nike" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Nike</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 929.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Track" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Track" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Track</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 849.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Fila track" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Fila track" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Fila track</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 849.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Reebok" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Reebok" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Reebok</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 750.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Adidas" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Adidas" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Adidas</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 839.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Adidas track" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Adidas track" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Adidas track</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 750.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Track" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Track" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Track</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 799.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Mammut track" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Mammut track" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Mammut track</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 899.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Nike" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Nike" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Nike</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 799.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Puma" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Puma" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Puma</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 899.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+  </div>
+</div>
+
+<!-- CONNECT WITH US -->
 <div class="connect">
-  <h2 class="connect-title">Connect with us</h2>
+  <div class="s-head">
+    <h2 class="s-title">Connect with us</h2>
+  </div>
   <div class="ig-grid">
     <div class="ig-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg" alt="" loading="lazy"></div>
     <div class="ig-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p2.jpeg" alt="" loading="lazy"></div>
@@ -690,408 +756,548 @@ footer{
     <div class="ig-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="" loading="lazy"></div>
     <div class="ig-cell"><img src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="" loading="lazy"></div>
   </div>
-  <a href="#" class="follow-btn">Follow us &rarr;</a>
+  <a href="#" class="follow">Follow us &rarr;</a>
 </div>
 
 <!-- JERSEYS -->
-<div class="sec dark" id="jerseys">
-  <div class="sec-head">
-    <h2 class="sec-title">Jerseys</h2>
-    <a href="#" class="view-all">view all &rarr;</a>
+<div class="s" id="jerseys">
+  <div class="s-head">
+    <h2 class="s-title">Jerseys</h2>
+    <a href="#" class="s-all">view all &rarr;</a>
   </div>
-  <div class="pgrid">
+  <div class="grid">
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">New</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Vintage Liverpool" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Vintage Liverpool" loading="lazy">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="NBA" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="NBA" loading="lazy">
   </a>
-  <div class="pc-info">
+  <div class="pc-body">
+    <a href="#" class="pc-name">NBA</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 980.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    <span class="badge">New</span>
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Ajax" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Ajax" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Ajax</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 999.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Nike" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Nike" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Nike</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 799.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="NBA" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="NBA" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">NBA</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 899.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Paris" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Paris" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Paris</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 929.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="vintage Y2K DADA Supreme" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="vintage Y2K DADA Supreme" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">vintage Y2K DADA Supreme</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 899.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Jersey" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Jersey" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Jersey</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 799.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Adidas 1990s football" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Adidas 1990s football" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Adidas 1990s football</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 858.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="1995-96 Puma" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="1995-96 Puma" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">1995-96 Puma</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 949.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="2008 France vintage jersey" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="2008 France vintage jersey" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">2008 France vintage jersey</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 849.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="England 2006 jersey" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="England 2006 jersey" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">England 2006 jersey</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 899.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    <span class="badge">New</span>
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Vintage Liverpool" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Vintage Liverpool" loading="lazy">
+  </a>
+  <div class="pc-body">
     <a href="#" class="pc-name">Vintage Liverpool</a>
-    <div class="pc-price">Rs. 1,499.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="NBA Vintage Jersey" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="NBA Vintage Jersey" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">NBA Vintage Jersey</a>
-    <div class="pc-price">Rs. 980.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">Hot</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="France 2008 Vintage" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="France 2008 Vintage" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">France 2008 Vintage</a>
-    <div class="pc-price">Rs. 849.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Ajax Retro Jersey" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Ajax Retro Jersey" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Ajax Retro Jersey</a>
-    <div class="pc-price">Rs. 999.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="England 2006 Jersey" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="England 2006 Jersey" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">England 2006 Jersey</a>
-    <div class="pc-price">Rs. 899.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">New</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Y2K DADA Supreme" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Y2K DADA Supreme" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Y2K DADA Supreme</a>
-    <div class="pc-price">Rs. 899.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Paris Vintage Jersey" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Paris Vintage Jersey" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Paris Vintage Jersey</a>
-    <div class="pc-price">Rs. 929.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Newcastle 2001-03" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Newcastle 2001-03" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Newcastle 2001-03</a>
-    <div class="pc-price">Rs. 999.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 1,499.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
   </div>
 </div>
 
-<!-- MID BANNER 2 — Dramatic Las Vegas -->
-<div class="mid-banner">
-  <div class="mid-banner-bg" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p3.jpeg');background-position:center 25%"></div>
-  <div class="mid-banner-overlay"></div>
-  <div class="mid-banner-body">
-    <div class="hero-tag">Intha Thrift</div>
-    <h2 class="hero-title">steal the<br>look.</h2>
-    <a href="#newarrivals" class="hero-cta">shop all</a>
+<!-- MID BANNER -->
+<div class="mbanner">
+  <div class="mb-img" style="background-image:url('https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p1.jpeg');background-position:center 20%"></div>
+  <div class="mb-veil"></div>
+  <div class="mb-body">
+    <div class="h-tag">Intha Thrift</div>
+    <h2 class="h-title" style="font-size:clamp(1.8rem,4vw,3.5rem)">steal the<br>look.</h2>
+    <a href="#newarrivals" class="h-cta">shop all</a>
   </div>
 </div>
 
 <!-- DENIMS -->
-<div class="sec" id="denims">
-  <div class="sec-head">
-    <h2 class="sec-title">Denims</h2>
-    <a href="#" class="view-all">view all &rarr;</a>
+<div class="s s-alt" id="denims">
+  <div class="s-head">
+    <h2 class="s-title">Denims</h2>
+    <a href="#" class="s-all">view all &rarr;</a>
   </div>
-  <div class="pgrid">
+  <div class="grid">
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">New</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real Baggy Low Rise" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real Baggy Low Rise" loading="lazy">
+  <a href="#" class="pc-img">
+    <span class="badge">New</span>
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real baggy low rise" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p15.jpeg" alt="Real baggy low rise" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Real Baggy Low Rise</a>
-    <div class="pc-price">Rs. 999.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Real baggy low rise</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 999.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Carhartt Work Jeans" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Carhartt Work Jeans" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Real baggy low rise jeans" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p16.jpeg" alt="Real baggy low rise jeans" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Carhartt Work Jeans</a>
-    <div class="pc-price">Rs. 999.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Real baggy low rise jeans</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 999.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">Hot</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Tommy Hilfiger Denim" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Tommy Hilfiger Denim" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Tommy Hilfiger Denim</a>
-    <div class="pc-price">Rs. 949.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Dickies Cargo Denim" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Dickies Cargo Denim" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Real baggy low rise jeans" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Real baggy low rise jeans" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Dickies Cargo Denim</a>
-    <div class="pc-price">Rs. 999.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Real baggy low rise jeans</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 999.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Abercrombie Fitch" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Abercrombie Fitch" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Tommy" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p10.jpeg" alt="Tommy" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Abercrombie Fitch</a>
-    <div class="pc-price">Rs. 750.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Tommy</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 949.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="BDG Y2K Cargo" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="BDG Y2K Cargo" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Dickies" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p12.jpeg" alt="Dickies" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">BDG Y2K Cargo</a>
-    <div class="pc-price">Rs. 899.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Dickies</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 999.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="ABERCROMBIE FITCH denim cargo" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="ABERCROMBIE FITCH denim cargo" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">ABERCROMBIE FITCH denim cargo</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 750.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="vintage Carhartt work jeans" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="vintage Carhartt work jeans" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">vintage Carhartt work jeans</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 999.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Carhartt" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Carhartt" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Carhartt</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 1,200.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
   </div>
 </div>
 
 <!-- CAPS -->
-<div class="sec dark" id="caps">
-  <div class="sec-head">
-    <h2 class="sec-title">Caps</h2>
-    <a href="#" class="view-all">view all &rarr;</a>
+<div class="s" id="caps">
+  <div class="s-head">
+    <h2 class="s-title">Caps</h2>
+    <a href="#" class="s-all">view all &rarr;</a>
   </div>
-  <div class="pgrid">
+  <div class="grid">
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">New</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Classic Snapback Cap" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Classic Snapback Cap" loading="lazy">
+  <a href="#" class="pc-img">
+    <span class="badge">New</span>
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Cap" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Cap" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Classic Snapback Cap</a>
-    <div class="pc-price">Rs. 450.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Cap</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 450.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Nike Vintage Cap" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Nike Vintage Cap" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Ny" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Ny" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Nike Vintage Cap</a>
-    <div class="pc-price">Rs. 550.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Ny</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 499.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="NY Snapback" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="NY Snapback" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Ny" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Ny" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">NY Snapback</a>
-    <div class="pc-price">Rs. 499.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Ny</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 450.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">Hot</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Manchester City Cap" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Manchester City Cap" loading="lazy">
-  </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Manchester City Cap</a>
-    <div class="pc-price">Rs. 499.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
-  </div>
-</div>
-    <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="MLB Cap" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="MLB Cap" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Nike" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Nike" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">MLB Cap</a>
-    <div class="pc-price">Rs. 450.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Nike</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 550.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Puma Cap" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Puma Cap" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Cap" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Cap" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Puma Cap</a>
-    <div class="pc-price">Rs. 400.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Cap</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 599.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Nike" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Nike" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Nike</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 550.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Cap" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Cap" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Cap</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 550.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Manchester City" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="Manchester City" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Manchester City</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 499.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Batman cap" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p6.jpeg" alt="Batman cap" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Batman cap</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 450.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
+  </div>
+</div>
+    <div class="pc">
+  <a href="#" class="pc-img">
+    
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="MLB" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p7.jpeg" alt="MLB" loading="lazy">
+  </a>
+  <div class="pc-body">
+    <a href="#" class="pc-name">MLB</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 450.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
   </div>
 </div>
 
 <!-- TEES -->
-<div class="sec" id="tees">
-  <div class="sec-head">
-    <h2 class="sec-title">Tees</h2>
-    <a href="#" class="view-all">view all &rarr;</a>
+<div class="s s-alt" id="tees">
+  <div class="s-head">
+    <h2 class="s-title">Tees</h2>
+    <a href="#" class="s-all">view all &rarr;</a>
   </div>
-  <div class="pgrid">
+  <div class="grid">
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">Hot</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Graphic Print Tee" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Graphic Print Tee" loading="lazy">
+  <a href="#" class="pc-img">
+    <span class="badge">Hot</span>
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Graphic Print Tee" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p9.jpeg" alt="Graphic Print Tee" loading="lazy">
   </a>
-  <div class="pc-info">
+  <div class="pc-body">
     <a href="#" class="pc-name">Graphic Print Tee</a>
-    <div class="pc-price">Rs. 399.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 399.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">New</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Red Linen Shirt" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Red Linen Shirt" loading="lazy">
+  <a href="#" class="pc-img">
+    <span class="badge">New</span>
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Red Linen Casual Shirt" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p11.jpeg" alt="Red Linen Casual Shirt" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Red Linen Shirt</a>
-    <div class="pc-price">Rs. 449.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Red Linen Casual Shirt</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 449.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Vintage Hoodie" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Vintage Hoodie" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Vintage Graphic Hoodie" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p8.jpeg" alt="Vintage Graphic Hoodie" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Vintage Hoodie</a>
-    <div class="pc-price">Rs. 699.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Vintage Graphic Hoodie</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 699.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Grey Crew Knit" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Grey Crew Knit" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Grey Crew Knit" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p13.jpeg" alt="Grey Crew Knit" loading="lazy">
   </a>
-  <div class="pc-info">
+  <div class="pc-body">
     <a href="#" class="pc-name">Grey Crew Knit</a>
-    <div class="pc-price">Rs. 549.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 549.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
-    <div class="badge">New</div>
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Pack of Three Tees" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Pack of Three Tees" loading="lazy">
+  <a href="#" class="pc-img">
+    <span class="badge">New</span>
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Pack of three tees" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p14.jpeg" alt="Pack of three tees" loading="lazy">
   </a>
-  <div class="pc-info">
-    <a href="#" class="pc-name">Pack of Three Tees</a>
-    <div class="pc-price">Rs. 899.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+  <div class="pc-body">
+    <a href="#" class="pc-name">Pack of three tees</a>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 899.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
     <div class="pc">
-  <a href="#" class="pc-img-wrap">
+  <a href="#" class="pc-img">
     
-    <img class="img-main" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Vintage Fashion Tee" loading="lazy">
-    <img class="img-hover" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Vintage Fashion Tee" loading="lazy">
+    <img class="img1" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Vintage Fashion Tee" loading="lazy">
+    <img class="img2" src="https://raw.githubusercontent.com/VasikaranPrasad/intha-thrift/main/images/p17.jpeg" alt="Vintage Fashion Tee" loading="lazy">
   </a>
-  <div class="pc-info">
+  <div class="pc-body">
     <a href="#" class="pc-name">Vintage Fashion Tee</a>
-    <div class="pc-price">Rs. 550.00</div>
-    <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+    <p class="pc-price">Regular price &nbsp;<strong>Rs. 550.00</strong></p>
+    <button class="atc" onclick="addCart(this)">Add To Cart</button>
   </div>
 </div>
+  </div>
+</div>
+
+<!-- VALUE STRIP -->
+<div class="values">
+  <div class="val">
+    <span class="val-icon">&#9651;</span>
+    <div><div class="val-t">Quality Certified</div><div class="val-d">Every piece hand-inspected before listing</div></div>
+  </div>
+  <div class="val">
+    <span class="val-icon">&#128230;</span>
+    <div><div class="val-t">Free Shipping</div><div class="val-d">On all orders above &#8377;999</div></div>
+  </div>
+  <div class="val">
+    <span class="val-icon">&#9202;</span>
+    <div><div class="val-t">24h Dispatch</div><div class="val-d">Shipped within 24h of payment</div></div>
+  </div>
+  <div class="val">
+    <span class="val-icon">&#9854;</span>
+    <div><div class="val-t">Easy Returns</div><div class="val-d">7-day hassle-free return policy</div></div>
   </div>
 </div>
 
 <!-- ORDER STEPS -->
 <div class="steps">
-  <h2 class="steps-title">Order Process</h2>
+  <h2 class="steps-hd">Order Process</h2>
   <div class="steps-grid">
     <div class="step">
-      <div class="step-num">01</div>
-      <div class="step-title">Choose &amp; Add to Cart</div>
-      <div class="step-desc">Choose your product and add to your cart. Apply coupon code to get discount and offers &mdash; ORDER 2 GET 11% OFF (INTHA11), ORDER 3 GET 15% OFF (INTHA15).</div>
+      <div class="step-n">01</div>
+      <div class="step-t">Choose &amp; Add to Cart</div>
+      <div class="step-d">Choose your product and add to your cart. Apply coupon code to get discount &mdash; ORDER 2 GET 11% OFF (INTHA11), ORDER 3 GET 15% OFF (INTHA15).</div>
     </div>
     <div class="step">
-      <div class="step-num">02</div>
-      <div class="step-title">Place &amp; Pay</div>
-      <div class="step-desc">Place the order by choosing payment method. Make payment on Instagram or WhatsApp. UPI and bank transfer accepted.</div>
+      <div class="step-n">02</div>
+      <div class="step-t">Place &amp; Pay</div>
+      <div class="step-d">Place the order by choosing bank deposit payment method. Make payment on Instagram or WhatsApp. UPI and bank transfer accepted.</div>
     </div>
     <div class="step">
-      <div class="step-num">03</div>
-      <div class="step-title">Dispatched in 24hrs</div>
-      <div class="step-desc">Once payment is confirmed your order will be confirmed and will be dispatched within 24 hours.</div>
+      <div class="step-n">03</div>
+      <div class="step-t">Dispatched in 24hrs</div>
+      <div class="step-d">Once payment is confirmed your order will be confirmed and will be dispatched within 24 hours to your doorstep.</div>
     </div>
   </div>
-  <p class="step-note">Please note: without payment confirmation order will be cancelled</p>
+  <p class="steps-note">Please note: without payment confirmation order will be cancelled</p>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
+  <div class="ft">
     <div>
-      <div class="footer-logo">INTHA <span>THRIFT</span></div>
-      <p class="footer-about">Premium pre-loved clothing &mdash; jerseys, trackpants, denims, caps, tees and more. Quality checked. Fast shipped.</p>
-      <div class="footer-contact">
-        <a href="tel:+919999999999">+91 99999 99999</a>
-        <a href="mailto:intha.thrift@gmail.com">intha.thrift@gmail.com</a>
-        <a href="#">Login / Register</a>
+      <div class="f-logo">INTHA <em>THRIFT</em></div>
+      <p class="f-about">Premium pre-loved clothing &mdash; jerseys, trackpants, denims, caps, tees and more. Quality checked. Fast shipped. Real prices.</p>
+      <div class="f-contact">
+        <a href="tel:+919999999999">&#128222; +91 99999 99999</a>
+        <a href="mailto:intha.thrift@gmail.com">&#9993; intha.thrift@gmail.com</a>
+        <a href="#">&#128248; @intha.thrift</a>
       </div>
     </div>
-    <div class="footer-col">
+    <div class="fc">
       <h4>Shop</h4>
       <ul>
         <li><a href="#jerseys">Jerseys</a></li>
@@ -1104,7 +1310,7 @@ footer{
         <li><a href="#">Jackets</a></li>
       </ul>
     </div>
-    <div class="footer-col">
+    <div class="fc">
       <h4>Info</h4>
       <ul>
         <li><a href="#">About Us</a></li>
@@ -1113,40 +1319,49 @@ footer{
         <li><a href="#">Refund &amp; Cancellation</a></li>
         <li><a href="#">Terms of Service</a></li>
         <li><a href="#">Contact Information</a></li>
+        <li><a href="#">Cancellation Policy</a></li>
       </ul>
     </div>
-    <div class="footer-col">
+    <div class="fc">
       <h4>Connect</h4>
       <ul>
         <li><a href="#">Instagram</a></li>
         <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Login / Register</a></li>
         <li><a href="#">+91 99999 99999</a></li>
         <li><a href="#">intha.thrift@gmail.com</a></li>
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">
+  <div class="fb">
     <span>&#169; 2025 &mdash; Powered by <em>Intha Thrift</em></span>
     <span>India (INR &#8377;)</span>
   </div>
 </footer>
 
 <script>
-let count = 0;
-function addToCart(btn) {
-  count++;
-  document.getElementById('cartBtn').textContent = 'Cart ' + count;
-  btn.textContent = '✓ ADDED';
-  btn.style.background = '#166534';
-  btn.style.color = '#fff';
-  btn.style.borderColor = '#166534';
+// Nav scroll shadow
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('up', scrollY > 50);
+});
+
+// Cart
+let n = 0;
+function addCart(btn) {
+  n++;
+  document.getElementById('cartBtn').textContent = 'Cart ' + n;
+  const t = btn.textContent;
+  btn.textContent = '&#10003; Added';
+  btn.style.cssText = 'background:#166534;color:#fff;border-color:#166534';
   setTimeout(() => {
-    btn.textContent = 'ADD TO CART';
-    btn.style.background = '';
-    btn.style.color = '';
-    btn.style.borderColor = '';
+    btn.textContent = t;
+    btn.style.cssText = '';
   }, 1400);
 }
+// Attach to all atc buttons
+document.querySelectorAll('.atc').forEach(b => {
+  b.addEventListener('click', function() { addCart(this); });
+});
 </script>
 </body>
 </html>
